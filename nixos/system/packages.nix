@@ -53,6 +53,7 @@
     cmake
     distrobox
     git
+    gdb
     gcc
     gnumake
     gparted

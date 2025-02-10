@@ -12,12 +12,15 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    
+    #nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    #nixos-wsl,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -60,6 +63,14 @@
           ./nixos/configuration.nix
         ];
       };
+      # untested right now!
+      #WSL = nixpkgs.lib.nixosSystem {
+      #  specialArgs = {inherit inputs outputs;};
+      #  modules = [
+      #    ./nixos/wsl/configuration.nix
+      #    nixos-wsl.nixosModules.wsl
+      #  ];
+      #};
     };
 
     # Standalone home-manager configuration entrypoint
@@ -74,6 +85,14 @@
           ./home-manager/home.nix
         ];
       };
+      #"xiej@WSL" = home-manager.lib.homeManagerConfiguration {
+      #  pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+      #  extraSpecialArgs = {inherit inputs outputs;};
+      #  modules = [
+      #    # > Our main home-manager configuration file <
+      #    ./home-manager/home.nix
+      #  ];
+      #};
     };
   };
 }

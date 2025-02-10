@@ -6,6 +6,6 @@ if [ -z "$HOST" ]; then
   exit 1
 fi
 
-sudo HOST=$HOST nixos-rebuild switch --flake .#$HOST # --impure
-home-manager switch --flake .#$USER@$HOST #--impure
+sudo HOST=$HOST nixos-rebuild switch --flake .#$HOST --show-trace || exit # --impure
+home-manager switch --flake .#$USER@$HOST || exit #--impure
 

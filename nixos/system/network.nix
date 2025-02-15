@@ -15,11 +15,25 @@
   networking.firewall = {
     enable = true;
     # Open ports in the firewall.
-    allowedTCPPorts = [ /*80 443*/ 8080 ];
-    #allowedUDPPortRanges = [
-    #  { from = 4000; to = 4007; }
-    #  { from = 8000; to = 8010; }
-    #];
+    allowedTCPPorts = [
+      #80
+      #443
+      8080
+      # sunshine
+      47984
+      47989
+      48010
+    ];
+    allowedUDPPortRanges = [
+      #{ from = 4000; to = 4007; }
+      #{ from = 8000; to = 8010; }
+      # sunshine
+      { from = 47998; to = 48000; }
+    ];
+    allowedUDPPorts = [
+      48002
+      48010
+    ];
   };
 
 }

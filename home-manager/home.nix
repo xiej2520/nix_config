@@ -64,8 +64,11 @@
     gimp
     kdePackages.kate
     kdePackages.kclock
+    iperf
     lutris
+    moonlight-qt
     onedrivegui
+    kdePackages.plasma-sdk
     protontricks
     shotcut
     spotify

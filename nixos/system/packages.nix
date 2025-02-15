@@ -57,6 +57,7 @@
     gcc
     gnumake
     gparted
+    lsof
     neovim
     nodejs
     (python3.withPackages (python-pkgs: with python-pkgs; [

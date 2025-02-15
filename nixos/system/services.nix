@@ -61,4 +61,13 @@
     openFirewall = true;
   };
 
+  services.syncthing = {
+    enable = true;
+    dataDir = "/home/xiej/Syncthing";
+    openDefaultPorts = true;
+    configDir = "/home/xiej/.config/syncthing";
+    user = "xiej";
+  };
+
+
 }

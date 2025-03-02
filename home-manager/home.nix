@@ -51,7 +51,6 @@
   };
 
   # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhs;
@@ -87,6 +86,10 @@
   #  userEmail = "jackyxie2520@outlook.com";
   #  userName = "xiej2520";
   #};
+  programs.neovim.enable = true;
+  home.file.".config/nvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim-config/nvim);
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

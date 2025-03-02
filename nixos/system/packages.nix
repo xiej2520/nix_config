@@ -66,6 +66,7 @@
       requests
       venvShellHook
     ]))
+    ripgrep
     vscode.fhs
     wget
   ] #++ (with kdePackages; [

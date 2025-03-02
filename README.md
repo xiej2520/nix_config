@@ -1,5 +1,11 @@
 # NixOS Config
 
+```sh
+git clone --recursive
+git submodule init
+git submodule update
+```
+
 ## To Build
 
 1. Change config

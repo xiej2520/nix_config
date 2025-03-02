@@ -74,6 +74,7 @@
     tree
     vlc
     wine
+    wl-clipboard-rs
     zed-editor
     #  thunderbird
   ];

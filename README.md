@@ -1,9 +1,11 @@
 # NixOS Config
 
+Submodules don't work with flakes, using subtree for
+[nvim-config](https://www.github.com/xiej2520/nvim-config).
+
 ```sh
-git clone --recursive
-git submodule init
-git submodule update
+git subtree pull --prefix home-manager/nvim-config https://github.com/xiej2520/nvim-config main --squash
+git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/nvim-config main
 ```
 
 ## To Build

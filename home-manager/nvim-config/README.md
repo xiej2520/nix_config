@@ -50,3 +50,8 @@ In `nvim-old` folder
 
 `:CocInstall coc-clangd coc-java coc-python coc-tsserver coc-json coc-html coc-css
 coc-markdownlint coc-markdown-preview-enhanced coc-webview`
+
+## init.vim
+
+Fallback: copy `init.vim` to `~/.config/nvim/init.vim`.
+Also can copy `init.vim` to `~/.vimrc` to use as vim configuration.

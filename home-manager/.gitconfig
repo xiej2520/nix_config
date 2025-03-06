@@ -1,0 +1,51 @@
+[init]
+	defaultBranch = main
+[user]
+	email = jackyxie2520@outlook.com
+	name = xiej2520
+[branch]
+	sort = -committerdate
+[core]
+	autocrlf = input
+	safecrlf = true
+	editor = nvim
+	ignorecase = false
+[column]
+	ui = auto
+[commit]
+	verbose = true
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[merge]
+	conflictStyle = zdiff3
+[push]
+	autoSetupRemote = false
+	followTags = true
+[fetch]
+	all = false
+[help]
+	autocorrect = prompt
+[rebase]
+	autoSquash = true
+	autoStash = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[tag]
+	sort = version:refname
+
+[alias]
+	lg = log --oneline --color --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(green)(%ar)%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset)' --all
+	lgg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)%an%C(reset)'
+	pushf = push --force-with-lease
+	zip = archive -o latest.zip HEAD
+	tar = archive --format=tar HEAD -o latest.tar
+	ddiff = -c diff.external=difft diff
+	dlog = -c diff.external=difft log --ext-diff
+	dshow = -c diff.external=difft show --ext-diff
+[alias "tar"]
+	zst = !git archive --format=tar HEAD | zstd -T0 -c > latest.tar.zst
+	gz = !git archive --format=tar HEAD | gzip > latest.tar.gz

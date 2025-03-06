@@ -38,9 +38,15 @@ sudo nixos-rebuild switch --flake .#{hostname}
 # {switch, boot, test}
 # e.g. sudo nixos-rebuild switch --flake .#WORKING_TABLET
 
+# launch shell with home-manager
+nix shell nixpkgs#home-manager
+
 # apply home configuration
 home-manager switch --flake .#username@hostname
-nix shell nixpkgs#home-manager
+# old configurations
+home-manager generations
+# switch to old generation
+/nix/store/{hash}-home-manager-generation/activate
 ```
 
 ### WSL

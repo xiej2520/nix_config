@@ -48,6 +48,9 @@
   home = {
     username = "xiej";
     homeDirectory = "/home/xiej";
+    
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    stateVersion = "24.11";
   };
 
   # Add stuff for your user as you see fit:
@@ -57,6 +60,7 @@
   };
 
   home.packages = with pkgs; [
+    arduino-ide
     discord
     ffmpeg-full
     fontforge-gtk
@@ -79,22 +83,37 @@
     #  thunderbird
   ];
 
-  # Enable home-manager and git
+  # Enable home-manager
   programs.home-manager.enable = true;
-  programs.git.enable = true;
-  #programs.git = {
-  #  enable = true;
-  #  userEmail = "jackyxie2520@outlook.com";
-  #  userName = "xiej2520";
-  #};
+
+  programs.bash.enable = true;
+
+  programs.git = {
+    enable = true;
+    userEmail = "jackyxie2520@outlook.com";
+    userName = "xiej2520";
+  };
+  home.file.".gitconfig".source = ./.gitconfig;
+
   programs.neovim.enable = true;
+  # symlink configuration, use git subtree since submodules won't get copied
   home.file.".config/nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim-config/nvim);
+  };
+  
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = ../;
+  };
+  
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
   };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.11";
 }

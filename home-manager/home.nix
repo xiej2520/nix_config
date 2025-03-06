@@ -60,7 +60,6 @@
   };
 
   home.packages = with pkgs; [
-    arduino-ide
     discord
     ffmpeg-full
     fontforge-gtk
@@ -70,6 +69,7 @@
     iperf
     lutris
     moonlight-qt
+    nh
     onedrivegui
     kdePackages.plasma-sdk
     protontricks
@@ -99,13 +99,6 @@
   # symlink configuration, use git subtree since submodules won't get copied
   home.file.".config/nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim-config/nvim);
-  };
-  
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = ../;
   };
   
   programs.direnv = {

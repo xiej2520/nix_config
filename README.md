@@ -15,7 +15,7 @@ git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/n
 3. Run
 
    ```shell
-   HOST=$WORKING_DESKTOP ./build.sh
+   HOST=<HOSTNAME> ./build.sh
    ```
 
 4. Check that programs are working
@@ -47,6 +47,12 @@ home-manager switch --flake .#username@hostname
 home-manager generations
 # switch to old generation
 /nix/store/{hash}-home-manager-generation/activate
+
+# nh commands
+nh os switch . -H <HOSTNAME>
+nh home switch .
+nh search <pkg>
+nh clean
 ```
 
 ### WSL

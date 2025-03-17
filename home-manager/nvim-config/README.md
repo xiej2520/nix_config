@@ -4,9 +4,14 @@
 
 Using *lua*
 
-1. Run `install.sh`
+### Installation
 
-On windows, install nvim, copy `nvim` to `C:/Users/<user>/AppData/Local/nvim`
+[neovim Install.md](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+
+Linux: Run `install.sh`
+
+Windows: [install nvim](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi),
+copy `nvim` to `C:/Users/<user>/AppData/Local/nvim`
 
 Overview
 

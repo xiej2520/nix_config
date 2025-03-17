@@ -11,7 +11,12 @@ Using *lua*
 Linux: Run `install.sh`
 
 Windows: [install nvim](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi),
-copy `nvim` to `C:/Users/<user>/AppData/Local/nvim`
+copy `nvim` to `C:/Users/<user>/AppData/Local/nvim`. Make sure C compiler is
+available (`cl.exe`) to compile extensions.
+
+```Powershell
+Copy-Item -Path nvim -Destination ~\AppData\Local -Recurse
+```
 
 Overview
 
@@ -58,5 +63,5 @@ coc-markdownlint coc-markdown-preview-enhanced coc-webview`
 
 ## init.vim
 
-Fallback: copy `init.vim` to `~/.config/nvim/init.vim`.
-Also can copy `init.vim` to `~/.vimrc` to use as vim configuration.
+Fallback: `cp init.vim ~/.config/nvim/init.vim`
+Also can `cp init.vim ~/.vimrc` to use as vim configuration.

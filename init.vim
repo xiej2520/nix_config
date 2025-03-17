@@ -39,6 +39,7 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 
+:set wrap ":set nowrap
 " Better up/down with gj/gk for wrapped lines (1j/1k for default behavior)
 nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
 xnoremap <expr> j v:count == 0 ? 'gj' : 'j'
@@ -48,6 +49,19 @@ nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 xnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 nnoremap <expr> <Up> v:count == 0 ? 'gk' : 'k'
 xnoremap <expr> <Up> v:count == 0 ? 'gk' : 'k'
+
+" Swap 0 and g0 (beginning of line/beginning of visible line)
+nnoremap 0 g0
+xnoremap 0 g0
+nnoremap g0 0
+xnoremap g0 0
+
+" Swap $ and g$ (end of line/end of visible line)
+nnoremap $ g$
+xnoremap $ g$
+nnoremap g$ $
+xnoremap g$ $
+
 " Move to window using <ctrl> hjkl keys
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

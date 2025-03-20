@@ -16,7 +16,7 @@
     };
     efi.canTouchEfiVariables = true;
     #efi.efiSysMountPoint = "/boot";
-    timeout = 15;
+    timeout = 30;
   };
   boot.supportedFilesystems = [ "ntfs" ];
 

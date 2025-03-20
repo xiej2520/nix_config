@@ -70,7 +70,7 @@
   };
 
 
-  #virtualization.podman = {
+  #virtualisation.podman = {
   #  enable = true;
   #  dockerCompat = true;
   #}

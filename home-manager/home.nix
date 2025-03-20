@@ -66,22 +66,48 @@
     gimp
     kdePackages.kate
     kdePackages.kclock
+    
     iperf
     lutris
     moonlight-qt
     nh
     onedrivegui
+
     kdePackages.plasma-sdk
+    kdePackages.qtwebengine
+
     protontricks
     shotcut
     spotify
     tree
+    typst
     vlc
     wine
     wl-clipboard-rs
     zed-editor
     #  thunderbird
-  ];
+  ] ++ (with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-serif
+    noto-fonts-emoji
+    noto-fonts-emoji-blob-bin
+    font-awesome
+    lexend
+    twitter-color-emoji
+
+    (nerdfonts.override { fonts = [
+      "iA-Writer"   # default, no ligatures
+      
+      # not released yet
+      #"FragmentMono"    # wider, less serifs
+      #"Maple"            # comic-ish, widths feel off
+      #"Monocraft"        # classic
+      "Monaspace" # Neon
+    ];})
+  ]) ++ (with pkgs; [
+    cubiomes-viewer
+    prismlauncher
+  ]);
 
   # Enable home-manager
   programs.home-manager.enable = true;
@@ -94,6 +120,7 @@
     userName = "xiej2520";
   };
   home.file.".gitconfig".source = ./.gitconfig;
+  home.file.".gitignore".source = ./.gitignore;
 
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
@@ -106,6 +133,18 @@
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
+  
+  fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        emoji = ["twitter-color-emoji"];
+        monospace = ["iA-Writer"];
+        sansSerif = ["Lexend Deca"];
+      };
+    };
+  };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

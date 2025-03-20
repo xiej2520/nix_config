@@ -10,6 +10,7 @@
 	safecrlf = true
 	editor = nvim
 	ignorecase = false
+	excludesfile = ~/.gitignore
 [column]
 	ui = auto
 [commit]

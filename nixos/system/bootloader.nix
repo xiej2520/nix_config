@@ -19,5 +19,4 @@
     timeout = 30;
   };
   boot.supportedFilesystems = [ "ntfs" ];
-
 }

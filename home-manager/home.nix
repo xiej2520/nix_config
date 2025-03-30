@@ -71,11 +71,13 @@
     lutris
     moonlight-qt
     nh
+    nixfmt-rfc-style
     onedrivegui
 
-    kdePackages.plasma-sdk
     kdePackages.qtwebengine
 
+    mesa
+    obs-studio
     protontricks
     shotcut
     spotify
@@ -84,6 +86,7 @@
     vlc
     wine
     wl-clipboard-rs
+    x265
     zed-editor
     #  thunderbird
   ] ++ (with pkgs; [
@@ -106,6 +109,7 @@
     ];})
   ]) ++ (with pkgs; [
     cubiomes-viewer
+    mcaselector
     prismlauncher
   ]);
 

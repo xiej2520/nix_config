@@ -50,24 +50,13 @@
   # Packages installed in system profile
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    cmake
     distrobox
     devenv
     difftastic
     git
-    gdb
-    gcc
-    gnumake
     gparted
     lsof
     neovim
-    nodejs
-    (python3.withPackages (python-pkgs: with python-pkgs; [
-      numpy
-      pandas
-      requests
-      venvShellHook
-    ]))
     ripgrep
     vscode.fhs
     wget
@@ -78,11 +67,26 @@
     #  qttools
     #  qtwayland
     #])
-    ++ ([
-      cargo
-      rustc
-      gcc
-    ])
+    #++ ([
+    #  cargo
+    #  rustc
+    #  gcc
+    #])
+    #++ ([
+    #  #cmake
+    #  #gdb
+    #  #gcc
+    #  #gnumake
+    #])
+    #++ (python3.withPackages (python-pkgs: with python-pkgs; [
+    #  numpy
+    #  pandas
+    #  requests
+    #  venvShellHook
+    #]))
+    #++ ([
+    #  #nodejs
+    #])
   ;
 
 }

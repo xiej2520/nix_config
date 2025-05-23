@@ -50,3 +50,10 @@
 [alias "tar"]
 	zst = !git archive --format=tar HEAD | zstd -T0 -c > latest.tar.zst
 	gz = !git archive --format=tar HEAD | gzip > latest.tar.gz
+
+# Github Desktop
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

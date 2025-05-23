@@ -60,14 +60,23 @@
   };
 
   home.packages = with pkgs; [
+    avidemux
     discord
     ffmpeg-full
     fontforge-gtk
     gimp
     kdePackages.kate
     kdePackages.kclock
+    kdePackages.kdeplasma-addons
+    kdePackages.plasma-nm
+    git
+    github-desktop
+    gh
+    handbrake
     
+    jetbrains.idea-community
     iperf
+    lazygit
     lutris
     moonlight-qt
     nh
@@ -76,11 +85,12 @@
 
     kdePackages.qtwebengine
 
-    mesa
+    mpv
     obs-studio
     protontricks
     shotcut
     spotify
+    sublime-merge
     tree
     typst
     vlc
@@ -113,18 +123,17 @@
     prismlauncher
   ]);
 
-  # Enable home-manager
   programs.home-manager.enable = true;
 
   programs.bash.enable = true;
 
-  programs.git = {
-    enable = true;
-    userEmail = "jackyxie2520@outlook.com";
-    userName = "xiej2520";
-  };
-  home.file.".gitconfig".source = ./.gitconfig;
-  home.file.".gitignore".source = ./.gitignore;
+  #programs.git = {
+  #  enable = true;
+  #  userEmail = "jackyxie2520@outlook.com";
+  #  userName = "xiej2520";
+  #};
+  home.file.".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./.gitconfig;
+  home.file.".gitignore".source = config.lib.file.mkOutOfStoreSymlink ./.gitignore;
 
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
@@ -136,6 +145,13 @@
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
+  };
+  
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk23.override {
+      enableJavaFX = true;
+    };
   };
   
   fonts = {
@@ -152,4 +168,17 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+  
+  # try to get newly installed programs to show up in Application Launcher
+  home.activation.linkDesktopApplications = {
+    after = [ "writeBoundary" "createXdgUserDirectories" ];
+    before = [ ];
+    data = ''
+      rm -rf ${config.xdg.dataHome}/nix-desktop-files/applications
+      mkdir -p ${config.xdg.dataHome}/nix-desktop-files/applications
+      cp -Lr ${config.home.homeDirectory}/.nix-profile/share/applications/* ${config.xdg.dataHome}/nix-desktop-files/applications/
+    '';
+  };
+  xdg.enable = true;
+  xdg.systemDirs.data = [ "${config.xdg.dataHome}/nix-desktop-files" ];
 }

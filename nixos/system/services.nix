@@ -31,6 +31,35 @@
     variant = "";
   };
 
+  # enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = "true";
+      };
+      Policy = {
+        AutoEnable = "true";
+      };
+    };
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    # VA-API encoder
+    extraPackages = with pkgs; [
+      mesa # AMD
+      #libva
+      #libvdpau-va-gl
+      #vulkan-loader
+      #vulkan-validation-layers
+      #amdvlk
+      #mesa.opencl
+    ];
+  };
+
   services.onedrive.enable = true;
 
   # enable cups to print documents
@@ -68,6 +97,5 @@
     configDir = "/home/xiej/.config/syncthing";
     user = "xiej";
   };
-
 
 }

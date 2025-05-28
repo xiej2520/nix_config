@@ -51,6 +51,10 @@ home-manager generations
 # nh commands
 nh os switch . -H <HOSTNAME>
 nh home switch .
+
+nh os switch --update .
+nh home switch --update .
+
 nh search <pkg>
 nh clean
 ```

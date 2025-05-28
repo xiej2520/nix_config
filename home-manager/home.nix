@@ -62,6 +62,7 @@
   home.packages = with pkgs; [
     avidemux
     discord
+    filelight
     ffmpeg-full
     fontforge-gtk
     gimp
@@ -71,6 +72,7 @@
     kdePackages.plasma-nm
     git
     github-desktop
+    gitkraken
     gh
     handbrake
     
@@ -88,9 +90,9 @@
     mpv
     obs-studio
     protontricks
+    qdirstat
     shotcut
     spotify
-    sublime-merge
     tree
     typst
     vlc
@@ -121,6 +123,7 @@
     cubiomes-viewer
     mcaselector
     prismlauncher
+    rpcs3
   ]);
 
   programs.home-manager.enable = true;

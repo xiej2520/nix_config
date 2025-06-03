@@ -62,10 +62,10 @@
   home.packages = with pkgs; [
     avidemux
     discord
-    filelight
     ffmpeg-full
     fontforge-gtk
     gimp
+    kdePackages.filelight
     kdePackages.kate
     kdePackages.kclock
     kdePackages.kdeplasma-addons
@@ -109,16 +109,6 @@
     font-awesome
     lexend
     twitter-color-emoji
-
-    (nerdfonts.override { fonts = [
-      "iA-Writer"   # default, no ligatures
-      
-      # not released yet
-      #"FragmentMono"    # wider, less serifs
-      #"Maple"            # comic-ish, widths feel off
-      #"Monocraft"        # classic
-      "Monaspace" # Neon
-    ];})
   ]) ++ (with pkgs; [
     cubiomes-viewer
     mcaselector

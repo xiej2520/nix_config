@@ -92,6 +92,13 @@
     #  #nodejs
     #])
   ;
+  fonts.packages = with pkgs; [
+    nerd-fonts.im-writing   # default, no ligatures
+    #nerd-fonts.FragmentMono # wider, less serifs
+    #nerd-fonts.Maple        # comic-ish, widths feel off
+    #nerd-fonts.Monocraft    # class
+    nerd-fonts.monaspace    # Neon
+  ];
 
   environment.variables.EDITOR = "nvim";
 

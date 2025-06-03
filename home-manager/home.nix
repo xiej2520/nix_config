@@ -76,7 +76,7 @@
     gh
     handbrake
     
-    jetbrains.idea-community
+    jetbrains.idea-community-bin
     iperf
     lazygit
     lutris

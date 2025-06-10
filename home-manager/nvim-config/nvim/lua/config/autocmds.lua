@@ -18,11 +18,5 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
   callback = function()
     local map = vim.keymap.set
-    -- flip the behavior of 0/g0 and $/g$
-    map({ "n", "x" }, "0", "g0", { desc = "Beginning of visible line", silent = true })
-    map({ "n", "x" }, "g0", "0", { desc = "Beginning of line", silent = true })
-
-    map({ "n", "x" }, "$", "g$", { desc = "End of visible line", silent = true })
-    map({ "n", "x" }, "g$", "$", { desc = "End of line", silent = true })
   end,
 })

@@ -73,6 +73,7 @@
     git
     github-desktop
     gitkraken
+    git-filter-repo
     gh
     handbrake
     

@@ -3,6 +3,7 @@
 [user]
 	email = jackyxie2520@outlook.com
 	name = xiej2520
+	signingkey = /home/xiej/.ssh/ssh.pub
 [branch]
 	sort = -committerdate
 [core]
@@ -20,6 +21,8 @@
 	colorMoved = plain
 	mnemonicPrefix = true
 	renames = true
+[gpg]
+	format = ssh
 [merge]
 	conflictStyle = zdiff3
 [push]

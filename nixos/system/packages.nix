@@ -57,6 +57,7 @@
     difftastic
     git
     gparted
+    kdePackages.sddm-kcm
     lsof
     neovim
     ripgrep

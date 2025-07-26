@@ -115,11 +115,16 @@
     mcaselector
     prismlauncher
     rpcs3
+    ryujinx
+    ghidra
   ]);
 
   programs.home-manager.enable = true;
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    historyControl = [ "ignoredups" ];
+  };
 
   #programs.git = {
   #  enable = true;

@@ -38,6 +38,9 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
+      # STOP OOM
+      cores = 8;
+      max-jobs = 2;
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -90,12 +93,6 @@
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["networkmanager" "wheel"];
     };
-  };
-  
-  # enable zram swap
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
   };
 
   # This value determines the NixOS release from which the default

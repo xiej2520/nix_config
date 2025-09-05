@@ -40,7 +40,6 @@
     ];
     # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
   };
@@ -53,56 +52,50 @@
     stateVersion = "24.11";
   };
 
-  # Add stuff for your user as you see fit:
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-  };
+  programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
-    avidemux
     discord
-    ffmpeg-full
-    fontforge-gtk
+
     gimp
+    handbrake
+    iperf
+
     kdePackages.filelight
-    kdePackages.kate
     kdePackages.kclock
     kdePackages.kdeplasma-addons
     kdePackages.plasma-nm
+
+    obs-studio
+    onedrivegui
+    qdirstat
+
+    spotify
+    transmission_4-qt
+    vlc
+    wl-clipboard-rs
+
+  ] ++ (with pkgs; [
+    avidemux
+    ffmpeg-full
+    mpv
+    shotcut
+    wine
+    x265
+  ]) ++ (with pkgs; [
     git
     github-desktop
-    gitkraken
     git-filter-repo
     gh
-    handbrake
-    
+
     jetbrains.idea-community-bin
-    iperf
-    lazygit
-    lutris
-    moonlight-qt
     nh
     nixfmt-rfc-style
-    onedrivegui
 
-    kdePackages.qtwebengine
-
-    mpv
-    obs-studio
-    protontricks
-    qdirstat
-    shotcut
-    spotify
     tree
     typst
-    vlc
-    wine
-    wl-clipboard-rs
-    x265
     zed-editor
-    #  thunderbird
-  ] ++ (with pkgs; [
+  ]) ++ (with pkgs; [
     noto-fonts
     noto-fonts-cjk-serif
     noto-fonts-emoji
@@ -117,9 +110,18 @@
     rpcs3
     ryujinx
     ghidra
+    #xorg.libX11
+    #xorg.libXxf86vm
+  ]) ++ (with pkgs; [
+    lutris
+    moonlight-qt
+    protontricks
   ]);
 
-  programs.home-manager.enable = true;
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+  };
 
   programs.bash = {
     enable = true;

@@ -93,13 +93,24 @@
     #  #nodejs
     #])
   ;
-  fonts.packages = with pkgs; [
-    nerd-fonts.im-writing   # default, no ligatures
-    #nerd-fonts.FragmentMono # wider, less serifs
-    #nerd-fonts.Maple        # comic-ish, widths feel off
-    #nerd-fonts.Monocraft    # class
-    nerd-fonts.monaspace    # Neon
-  ];
+  fonts = {
+    fontconfig = {
+      defaultFonts = {
+        emoji = ["twitter-color-emoji"];
+        monospace = ["iA-Writer"];
+        #sansSerif = ["Lexend Deca"];
+      };
+      useEmbeddedBitmaps = true;
+    };
+    packages = with pkgs; [
+      nerd-fonts.im-writing   # default, no ligatures
+      #nerd-fonts.FragmentMono # wider, less serifs
+      #nerd-fonts.Maple        # comic-ish, widths feel off
+      #nerd-fonts.Monocraft    # class
+      nerd-fonts.monaspace    # Neon
+      twitter-color-emoji
+    ];
+  };
 
   environment.variables.EDITOR = "nvim";
 

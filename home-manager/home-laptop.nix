@@ -91,6 +91,7 @@
     nh
     nixfmt-rfc-style
 
+    ripgrep
     tree
     typst
     zed-editor
@@ -112,10 +113,10 @@
     protontricks
   ]);
 
-  programs.bash = {
-    enable = true;
-    historyControl = [ "ignoredups" ];
-  };
+  #programs.bash = {
+  #  enable = true;
+  #  historyControl = [ "ignoredups" ];
+  #};
 
   #programs.git = {
   #  enable = true;

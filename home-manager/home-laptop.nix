@@ -63,7 +63,7 @@
 
     kdePackages.filelight
     kdePackages.kclock
-    kdePackages.kdeplasma-addons
+    # enabling this bricks kde on ubuntu? kdePackages.kdeplasma-addons
     kdePackages.plasma-nm
 
     obs-studio

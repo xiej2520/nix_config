@@ -65,6 +65,7 @@
     kdePackages.kclock
     kdePackages.kdeplasma-addons
     kdePackages.plasma-nm
+    kdePackages.yakuake
 
     obs-studio
     onedrivegui
@@ -90,6 +91,8 @@
 
     jetbrains.idea-community-bin
     nh
+    nil
+    nixd
     nixfmt-rfc-style
 
     tree
@@ -154,6 +157,8 @@
       enableJavaFX = true;
     };
   };
+  
+  services.kdeconnect.enable = true;
   
   fonts = {
     fontconfig = {

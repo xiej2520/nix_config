@@ -91,6 +91,8 @@
 
     jetbrains.idea-community-bin
     nh
+    nil
+    nixd
     nixfmt-rfc-style
 
     tree

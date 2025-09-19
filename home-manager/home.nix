@@ -65,6 +65,7 @@
     kdePackages.kclock
     kdePackages.kdeplasma-addons
     kdePackages.plasma-nm
+    kdePackages.yakuake
 
     obs-studio
     onedrivegui
@@ -154,6 +155,8 @@
       enableJavaFX = true;
     };
   };
+  
+  services.kdeconnect.enable = true;
   
   fonts = {
     fontconfig = {

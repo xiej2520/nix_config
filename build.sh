@@ -14,5 +14,13 @@ echo "Using USER: '$USER'"
 
 echo "Rebuilding and activating nixos"
 sudo HOST=$HOST nixos-rebuild switch --flake .#$HOST --show-trace # --impure
+
+if ! command -v home-manager >/dev/null 2>&1
+then
+    echo "home-manager could not be found, run"
+    echo "  nix-shell -p home-manager"
+    exit 1
+fi
+
 echo "Rebuilding and activating home-manager"
 home-manager switch --flake .#$USER@$HOST #--impure

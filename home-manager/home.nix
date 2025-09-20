@@ -79,6 +79,9 @@ in
   programs.bash = {
     enable = true;
     historyControl = [ "ignoredups" ];
+    initExtra = ''
+      export PS1="''${PS1//\\u/\$SHLVL:\\u}"
+    '';
   };
 
   #programs.git = {

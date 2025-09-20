@@ -39,7 +39,7 @@
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
       # STOP OOM
-      cores = 8;
+      cores = 32;
       max-jobs = 2;
     };
     # Opinionated: disable channels
@@ -52,14 +52,12 @@
 
   # FIXME: Add the rest of your current configuration
 
-  ### Time
   time.timeZone = "America/Chicago";
   # Fix Windows time
   time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";

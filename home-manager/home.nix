@@ -66,6 +66,8 @@
     kdePackages.kdeplasma-addons
     kdePackages.plasma-nm
     kdePackages.yakuake
+    klassy
+    unstable.plasma-panel-colorizer
 
     obs-studio
     onedrivegui

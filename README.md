@@ -15,7 +15,7 @@ git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/n
 3. Run
 
    ```shell
-   HOST=<HOSTNAME> ./build.sh
+   HOST=<HOSTNAME> USER=<USERNAME> ./switch.sh
    ```
 
 4. Check that programs are working
@@ -27,7 +27,7 @@ git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/n
 ```shell
 # check evaluation and test
 nix flake check
-# update flake lock
+# update flake.lock
 nix flake update
 
 # generate /etc/nixos/{configuration.nix, hardware-configuration.nix}

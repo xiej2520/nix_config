@@ -465,13 +465,12 @@
       "kcminputrc"."Libinput/5426/138/Razer Razer Viper Mini"."PointerAccelerationProfile" = 1;
       "kcminputrc"."Libinput/5426/138/Razer Razer Viper Mini"."ScrollMethod" = 0;
       "kcminputrc"."Libinput/9610/268/BY Tech Gaming Keyboard Mouse"."ScrollMethod" = 0;
-      "kcminputrc"."Mouse"."cursorTheme" = "breeze_cursors";
       "kded5rc"."Module-browserintegrationreminder"."autoload" = false;
       "kded5rc"."Module-device_automounter"."autoload" = false;
       "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size" = "826,584";
       "kdeglobals"."DirSelect Dialog"."Splitter State" = "\x00\x00\x00\xff\x00\x00\x00\x01\x00\x00\x00\x02\x00\x00\x00\x90\x00\x00\x02\xa8\x00\xff\xff\xff\xff\x01\x00\x00\x00\x01\x00";
-      "kdeglobals"."General"."AccentColor" = "61,212,37";
-      "kdeglobals"."General"."LastUsedCustomAccentColor" = "61,212,37";
+      "kdeglobals"."General"."AccentColor" = "7,152,42";
+      "kdeglobals"."General"."LastUsedCustomAccentColor" = "7,152,42";
       "kdeglobals"."General"."XftAntialias" = true;
       "kdeglobals"."General"."XftHintStyle" = "hintslight";
       "kdeglobals"."General"."XftSubPixel" = "rgb";
@@ -488,7 +487,7 @@
       "kdeglobals"."KFileDialog Settings"."Decoration position" = 2;
       "kdeglobals"."KFileDialog Settings"."LocationCombo Completionmode" = 5;
       "kdeglobals"."KFileDialog Settings"."PathCombo Completionmode" = 5;
-      "kdeglobals"."KFileDialog Settings"."Preview Width" = 499;
+      "kdeglobals"."KFileDialog Settings"."Preview Width" = 477;
       "kdeglobals"."KFileDialog Settings"."Show Bookmarks" = false;
       "kdeglobals"."KFileDialog Settings"."Show Full Path" = false;
       "kdeglobals"."KFileDialog Settings"."Show Inline Previews" = true;
@@ -504,11 +503,11 @@
       "kdeglobals"."KShortcutsDialog Settings"."Dialog Size" = "921,480";
       "kdeglobals"."PreviewSettings"."EnableRemoteFolderThumbnail" = false;
       "kdeglobals"."PreviewSettings"."MaximumRemoteSize" = 0;
-      "kdeglobals"."WM"."activeBackground" = "49,54,59";
+      "kdeglobals"."WM"."activeBackground" = "39,44,49";
       "kdeglobals"."WM"."activeBlend" = "252,252,252";
       "kdeglobals"."WM"."activeFont" = "Lexend Deca,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1";
       "kdeglobals"."WM"."activeForeground" = "252,252,252";
-      "kdeglobals"."WM"."inactiveBackground" = "42,46,50";
+      "kdeglobals"."WM"."inactiveBackground" = "32,36,40";
       "kdeglobals"."WM"."inactiveBlend" = "161,169,177";
       "kdeglobals"."WM"."inactiveForeground" = "161,169,177";
       "kiorc"."Confirmations"."ConfirmDelete" = true;
@@ -525,8 +524,6 @@
       "kscreenlockerrc"."Daemon"."Timeout" = 0;
       "kscreenlockerrc"."Greeter"."WallpaperPlugin" = "org.kde.color";
       "kscreenlockerrc"."Greeter/Wallpaper/org.kde.color/General"."Color" = "0,0,0";
-      "ksplashrc"."KSplash"."Engine" = "none";
-      "ksplashrc"."KSplash"."Theme" = "None";
       "ktrashrc"."\\/home\\/xiej\\/.local\\/share\\/Trash"."Days" = 7;
       "ktrashrc"."\\/home\\/xiej\\/.local\\/share\\/Trash"."LimitReachedAction" = 0;
       "ktrashrc"."\\/home\\/xiej\\/.local\\/share\\/Trash"."Percent" = 10;
@@ -561,8 +558,8 @@
       "kwinrc"."Xwayland"."Scale" = 1;
       "kwinrc"."org.kde.kdecoration2"."BorderSize" = "None";
       "kwinrc"."org.kde.kdecoration2"."BorderSizeAuto" = false;
-      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "MSN";
-      "kwinrc"."org.kde.kdecoration2"."theme" = "__aurorae__svg__WillowDarkAltShaderCustom";
+      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "NMFS";
+      "kwinrc"."org.kde.kdecoration2"."ButtonsOnRight" = "HLIA_X";
       "kwinrulesrc"."General"."count" = 1;
       "kwinrulesrc"."General"."rules" = "e09f1d63-076f-49fc-9260-d574a1d11d27";
       "kwinrulesrc"."e09f1d63-076f-49fc-9260-d574a1d11d27"."Description" = "Window settings for Code";
@@ -581,6 +578,7 @@
       "plasma-localerc"."Formats"."LC_TIME" = "C";
       "plasmanotifyrc"."Applications/firefox"."Seen" = true;
       "plasmaparc"."General"."VolumeStep" = 1;
+      "plasmarc"."PlasmaToolTips"."Delay" = 1;
       "spectaclerc"."Annotations"."annotationToolType" = 2;
       "spectaclerc"."GuiConfig"."captureDelay" = 1;
       "spectaclerc"."GuiConfig"."captureMode" = 0;

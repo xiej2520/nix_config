@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+let
+  wallpaperPackage = pkgs.runCommand "background-image" { } ''
+    cp ${./wallpaper.png} $out
+  '';
+in
 {
   ### services (programs in background):
 
@@ -22,14 +26,25 @@
   services.xserver.enable = true;
 
   # enable the kde plasma desktop environment.
-  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = lib.mkDefault true;
+    theme = "breeze";
+    wayland.enable = true;
+  };
 
   # configure keymap in x11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
+
+  environment.systemPackages = [
+    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+      [General]
+      background = "${wallpaperPackage}"
+    '')
+  ];
 
   # enable bluetooth
   hardware.bluetooth = {

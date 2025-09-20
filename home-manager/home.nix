@@ -7,7 +7,12 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  cli = import ./cli { inherit pkgs; };
+  desktop = import ./desktop { inherit pkgs; };
+in
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -47,81 +52,24 @@
   home = {
     username = "xiej";
     homeDirectory = "/home/xiej";
-    
+
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "24.11";
   };
 
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    discord
-
-    gimp
-    handbrake
-    iperf
-
-    kdePackages.filelight
-    kdePackages.kclock
-    kdePackages.kdeplasma-addons
-    kdePackages.plasma-nm
-    kdePackages.yakuake
-    klassy
-    unstable.plasma-panel-colorizer
-
-    obs-studio
-    onedrivegui
-    qdirstat
-
-    spotify
-    transmission_4-qt
-    vlc
-    wl-clipboard-rs
-
-  ] ++ (with pkgs; [
-    avidemux
-    ffmpeg-full
-    mpv
-    shotcut
-    wine
-    x265
-  ]) ++ (with pkgs; [
-    git
-    github-desktop
-    git-filter-repo
-    gh
-
-    jetbrains.idea-community-bin
-    nh
-    nil
-    nixd
-    nixfmt-rfc-style
-
-    tree
-    typst
-    zed-editor
-  ]) ++ (with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-serif
-    noto-fonts-emoji
-    noto-fonts-emoji-blob-bin
-    font-awesome
-    lexend
-    twitter-color-emoji
-  ]) ++ (with pkgs; [
-    cubiomes-viewer
-    mcaselector
-    prismlauncher
-    rpcs3
-    ryujinx
-    ghidra
-    #xorg.libX11
-    #xorg.libXxf86vm
-  ]) ++ (with pkgs; [
-    lutris
-    moonlight-qt
-    protontricks
-  ]);
+  home.packages =
+    cli.cliPackages
+    ++ desktop.desktopPackages
+    ++ desktop.desktopPlusPackages
+    ++ desktop.kdeConfigPackages
+    ++ desktop.devPackages
+    ++ desktop.devPlusPackages
+    ++ desktop.gamePackages
+    ++ desktop.fontPackages
+    ++ desktop.minecraftPackages
+    ++ desktop.miscPackages;
 
   programs.vscode = {
     enable = true;
@@ -146,40 +94,42 @@
   home.file.".config/nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim-config/nvim);
   };
-  
+
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-  
+
   programs.java = {
     enable = true;
     package = pkgs.jdk23.override {
       enableJavaFX = true;
     };
   };
-  
+
   services.kdeconnect.enable = true;
-  
+
   fonts = {
     fontconfig = {
       enable = true;
       defaultFonts = {
-        emoji = ["twitter-color-emoji"];
-        monospace = ["iA-Writer"];
-        sansSerif = ["Lexend Deca"];
+        emoji = [ "twitter-color-emoji" ];
+        monospace = [ "iA-Writer" ];
+        sansSerif = [ "Lexend Deca" ];
       };
     };
   };
 
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-  
+
   # try to get newly installed programs to show up in Application Launcher
   home.activation.linkDesktopApplications = {
-    after = [ "writeBoundary" "createXdgUserDirectories" ];
+    after = [
+      "writeBoundary"
+      "createXdgUserDirectories"
+    ];
     before = [ ];
     data = ''
       rm -rf ${config.xdg.dataHome}/nix-desktop-files/applications

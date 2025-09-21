@@ -42,7 +42,8 @@
 	sort = version:refname
 
 [alias]
-	lg = log --oneline --color --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(green)(%ar)%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset)' --all
+	lg = log --oneline --color --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(green)(%ar)%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset)'
+	lga = log --oneline --color --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(green)(%ar)%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset)' --all
 	lgg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)%an%C(reset)'
 	pushf = push --force-with-lease
 	zip = archive -o latest.zip HEAD

@@ -62,6 +62,9 @@ nix-shell -p {package}
 nix shell nixpkgs#{package}
 # create shell with buildInputs and env variables
 nix develop nixpkgs#{package}
+# create shell with output of .#devShells.<system>.default or packages.<system>.default
+nix develop
+# use flake > .envrc => loads devShells.default
 # run program
 nix run nixpkgs#{package}
 ```

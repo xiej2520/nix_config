@@ -20,3 +20,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     local map = vim.keymap.set
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  -- disable spellcheck
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+})

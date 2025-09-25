@@ -4,6 +4,7 @@ let
     git
     ffmpeg-full
     iperf
+    unstable.msedit
 
     nh
     nil

@@ -1,0 +1,11 @@
+{
+  "eslint.validate": ["typescript"],
+  "eslint.lintTask.options": [".", "--ext", ".ts"],
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.suggestionActions.enabled": false,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "suggest.noselect": true,
+	"java.home": "C:/Program Files/Java/jdk-18.0.2"
+}

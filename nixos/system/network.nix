@@ -41,6 +41,9 @@
       #48002
       #48010
     ];
+    trustedInterfaces = [
+      "virbr0" # virt-manager
+    ];
   };
 
 }

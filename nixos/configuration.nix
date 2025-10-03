@@ -78,6 +78,11 @@
     dockerCompat = true;
   };
 
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["xiej"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username

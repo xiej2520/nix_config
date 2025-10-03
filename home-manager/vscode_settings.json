@@ -16,7 +16,7 @@
     "workbench.tree.renderIndentGuides": "always",
     
     "editor.bracketPairColorization.enabled": true,
-    "editor.fontFamily": "'IosevkaCustomFixed', 'Illinois Mono', 'iA Writer Mono S', Monocraft, \"Fira Mono\", Inconsolata, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'IosevkaLegibleFixed', 'Illinois Mono', 'iA Writer Mono S', Monocraft, \"Fira Mono\", Inconsolata, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": false,
     "editor.fontSize": 13,
     "editor.renderLineHighlight": "all",
@@ -52,6 +52,8 @@
     "git.blame.editorDecoration.enabled": true,
 
     "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.fontFamily": "'IosevkaLegibleFixed SmEx', IosevkaLegibleFixed",
+    "terminal.integrated.lineHeight": 1.0,
 
     "zenMode.hideLineNumbers": false,
 

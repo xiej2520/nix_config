@@ -4,8 +4,9 @@ Submodules don't work with flakes, using subtree for
 [nvim-config](https://www.github.com/xiej2520/nvim-config).
 
 ```sh
-git subtree pull --prefix home-manager/nvim-config https://github.com/xiej2520/nvim-config main --squash
-git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/nvim-config main
+git subtree pull --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main --squash
+git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main
+git push https://github.com/xiej2520/nvim_config `git subtree split --prefix=home-manager/nvim_config main`:forcepush --force
 ```
 
 ## Usage

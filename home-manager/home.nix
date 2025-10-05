@@ -81,7 +81,11 @@ in
     historyControl = [ "ignoredups" ];
     initExtra = ''
       export PS1="''${PS1//\\u/\$SHLVL:\\u}"
+      export PYTHONSTARTUP=~/.config/startup.py
     '';
+  };
+  home.file.".config/startup.py" = {
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./startup.py);
   };
 
   #programs.git = {
@@ -95,7 +99,7 @@ in
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
   home.file.".config/nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim-config/nvim);
+    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim_config/nvim);
   };
 
   programs.direnv = {
@@ -127,7 +131,7 @@ in
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # try to get newly installed programs to show up in Application Launcher
+  # try to get newly installed programs to show up in KDE Application Launcher
   home.activation.linkDesktopApplications = {
     after = [
       "writeBoundary"

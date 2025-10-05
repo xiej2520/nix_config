@@ -1,8 +1,11 @@
 { pkgs, ... }:
 let
   cliPackages = with pkgs; [
+    awscli2
+
     git
     ffmpeg-full
+    imagemagick
     iperf
     unstable.msedit
 
@@ -10,6 +13,8 @@ let
     nil
     nixd
     nixfmt-rfc-style
+    
+    unrar
   ];
 in
 {

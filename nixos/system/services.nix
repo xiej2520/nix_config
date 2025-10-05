@@ -45,6 +45,8 @@ in
       background = "${wallpaperPackage}"
     '')
   ];
+  
+  services.earlyoom.enable = true;
 
   # enable bluetooth
   hardware.bluetooth = {

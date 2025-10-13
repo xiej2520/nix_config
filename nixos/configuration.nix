@@ -20,10 +20,10 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-    ./system/bootloader.nix
-    ./system/network.nix
-    ./system/packages.nix
-    ./system/services.nix
+    ./bootloader.nix
+    ./network.nix
+    ./packages.nix
+    ./services.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -35,7 +35,6 @@
     in
     {
       settings = {
-        # Enable flakes and new 'nix' command
         experimental-features = "nix-command flakes";
         # Opinionated: disable global registry
         flake-registry = "";
@@ -43,17 +42,14 @@
         nix-path = config.nix.nixPath;
         # STOP OOM
         cores = 32;
-        max-jobs = 2;
+        max-jobs = 4;
       };
-      # Opinionated: disable channels
       channel.enable = false;
 
       # Opinionated: make flake registry and nix path match flake inputs
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
-
-  # FIXME: Add the rest of your current configuration
 
   time.timeZone = "America/Chicago";
   # Fix Windows time
@@ -79,7 +75,7 @@
   };
 
   programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = ["xiej"];
+  users.groups.libvirtd.members = [ "xiej" ];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
@@ -96,7 +92,12 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "adbusers"
+        "kvm"
+        "networkmanager"
+        "wheel"
+      ];
     };
   };
 

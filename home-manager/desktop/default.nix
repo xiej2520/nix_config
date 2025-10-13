@@ -51,6 +51,7 @@ let
 
   # less used
   devPlusPackages = with pkgs; [
+    android-studio
     jetbrains.idea-community-bin
     ghidra
     kdePackages.kompare

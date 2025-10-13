@@ -46,7 +46,7 @@ nix flake check
 nix flake update
 
 # generate /etc/nixos/{configuration.nix, hardware-configuration.nix}
-nix-generate-config
+sudo nixos-generate-config
 
 # apply system configuration
 # {switch, boot, test}

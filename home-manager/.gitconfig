@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
-	email = jackyxie2520@outlook.com
+	email = xiej2520@gmail.com
 	name = xiej2520
 	signingkey = /home/xiej/.ssh/ssh.pub
 [branch]

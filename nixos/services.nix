@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   wallpaperPackage = pkgs.runCommand "background-image" { } ''
     cp ${./wallpaper.png} $out
@@ -33,22 +38,20 @@ in
     wayland.enable = true;
   };
 
-  # configure keymap in x11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   environment.systemPackages = [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
       [General]
       background = "${wallpaperPackage}"
     '')
   ];
-  
-  services.earlyoom.enable = true;
 
-  # enable bluetooth
+
+  # configure keymap in x11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -63,19 +66,18 @@ in
   };
 
   hardware.graphics = {
+    # includes OpenGL, Vulkan, VA-API drives
     enable = true;
     enable32Bit = true;
-    # VA-API encoder
+
     extraPackages = with pkgs; [
-      mesa # AMD
-      #libva
-      #libvdpau-va-gl
-      #vulkan-loader
-      #vulkan-validation-layers
-      #amdvlk
-      #mesa.opencl
+      #
     ];
   };
+
+  services.earlyoom.enable = true;
+
+  services.flatpak.enable = true;
 
   services.onedrive.enable = true;
 
@@ -100,6 +102,7 @@ in
 
   # enable touchpad support (enabled default in most desktopmanager).
   # services.xserver.libinput.enable = true;
+
   services.sunshine = {
     enable = true;
     autoStart = false;

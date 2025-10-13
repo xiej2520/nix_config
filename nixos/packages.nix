@@ -14,11 +14,15 @@ let
     vim
     wget
   ]);
+
   kdePackages = (with pkgs.kdePackages; [
     sddm-kcm
   ]);
+
   ### Programs (with configuration options)
   programs = {
+    adb.enable = true;
+
     firefox.enable = true;
 
     neovim = {
@@ -35,15 +39,8 @@ let
     };
   };
 
-  # usused, use dev environment normally
-  #devPackages = with pkgs; [
-  #  cargo
-  #  rustc
-  #  cmake
-  #  gcc
-  #  gdb
-  #  gnumake
-  #];
+  # unused, use dev environment normally
+  #devPackages = with pkgs; [ cargo rustc cmake gcc gdb gnumake ];
   # minimal python3 install for scripting
   pythonPackages = [(
     pkgs.python3.withPackages (
@@ -58,7 +55,10 @@ let
 in
 {
   nixpkgs = {
-    # You can add overlays here
+    config = {
+      allowUnfree = true;
+    };
+
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -75,15 +75,10 @@ in
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
-    config = {
-      allowUnfree = true;
-    };
   };
 
-  services.flatpak.enable = true;
+  inherit programs;
 
-  programs = programs;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -98,12 +93,12 @@ in
     ++ kdePackages
     ++ pythonPackages
     ++ (with pkgs; [
-      # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       bluez
       distrobox
       devenv
       gparted
     ]);
+
   fonts = {
     fontconfig = {
       defaultFonts = {

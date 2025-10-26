@@ -52,10 +52,16 @@
     nixosConfigurations = {
       # FIXME replace with your hostname
       WORKING-DESKTOP = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = { inherit inputs outputs; };
         modules = [
           # > Our main nixos configuration file <
           ./nixos/configuration.nix
+        ];
+      };
+      WORKING-LAPTOP = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          ./hosts/laptop/configuration.nix
         ];
       };
       # untested right now!

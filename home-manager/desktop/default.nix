@@ -5,6 +5,7 @@ let
     gimp
     handbrake
 
+    kdePackages.dolphin
     kdePackages.filelight
     kdePackages.kclock
 

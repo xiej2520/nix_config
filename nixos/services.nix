@@ -66,7 +66,7 @@ in
   };
 
   hardware.graphics = {
-    # includes OpenGL, Vulkan, VA-API drives
+    # includes OpenGL, Vulkan, VA-API drivers
     enable = true;
     enable32Bit = true;
 

@@ -119,5 +119,4 @@ in
   };
 
   environment.variables.EDITOR = "nvim";
-
 }

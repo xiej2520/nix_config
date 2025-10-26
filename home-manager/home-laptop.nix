@@ -7,7 +7,14 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  cli = import ./cli { inherit pkgs; };
+  desktop = import ./desktop { inherit pkgs; };
+
+  symlink = name: config.lib.file.mkOutOfStoreSymlink name;
+in
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -47,111 +54,87 @@
   home = {
     username = "xiej";
     homeDirectory = "/home/xiej";
-    
+
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    discord
+  home.packages =
+    with pkgs;
+    cli.cliPackages
+    ++ desktop.desktopPackages
+    ++ desktop.devPackages
+    ++ desktop.fontPackages
+    ++ desktop.minecraftPackages
+    ++ (with pkgs; [
 
-    gimp
-    handbrake
-    iperf
+      kdePackages.dolphin-plugins
+      # enabling this bricks kde on ubuntu? kdePackages.kdeplasma-addons
+      kdePackages.plasma-nm
+      #kdePackages.yakuake
+      klassy
 
-    kdePackages.filelight
-    kdePackages.kclock
-    # enabling this bricks kde on ubuntu? kdePackages.kdeplasma-addons
-    kdePackages.plasma-nm
+      mako
 
-    obs-studio
-    onedrivegui
-    qdirstat
+      obs-studio
 
-    spotify
-    transmission_4-qt
-    vlc
-    wl-clipboard-rs
-  ] ++ (with pkgs; [
-    avidemux
-    ffmpeg-full
-    mpv
-    shotcut
-    wine
-    x265
-  ]) ++ (with pkgs; [
-    git
-    github-desktop
-    git-filter-repo
-    gh
+      xwayland-satellite
+    ]);
 
-    jetbrains.idea-community-bin
-    nh
-    nixfmt-rfc-style
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+  };
 
-    ripgrep
-    tree
-    typst
-    zed-editor
-  ]) ++ (with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-serif
-    noto-fonts-emoji
-    noto-fonts-emoji-blob-bin
-    font-awesome
-    lexend
-    twitter-color-emoji
-  ]) ++ (with pkgs; [
-    cubiomes-viewer
-    mcaselector
-    prismlauncher
-  ]) ++ (with pkgs; [
-    lutris
-    moonlight-qt
-    protontricks
-  ]);
-
-  #programs.bash = {
-  #  enable = true;
-  #  historyControl = [ "ignoredups" ];
-  #};
+  programs.bash = {
+    enable = true;
+    historyControl = [ "ignoredups" ];
+    initExtra = ''
+      export PS1="''${PS1//\\u/\$SHLVL:\\u}"
+      export PYTHONSTARTUP=~/.config/startup.py
+    '';
+  };
+  home.file.".config/startup.py".source = symlink ./startup.py;
 
   #programs.git = {
   #  enable = true;
   #  userEmail = "jackyxie2520@outlook.com";
   #  userName = "xiej2520";
   #};
-  home.file.".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./.gitconfig;
-  home.file.".gitignore".source = config.lib.file.mkOutOfStoreSymlink ./.gitignore;
+  home.file.".gitconfig".source = symlink ./.gitconfig;
+  home.file.".gitignore".source = symlink ./.gitignore;
 
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
-  home.file.".config/nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim-config/nvim);
-  };
-  
+  home.file.".config/nvim".source = symlink ./nvim_config/nvim;
+
   programs.direnv = {
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-  
+
   programs.java = {
     enable = true;
     package = pkgs.jdk23.override {
       enableJavaFX = true;
     };
   };
-  
+
+  programs.fuzzel.enable = true;
+  programs.waybar = {
+    enable = true;
+  };
+
   fonts = {
     fontconfig = {
       enable = true;
       defaultFonts = {
-        emoji = ["twitter-color-emoji"];
-        monospace = ["iA-Writer"];
-        sansSerif = ["Lexend Deca"];
+        emoji = [ "twitter-color-emoji" ];
+        monospace = [ "iA-Writer" ];
+        sansSerif = [ "Lexend Deca" ];
       };
     };
   };

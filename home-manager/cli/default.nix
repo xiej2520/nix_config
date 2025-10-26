@@ -2,11 +2,18 @@
 let
   cliPackages = with pkgs; [
     awscli2
+    bat
+    bottom
+    curl
+    difftastic
+    erdtree
+    fd
 
     git
     ffmpeg-full
     imagemagick
     iperf
+    jujutsu
     unstable.msedit
 
     nh
@@ -14,7 +21,9 @@ let
     nixd
     nixfmt-rfc-style
     
+    ripgrep
     unrar
+    wget
   ];
 in
 {

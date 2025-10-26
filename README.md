@@ -83,6 +83,13 @@ nh search <pkg>
 nh clean
 ```
 
+---
+
+```text
+error booting grub /etf/Microsoft/... not found
+```
+- make sure fast boot disabled, windows isn't in hibernate
+
 ### WSL
 
 [NixOS-WSL](https://github.com/nix-community/NixOS-WSL?tab=readme-ov-file)
@@ -111,8 +118,9 @@ nh clean
 ### distrobox
 
 ```shell
-distrobox create -n ubuntu -i ubuntu:latest -H ~/Documents/distrobox-ubuntu
-distrobox create -n ubuntu -i ubuntu:latest -H ~/Documents/distrobox-ubuntu --additional-packages "systemd libpam-systemd pipewire-audio-client-libraries"
+distrobox create -n ubuntu -i ubuntu:latest -H ~/ubuntu
+distrobox create -n ubuntu -i ubuntu:latest -H ~/ubuntu --additional-packages "systemd libpam-systemd pipewire-audio-client-libraries"
+distrobox enter ubuntu
 ```
 
 ## References

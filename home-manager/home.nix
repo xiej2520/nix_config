@@ -11,6 +11,8 @@
 let
   cli = import ./cli { inherit pkgs; };
   desktop = import ./desktop { inherit pkgs; };
+
+  symlink = name: config.lib.file.mkOutOfStoreSymlink name;
 in
 {
   # You can import other home-manager modules here
@@ -85,23 +87,19 @@ in
       export PYTHONSTARTUP=~/.config/startup.py
     '';
   };
-  home.file.".config/startup.py" = {
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./startup.py);
-  };
+  home.file.".config/startup.py".source = symlink ./startup.py;
 
   #programs.git = {
   #  enable = true;
   #  userEmail = "jackyxie2520@outlook.com";
   #  userName = "xiej2520";
   #};
-  home.file.".gitconfig".source = config.lib.file.mkOutOfStoreSymlink ./.gitconfig;
-  home.file.".gitignore".source = config.lib.file.mkOutOfStoreSymlink ./.gitignore;
+  home.file.".gitconfig".source = symlink ./.gitconfig;
+  home.file.".gitignore".source = symlink ./.gitignore;
 
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
-  home.file.".config/nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink (builtins.toPath ./nvim_config/nvim);
-  };
+  home.file.".config/nvim".source = symlink ./nvim_config/nvim;
 
   programs.direnv = {
     enable = true;

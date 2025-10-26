@@ -21,6 +21,7 @@ let
 
   desktopPlusPackages = with pkgs; [
     avidemux
+    inkscape
     isoimagewriter
     mpv
     obs-studio
@@ -44,6 +45,7 @@ let
   devPackages = with pkgs; [
     github-desktop
     git-filter-repo
+    gg-jj
     gh
     lazygit
     sourcegit
@@ -86,6 +88,8 @@ let
   ];
 
   miscPackages = with pkgs; [
+    libjxl # cjxl
+    oxipng
     x265
   ];
 in

@@ -109,9 +109,17 @@ in
 
   programs.java = {
     enable = true;
-    package = pkgs.jdk23.override {
+    package = pkgs.jdk24.overrideAttrs (old: {
       enableJavaFX = true;
-    };
+      # https://github.com/NixOS/nixpkgs/issues/412283#issuecomment-3325887652
+      buildInputs = old.buildInputs ++ [ pkgs.makeWrapper ];
+      postFixup = ''
+        wrapProgram $out/bin/java \
+          --add-flags "--upgrade-module-path ${pkgs.openjfx24}/lib"
+        wrapProgram $out/bin/javac \
+          --add-flags "--upgrade-module-path ${pkgs.openjfx24}/lib"
+      '';
+    });
   };
 
   services.kdeconnect.enable = true;

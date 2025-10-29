@@ -1,0 +1,55 @@
+From 113a582bcedd56b937dbcd81c8ab0b6651e54199 Mon Sep 17 00:00:00 2001
+From: xiej2520 <jackyxie2520@outlook.com>
+Date: Fri, 1 Aug 2025 18:57:29 -0500
+Subject: [PATCH] fix mapview drag on linux by lowering threshold for dt
+
+---
+ buildguide.md         | 4 ++++
+ src/mapview.cpp       | 3 ++-
+ src/tabstructures.cpp | 2 +-
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/buildguide.md b/buildguide.md
+index 2b93293..7e2ceff 100644
+--- a/buildguide.md
++++ b/buildguide.md
+@@ -1,5 +1,9 @@
+ # Cubiomes Viewer Build Instructions
+ 
++```sh
++nix-shell '<nixpkgs>' -A cubiomes-viewer
++```
++
+ Cubiomes Viewer is a Qt5 application and requires:
+ * Qt5.9 or newer
+ * GNU C++ compiler (GCC or Clang).
+diff --git a/src/mapview.cpp b/src/mapview.cpp
+index f76d919..793e81a 100644
+--- a/src/mapview.cpp
++++ b/src/mapview.cpp
+@@ -605,7 +605,8 @@ void MapView::mouseMoveEvent(QMouseEvent *e)
+     {
+         QPoint d = e->pos() - mprev;
+         qreal dt = elapsed1.nsecsElapsed() * 1e-9;
+-        if (dt > .005)
++        // 0.005 makes the drag slow on linux?
++        if (dt > .000001)
+         {
+             mtime = dt;
+             prevx = focusx;
+diff --git a/src/tabstructures.cpp b/src/tabstructures.cpp
+index 9fb48ac..a1f9ffd 100644
+--- a/src/tabstructures.cpp
++++ b/src/tabstructures.cpp
+@@ -537,7 +537,7 @@ void TabStructures::exportResults(QTextStream& stream)
+             std::set<QString> structures;
+             std::map<uint64_t, std::map<QString, QString>> cnt; // [seed][stype]
+ 
+-            uint64_t seed;
++            uint64_t seed = 0;
+             QString structure;
+             for (QTreeWidgetItemIterator it(ui->treeStructs); *it; ++it)
+             {
+-- 
+2.50.1
+

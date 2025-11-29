@@ -3,8 +3,10 @@ let
   cliPackages = with pkgs; [
     awscli2
     bat
+    binsider
     bottom
     curl
+    csvlens
     difftastic
     erdtree
     fd

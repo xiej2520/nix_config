@@ -22,6 +22,7 @@ let
 
   desktopPlusPackages = with pkgs; [
     avidemux
+    google-chrome
     inkscape
     isoimagewriter
     mpv

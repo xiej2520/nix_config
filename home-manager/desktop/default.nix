@@ -47,9 +47,6 @@ let
   devPackages = with pkgs; [
     github-desktop
     git-filter-repo
-    gg-jj
-    gh
-    lazygit
     sourcegit
   ];
 
@@ -62,7 +59,7 @@ let
     kdePackages.kontrast
     okteta
     typst
-    zed-editor
+    unstable.zed-editor
   ];
 
   gamePackages = with pkgs; [
@@ -70,13 +67,13 @@ let
     moonlight-qt
     protontricks
     rpcs3
-    ryujinx
+    ryubing
   ];
 
   fontPackages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-serif
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     noto-fonts-emoji-blob-bin
     font-awesome
     lexend
@@ -95,6 +92,8 @@ let
     libjxl # cjxl
     oxipng
     x265
+    
+    unstable.ollama-rocm
   ];
 in
 {

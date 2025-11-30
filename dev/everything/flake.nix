@@ -1,4 +1,4 @@
-# echo use flake > .envrc; direnv allow
+# echo 'use flake' > .envrc; direnv allow
 # nix develop
 {
   description = "A nix flake with some dev toolchains";
@@ -38,6 +38,7 @@
                     gcc
                     gdb
                     lcov
+                    llvmPackages_21.libllvm
                     lld
                     lldb
                   ])

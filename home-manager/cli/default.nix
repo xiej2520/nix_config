@@ -11,11 +11,13 @@ let
     erdtree
     fd
 
+    gh
     git
     ffmpeg-full
     imagemagick
     iperf
     jujutsu
+    lazygit
     unstable.msedit
 
     nh

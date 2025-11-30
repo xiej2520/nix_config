@@ -57,7 +57,7 @@ in
     homeDirectory = "/home/xiej";
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "24.11";
+    stateVersion = "25.11";
   };
 
   programs.home-manager.enable = true;
@@ -109,15 +109,18 @@ in
 
   programs.java = {
     enable = true;
-    package = pkgs.jdk24.overrideAttrs (old: {
+    #package = pkgs.jdk23.overrideAttrs (old: {
+    #  enableJavaFX = true;
+    #});
+    package = pkgs.jdk25.overrideAttrs (old: {
       enableJavaFX = true;
       # https://github.com/NixOS/nixpkgs/issues/412283#issuecomment-3325887652
       buildInputs = old.buildInputs ++ [ pkgs.makeWrapper ];
       postFixup = ''
         wrapProgram $out/bin/java \
-          --add-flags "--upgrade-module-path ${pkgs.openjfx24}/lib"
+          --add-flags "--upgrade-module-path ${pkgs.openjfx25}/lib"
         wrapProgram $out/bin/javac \
-          --add-flags "--upgrade-module-path ${pkgs.openjfx24}/lib"
+          --add-flags "--upgrade-module-path ${pkgs.openjfx25}/lib"
       '';
     });
   };

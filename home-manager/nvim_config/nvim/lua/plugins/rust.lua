@@ -28,7 +28,7 @@ return {
       },
     },
   },
-  
+
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -36,10 +36,9 @@ return {
       vim.list_extend(opts.ensure_installed, { "ron", "rust", "toml" })
     end,
   },
-  
+
   {
     "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
     ft = { "rust" },
     opts = {
       server = {
@@ -61,26 +60,51 @@ return {
                 enable = true,
               },
             },
-            -- Add clippy lints for Rust.
-            checkOnSave = {
-              allFeatures = true,
-              command = "clippy",
-              extraArgs = { "--no-deps" },
+            -- Add clippy lints for Rust if using rust-analyzer
+            checkOnSave = diagnostics == "rust-analyzer",
+            -- Enable diagnostics if using rust-analyzer
+            diagnostics = {
+              enable = diagnostics == "rust-analyzer",
             },
             procMacro = {
               enable = true,
-              ignored = {
-                ["async-trait"] = { "async_trait" },
-                ["napi-derive"] = { "napi" },
-                ["async-recursion"] = { "async_recursion" },
+            },
+            files = {
+              exclude = {
+                ".direnv",
+                ".git",
+                ".jj",
+                ".github",
+                ".gitlab",
+                "bin",
+                "node_modules",
+                "target",
+                "venv",
+                ".venv",
               },
+              -- Avoid Roots Scanned hanging, see https://github.com/rust-lang/rust-analyzer/issues/12613#issuecomment-2096386344
+              watcher = "client",
             },
           },
         },
       },
     },
     config = function(_, opts)
+      if LazyVim.has("mason.nvim") then
+        local codelldb = vim.fn.exepath("codelldb")
+        local codelldb_lib_ext = io.popen("uname"):read("*l") == "Linux" and ".so" or ".dylib"
+        local library_path = vim.fn.expand("$MASON/opt/lldb/lib/liblldb" .. codelldb_lib_ext)
+        opts.dap = {
+          adapter = require("rustaceanvim.config").get_codelldb_adapter(codelldb, library_path),
+        }
+      end
       vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
+      if vim.fn.executable("rust-analyzer") == 0 then
+        LazyVim.error(
+          "**rust-analyzer** not found in PATH, please install it.\nhttps://rust-analyzer.github.io/",
+          { title = "rustaceanvim" }
+        )
+      end
     end,
   },
 
@@ -114,12 +138,11 @@ return {
   },
 
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     optional = true,
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, { "codelldb" })
     end,
   },
-
 }

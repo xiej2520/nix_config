@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   desktopPackages = with pkgs; [
-    discord
+    unstable.discord
     gimp
     handbrake
 

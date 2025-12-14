@@ -54,6 +54,7 @@
                   ])
                   ++ (with pkgs; [
                     abseil-cpp
+                    boost
                     cmake
                     conan
                     fmt
@@ -69,6 +70,7 @@
                   ++ (with pkgs; [
                     (python3.withPackages (
                       python-pkgs: with python-pkgs; [
+                        matplotlib
                         numpy
                         pandas
                         requests

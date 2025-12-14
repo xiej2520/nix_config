@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if [ -z "$HOST" ]; then
   read -p "HOST is not set. Please enter the desired system name (press Enter to use $(hostname)): " input_host

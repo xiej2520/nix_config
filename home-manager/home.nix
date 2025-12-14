@@ -97,6 +97,9 @@ in
       { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
     ];
   };
+
+  programs.alacritty.enable = true;
+  home.file.".config/alacritty/alacritty.toml".source = symlink ./alacritty.toml;
   
   home.file.".config/startup.py".source = symlink ./startup.py;
 

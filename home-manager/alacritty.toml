@@ -1,0 +1,59 @@
+[general]
+
+[window]
+dimensions = { columns = 120, lines = 80 }
+
+[font]
+normal = { family = "IosevkaLegibleFixed", style = "Regular" }
+size = 11
+
+[colors.primary]
+background = '#101014'
+foreground = '#D0D0D0'
+dim_foreground = "#A0A0A0"
+
+[colors.cursor]
+text = '#0E1415'
+cursor = '#E0E0E0'
+
+[colors.normal]
+black = '#0B1012'
+red = '#E05555'
+green = '#60D455'
+yellow = '#F0CC60'
+blue = '#5D88F0'
+magenta = '#D85CCF'
+cyan = '#40D0D0'
+white = '#F0F0F0'
+
+[colors.bright]
+black = '#777777'
+red = '#FF5050'
+green = '#70F648'
+yellow = '#F4DD28'
+blue = '#417DFF'
+magenta = '#D85CF8'
+cyan = '#2EEBEB'
+white = '#FFFFFF'
+
+[colors.dim]
+black = '#0F0F10'
+red = '#A04040'
+green = '#509040'
+yellow = '#B4A050'
+blue = '#486AB0'
+magenta = '#90488C'
+cyan = '#408080'
+white = '#909090'
+
+[terminal]
+shell = "fish"
+
+[keyboard]
+bindings = [
+  #{ key = 'C', mods = 'Control', action = 'Copy' },
+  #{ key = 'C', mods = 'Control|Shift', chars = "\u0003" },
+  #{ key = "K", mods = "Control", chars = "\u0003"},
+  #{ key = 'V', mods = 'Control', action = 'Paste' },
+  #{ key = 'V', mods = 'Control|Shift', chars = "\u0016" },
+]

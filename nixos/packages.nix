@@ -24,7 +24,8 @@ let
     adb.enable = true;
 
     firefox.enable = true;
-
+    
+    fish.enable = true;
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -45,6 +46,7 @@ let
   pythonPackages = [(
     pkgs.python3.withPackages (
       python-pkgs: with python-pkgs; [
+        matplotlib
         numpy
         pandas
         requests

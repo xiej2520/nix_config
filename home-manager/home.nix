@@ -87,6 +87,17 @@ in
       export PYTHONSTARTUP=~/.config/startup.py
     '';
   };
+  
+  programs.fish = {
+    enable = true;
+    plugins = [
+      { name = "z"; src = pkgs.fishPlugins.z.src; }
+      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
+      { name = "tide"; src = pkgs.fishPlugins.tide.src; }
+      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
+    ];
+  };
+  
   home.file.".config/startup.py".source = symlink ./startup.py;
 
   #programs.git = {

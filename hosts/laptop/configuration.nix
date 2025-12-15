@@ -96,9 +96,18 @@ in
   inherit services;
 
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot.enable = false;
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      useOSProber = true;
+    };
     efi.canTouchEfiVariables = true;
+    #efi.efiSysMountPoint = "/boot";
+    timeout = 30;
   };
+  boot.supportedFilesystems = [ "ntfs" ];
 
   networking = {
     hostName = "WORKING-LAPTOP";

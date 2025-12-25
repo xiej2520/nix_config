@@ -16,7 +16,7 @@ let
     ffmpeg-full
     imagemagick
     iperf
-    jujutsu
+    unstable.jujutsu
     lazygit
     unstable.msedit
 

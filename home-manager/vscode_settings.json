@@ -55,6 +55,9 @@
     "terminal.integrated.fontFamily": "'IosevkaLegibleFixed SmEx', IosevkaLegibleFixed",
     "terminal.integrated.lineHeight": 1.0,
 
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.suggest.enabled": false,
+
     "zenMode.hideLineNumbers": false,
 
 
@@ -224,6 +227,5 @@
         "javascript",
         "typescript"
     ],
-    "C_Cpp.intelliSenseEngine": "disabled",
     "theme-prismatic-pink.boldDefaultMutableVariables": true,
 }

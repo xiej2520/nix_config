@@ -53,7 +53,7 @@ let
   # less used
   devPlusPackages = with pkgs; [
     android-studio
-    jetbrains.idea-community-bin
+    jetbrains.idea
     ghidra
     kdePackages.kompare
     kdePackages.kontrast

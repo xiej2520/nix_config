@@ -28,6 +28,7 @@ stdenv.mkDerivation {
     cargo-edit
     cargo-watch
     rust-analyzer
+    llvmPackages.bintools # lld
     openssl
   ]
   ++ [
@@ -66,4 +67,5 @@ stdenv.mkDerivation {
   ];
   OPENSSL_DEV = openssl.dev;
   RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+  RUSTFLAGS = "-Clink-arg=-fuse-ld=lld";
 }

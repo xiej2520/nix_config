@@ -50,6 +50,7 @@
                     cargo-edit
                     cargo-watch
                     rust-analyzer
+                    llvmPackages.bintools # lld
                     openssl
                   ])
                   ++ (with pkgs; [
@@ -89,6 +90,7 @@
                 env = {
                   # for rust-analyzer
                   RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+                  RUSTFLAGS = "-Clink-arg=-fuse-ld=lld";
                 };
               };
         }

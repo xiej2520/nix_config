@@ -68,6 +68,10 @@ nix develop
 # use flake > .envrc => loads devShells.default
 # run program
 nix run nixpkgs#{package}
+
+# collect garbage
+sudo nix-collect-garbage --delete-older-than 30d
+# /boot/kernels full of old generations: collect garbage then nh os switch .
 ```
 
 ### nh commands

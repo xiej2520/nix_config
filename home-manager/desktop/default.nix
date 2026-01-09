@@ -8,6 +8,7 @@ let
     kdePackages.dolphin
     kdePackages.filelight
     kdePackages.kclock
+    kdePackages.kimageformats
 
     onedrivegui
     qdirstat
@@ -59,7 +60,7 @@ let
     kdePackages.kontrast
     okteta
     typst
-    unstable.zed-editor
+    unstable.zed-editor.fhs
   ];
 
   gamePackages = with pkgs; [
@@ -92,7 +93,7 @@ let
     libjxl # cjxl
     oxipng
     x265
-    
+
     unstable.ollama-rocm
   ];
 in

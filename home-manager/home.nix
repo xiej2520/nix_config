@@ -12,7 +12,8 @@ let
   cli = import ./cli { inherit pkgs; };
   desktop = import ./desktop { inherit pkgs; };
 
-  symlink = name: config.lib.file.mkOutOfStoreSymlink name;
+  # symlink = name: config.lib.file.mkOutOfStoreSymlink name;
+  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix/nix_config/home-manager + name;
 in
 {
   # You can import other home-manager modules here
@@ -99,21 +100,21 @@ in
   };
 
   programs.alacritty.enable = true;
-  home.file.".config/alacritty/alacritty.toml".source = symlink ./alacritty.toml;
+  home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;
   
-  home.file.".config/startup.py".source = symlink ./startup.py;
+  home.file.".config/startup.py".source = symlink /startup.py;
 
   #programs.git = {
   #  enable = true;
   #  userEmail = "jackyxie2520@outlook.com";
   #  userName = "xiej2520";
   #};
-  home.file.".gitconfig".source = symlink ./.gitconfig;
-  home.file.".gitignore".source = symlink ./.gitignore;
+  home.file.".gitconfig".source = symlink /.gitconfig;
+  home.file.".gitignore".source = symlink /.gitignore;
 
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
-  home.file.".config/nvim".source = symlink ./nvim_config/nvim;
+  home.file.".config/nvim".source = symlink /nvim_config/nvim;
 
   programs.direnv = {
     enable = true;

@@ -16,9 +16,10 @@
     "workbench.tree.renderIndentGuides": "always",
     
     "editor.bracketPairColorization.enabled": true,
-    "editor.fontFamily": "'IosevkaLegibleFixed', 'Illinois Mono', 'iA Writer Mono S', Monocraft, \"Fira Mono\", Inconsolata, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'IosevkaLegibleFixed', 'Illinois Mono', 'iMWritingMono Nerd Font', 'iA Writer Mono S', Monocraft, Inconsolata, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": false,
     "editor.fontSize": 13,
+    "editor.lineHeight": 1.30,
     "editor.renderLineHighlight": "all",
     "editor.renderWhitespace": "all",
     "editor.roundedSelection": false,
@@ -164,6 +165,7 @@
         "MD031": false,
         "MD032": false,
         "MD033": false,
+        "MD036": false,
     },
 
     //"latex-workshop.latex.watch.usePolling": true, // allow autobuild

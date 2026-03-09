@@ -22,13 +22,13 @@ let
   ];
 
   desktopPlusPackages = with pkgs; [
-    avidemux
     google-chrome
     inkscape
     isoimagewriter
+    kdePackages.kdenlive
     mpv
     obs-studio
-    shotcut
+    vidcutter
 
     qimgv
     vipsdisp

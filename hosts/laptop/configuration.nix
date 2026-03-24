@@ -32,6 +32,7 @@ let
       defaultEditor = true;
     };
 
+    xwayland.enable = true;
     virt-manager.enable = true;
   };
 
@@ -41,15 +42,17 @@ let
       enable = lib.mkDefault true;
     };
     earlyoom.enable = true;
-    pulseaudio.enable = false;
+    power-profiles-daemon.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    pulseaudio.enable = false;
 
     xserver.videoDrivers = [ "nvidia" ];
+    upower.enable = true;
   };
 in
 {
@@ -141,9 +144,9 @@ in
   environment.systemPackages =
     basePackages
     ++ (with pkgs; [
-      alacritty
+      gparted
       nvidia-vaapi-driver
-    wl-clipboard-rs
+      wl-clipboard-rs
     ]);
   environment.variables.EDITOR = "nvim";
 
@@ -194,6 +197,7 @@ in
     };
     packages = with pkgs; [
       nerd-fonts.im-writing
+      iosevka
       monocraft
       twitter-color-emoji
     ];

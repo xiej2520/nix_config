@@ -1,9 +1,6 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+# home-manager configuration file, replaces ~/.config/nixpkgs/home.nix
 {
-  inputs,
   outputs,
-  lib,
   config,
   pkgs,
   ...
@@ -16,21 +13,18 @@ let
   # symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix_config/home-manager + name;
 in
 {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
+    # modules from this flake: modules/home-manager
+    outputs.homeManagerModules.noctalia
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    outputs.homeManagerModules.noctalia
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -47,7 +41,6 @@ in
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
     config = {
       allowUnfree = true;
     };
@@ -64,22 +57,18 @@ in
   programs.home-manager.enable = true;
 
   home.packages =
-    with pkgs;
     cli.cliPackages
     ++ desktop.desktopPackages
+    ++ desktop.kdeBaseDesktopPackages
     ++ desktop.devPackages
     ++ desktop.fontPackages
     ++ desktop.minecraftPackages
     ++ (with pkgs; [
-
-      kdePackages.ark
       kdePackages.dolphin-plugins
       # enabling this bricks kde on ubuntu? kdePackages.kdeplasma-addons
       kdePackages.plasma-nm
       #kdePackages.yakuake
       #klassy
-
-      mako
 
       obs-studio
 

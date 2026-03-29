@@ -17,7 +17,6 @@ let
     imagemagick
     iperf
     unstable.jujutsu
-    lazygit
     unstable.msedit
 
     nh

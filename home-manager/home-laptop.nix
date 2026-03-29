@@ -72,6 +72,7 @@ in
     ++ desktop.minecraftPackages
     ++ (with pkgs; [
 
+      kdePackages.ark
       kdePackages.dolphin-plugins
       # enabling this bricks kde on ubuntu? kdePackages.kdeplasma-addons
       kdePackages.plasma-nm

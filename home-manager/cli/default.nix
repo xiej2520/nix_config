@@ -8,6 +8,7 @@ let
     curl
     csvlens
     difftastic
+
     erdtree
     fd
 
@@ -17,14 +18,14 @@ let
     imagemagick
     iperf
     unstable.jujutsu
-    lazygit
-    unstable.msedit
+    #lazygit
+    msedit
 
     nh
     nil
     nixd
     nixfmt-rfc-style
-    
+
     ripgrep
     unrar
     wget

@@ -8,7 +8,7 @@ let
     kdePackages.dolphin
     kdePackages.filelight
     kdePackages.kclock
-    kdePackages.kimageformats
+    #kdePackages.kimageformats # tga doesn't work?
 
     onedrivegui
     qdirstat
@@ -51,7 +51,7 @@ let
     sourcegit
   ];
 
-  # less used
+  # less used, heavy
   devPlusPackages = with pkgs; [
     android-studio
     jetbrains.idea
@@ -68,7 +68,7 @@ let
     moonlight-qt
     protontricks
     rpcs3
-    ryubing
+    #ryubing
   ];
 
   fontPackages = with pkgs; [

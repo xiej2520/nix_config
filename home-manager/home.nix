@@ -73,10 +73,14 @@ in
     ++ desktop.gamePackages
     ++ desktop.fontPackages
     ++ desktop.minecraftPackages
-    ++ desktop.miscPackages;
+    ++ desktop.miscPackages
+    ++ (with pkgs; [
+      vscodium-fhs
+    ]);
 
   programs.vscode = {
     enable = true;
+    #package = pkgs.unstable.vscode.fhs;
     package = pkgs.vscode.fhs;
   };
 

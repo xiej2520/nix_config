@@ -1,4 +1,5 @@
 {
+    "chat.disableAIFeatures": true,
     "workbench.colorCustomizations": {
         "editorWhitespace.foreground": "#0060ff",
     },
@@ -14,6 +15,11 @@
     "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.startupEditor": "readme",
     "workbench.tree.renderIndentGuides": "always",
+
+    "workbench.activityBar.compact": true,
+    "workbench.activityBar.location": "top",
+    "activitusbar.activeColour": "#FF1270",
+    "activitusbar.inactiveColour": "#FFFFFF",
     
     "editor.bracketPairColorization.enabled": true,
     "editor.fontFamily": "'IosevkaLegibleFixed', 'Illinois Mono', 'iMWritingMono Nerd Font', 'iA Writer Mono S', Monocraft, Inconsolata, Consolas, 'Courier New', monospace",
@@ -53,7 +59,7 @@
     "git.blame.editorDecoration.enabled": true,
 
     "terminal.integrated.scrollback": 10000,
-    "terminal.integrated.fontFamily": "'IosevkaLegibleFixed SmEx', IosevkaLegibleFixed",
+    "terminal.integrated.fontFamily": "'IosevkaLegibleFixed SmEx', IosevkaLegibleFixed, Iosevka, monospace",
     "terminal.integrated.lineHeight": 1.0,
 
     "terminal.integrated.defaultProfile.linux": "fish",

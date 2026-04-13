@@ -77,6 +77,7 @@ let
     noto-fonts-color-emoji
     noto-fonts-emoji-blob-bin
     font-awesome
+    iosevka-legible
     lexend
     twitter-color-emoji
   ];

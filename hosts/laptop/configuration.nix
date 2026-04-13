@@ -8,6 +8,50 @@
 }:
 
 let
+
+  boot = {
+    loader = {
+      systemd-boot.enable = false;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
+      efi.canTouchEfiVariables = true;
+      #efi.efiSysMountPoint = "/boot";
+      timeout = 30;
+    };
+    supportedFilesystems = [ "ntfs" ];
+  };
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Experimental = "true";
+        };
+        Policy = {
+          AutoEnable = "true";
+        };
+      };
+    };
+    graphics = {
+      # includes OpenGL, Vulkan, VA-API drivers
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        #
+      ];
+    };
+    nvidia = {
+      modesetting.enable = true;
+      open = false;
+    };
+  };
+
   basePackages = (
     with pkgs;
     [
@@ -25,6 +69,7 @@ let
       wget
     ]
   );
+
   programs = {
     firefox.enable = true;
     neovim = {
@@ -32,6 +77,7 @@ let
       defaultEditor = true;
     };
 
+    xwayland.enable = true;
     virt-manager.enable = true;
   };
 
@@ -41,16 +87,53 @@ let
       enable = lib.mkDefault true;
     };
     earlyoom.enable = true;
-    pulseaudio.enable = false;
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+      };
+    };
+    power-profiles-daemon.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    pulseaudio.enable = false;
 
     xserver.videoDrivers = [ "nvidia" ];
+    upower.enable = true;
   };
+
+  networking = {
+    hostName = "WORKING-LAPTOP";
+    networkmanager.enable = true;
+    firewall = {
+      enable = true;
+      trustedInterfaces = [
+        "virbr0" # virt-manager
+      ];
+    };
+  };
+
+  fonts = {
+    fontconfig = {
+      defaultFonts = {
+        emoji = [ "twitter-color-emoji" ];
+        monospace = [ "iA-Writer" ];
+      };
+      useEmbeddedBitmaps = true;
+    };
+    packages = with pkgs; [
+      nerd-fonts.im-writing
+      iosevka
+      monocraft
+      twitter-color-emoji
+    ];
+  };
+
 in
 {
   imports = [
@@ -92,24 +175,12 @@ in
     ];
   };
 
+  inherit boot;
+  inherit hardware;
   inherit programs;
   inherit services;
-
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
-  networking = {
-    hostName = "WORKING-LAPTOP";
-    networkmanager.enable = true;
-    firewall = {
-      enable = true;
-      trustedInterfaces = [
-        "virbr0" # virt-manager
-      ];
-    };
-  };
+  inherit networking;
+  inherit fonts;
 
   time.timeZone = "America/Chicago";
   # Fix Windows time
@@ -132,9 +203,9 @@ in
   environment.systemPackages =
     basePackages
     ++ (with pkgs; [
-      alacritty
+      gparted
       nvidia-vaapi-driver
-    wl-clipboard-rs
+      wl-clipboard-rs
     ]);
   environment.variables.EDITOR = "nvim";
 
@@ -148,47 +219,6 @@ in
   users.groups.libvirtd.members = [ "xiej" ];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = "true";
-      };
-      Policy = {
-        AutoEnable = "true";
-      };
-    };
-  };
-  hardware.graphics = {
-    # includes OpenGL, Vulkan, VA-API drivers
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      #
-    ];
-  };
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-  };
-
-
-  fonts = {
-    fontconfig = {
-      defaultFonts = {
-        emoji = [ "twitter-color-emoji" ];
-        monospace = [ "iA-Writer" ];
-      };
-      useEmbeddedBitmaps = true;
-    };
-    packages = with pkgs; [
-      nerd-fonts.im-writing
-      monocraft
-      twitter-color-emoji
-    ];
-  };
 
   users.users = {
     xiej = {

@@ -5,8 +5,6 @@ let
     gimp
     handbrake
 
-    kdePackages.dolphin
-    kdePackages.filelight
     kdePackages.kclock
     #kdePackages.kimageformats # tga doesn't work?
 
@@ -20,11 +18,22 @@ let
     wine
     wl-clipboard-rs
   ];
+  
+  # included with plasma6.nix
+  kdeBaseDesktopPackages = with pkgs; [
+    kdePackages.ark
+    kdePackages.dolphin
+    kdePackages.elisa
+    kdePackages.gwenview
+    kdePackages.okular
+    kdePackages.spectacle
+  ];
 
   desktopPlusPackages = with pkgs; [
     google-chrome
     inkscape
     isoimagewriter
+    kdePackages.filelight
     kdePackages.kdenlive
     mpv
     obs-studio
@@ -46,7 +55,6 @@ let
   ];
 
   devPackages = with pkgs; [
-    github-desktop
     git-filter-repo
     sourcegit
   ];
@@ -56,6 +64,7 @@ let
     android-studio
     jetbrains.idea
     ghidra
+    github-desktop
     kdePackages.kompare
     kdePackages.kontrast
     okteta
@@ -100,6 +109,7 @@ let
 in
 {
   desktopPackages = desktopPackages;
+  kdeBaseDesktopPackages = kdeBaseDesktopPackages;
   desktopPlusPackages = desktopPlusPackages;
   kdeConfigPackages = kdeConfigPackages;
   devPackages = devPackages;

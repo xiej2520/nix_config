@@ -4,7 +4,7 @@
 dimensions = { columns = 120, lines = 80 }
 
 [font]
-normal = { family = "IosevkaLegibleFixed", style = "Regular" }
+normal = { family = "IosevkaLegible", style = "Regular" }
 size = 11
 
 [colors.primary]

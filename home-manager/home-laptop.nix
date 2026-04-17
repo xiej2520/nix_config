@@ -16,6 +16,7 @@ in
   imports = [
     # modules from this flake: modules/home-manager
     outputs.homeManagerModules.noctalia
+    outputs.homeManagerModules.iosevka-legible
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -138,7 +139,7 @@ in
       defaultFonts = {
         emoji = [ "twitter-color-emoji" ];
         #monospace = [ "iA-Writer" ];
-        monospace = [ "Iosevka" ];
+        monospace = [ "IosevkaLegible" ];
         sansSerif = [ "Lexend Deca" ];
       };
     };

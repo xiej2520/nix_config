@@ -139,7 +139,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../common/niri.nix
-    ../common/cosmic.nix
+    #../common/cosmic.nix
   ];
 
   nix =

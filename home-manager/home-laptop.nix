@@ -9,20 +9,20 @@ let
   cli = import ./cli { inherit pkgs; };
   desktop = import ./desktop { inherit pkgs; };
 
-  symlink = name: config.lib.file.mkOutOfStoreSymlink name;
-  # symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix_config/home-manager + name;
+  #symlink = name: config.lib.file.mkOutOfStoreSymlink name;
+  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix_config/home-manager/dotfiles + name;
 in
 {
   imports = [
     # modules from this flake: modules/home-manager
-    outputs.homeManagerModules.noctalia
-    outputs.homeManagerModules.iosevka-legible
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./iosevka.nix
+    ./noctalia.nix
   ];
 
   nixpkgs = {
@@ -101,21 +101,21 @@ in
   };
 
   programs.alacritty.enable = true;
-  home.file.".config/alacritty/alacritty.toml".source = symlink ./alacritty.toml;
+  home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;
 
-  home.file.".config/startup.py".source = symlink ./startup.py;
+  home.file.".config/startup.py".source = symlink /startup.py;
 
   #programs.git = {
   #  enable = true;
   #  userEmail = "jackyxie2520@outlook.com";
   #  userName = "xiej2520";
   #};
-  home.file.".gitconfig".source = symlink ./.gitconfig;
-  home.file.".gitignore".source = symlink ./.gitignore;
+  home.file.".gitconfig".source = symlink /.gitconfig;
+  home.file.".gitignore".source = symlink /.gitignore;
 
   programs.neovim.enable = true;
   # symlink configuration, use git subtree since submodules won't get copied
-  home.file.".config/nvim".source = symlink ./nvim_config/nvim;
+  home.file.".config/nvim".source = symlink /nvim_config/nvim;
 
   programs.direnv = {
     enable = true;
@@ -130,6 +130,8 @@ in
     #  enableJavaFX = true;
     #};
   };
+
+	xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
 
   programs.fuzzel.enable = true;
 

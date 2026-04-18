@@ -13,20 +13,20 @@ let
   desktop = import ./desktop { inherit pkgs; };
 
   # symlink = name: config.lib.file.mkOutOfStoreSymlink name;
-  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix/nix_config/home-manager + name;
+  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix/nix_config/home-manager/dotfiles + name;
 in
 {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
-    outputs.homeManagerModules.iosevka-legible
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./iosevka.nix
   ];
 
   nixpkgs = {

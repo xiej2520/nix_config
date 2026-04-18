@@ -1,3 +1,7 @@
 .vscode
 .direnv
 .envrc
+
+.idea
+.share
+run/

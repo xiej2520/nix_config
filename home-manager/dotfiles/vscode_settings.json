@@ -22,7 +22,7 @@
     "activitusbar.inactiveColour": "#FFFFFF",
     
     "editor.bracketPairColorization.enabled": true,
-    "editor.fontFamily": "'IosevkaLegibleFixed', 'Illinois Mono', 'iMWritingMono Nerd Font', 'iA Writer Mono S', Monocraft, Inconsolata, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'IosevkaLegible', 'Illinois Mono', 'iMWritingMono Nerd Font', 'iA Writer Mono S', Monocraft, Inconsolata, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": false,
     "editor.fontSize": 13,
     "editor.lineHeight": 1.30,

@@ -132,6 +132,7 @@ in
   };
 
 	xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
+  xdg.configFile."noctalia/settings.json".source = symlink /noctalia_settings.json;
 
   programs.fuzzel.enable = true;
 

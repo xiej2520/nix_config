@@ -1,7 +1,7 @@
 [general]
 
 [window]
-dimensions = { columns = 120, lines = 80 }
+dimensions = { columns = 128, lines = 80 } # 50 is max lines for 1080p
 
 [font]
 normal = { family = "IosevkaLegible", style = "Regular" }

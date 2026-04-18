@@ -13,5 +13,8 @@
     xwayland.enable = true;
   };
 
-	#xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  services.displayManager.cosmic-greeter.enable = true;
+  #services.displayManager.plasma-login-manager = {
+  #  enable = true;
+  #};
 }

@@ -5,7 +5,7 @@
     inputs.noctalia.homeModules.default
   ];
 
-  # noctalia-shell ipc call state all > home-manager/noctalia.json
+  # noctalia-shell ipc call state all > dotfiles/noctalia-settings.json
   programs.noctalia-shell = {
     enable = true;
     #settings = {

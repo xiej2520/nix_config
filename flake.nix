@@ -61,7 +61,7 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           # > Our main nixos configuration file <
-          ./nixos/configuration.nix
+          ./hosts/nixos/configuration.nix
         ];
       };
       WORKING-LAPTOP = nixpkgs.lib.nixosSystem {

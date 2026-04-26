@@ -13,7 +13,7 @@
     "workbench.editor.tabSizing": "shrink",
     "workbench.editor.pinnedTabSizing": "compact",
     "workbench.editor.pinnedTabsOnSeparateRow": true,
-    "workbench.startupEditor": "readme",
+    "workbench.startupEditor": "terminal",
     "workbench.tree.renderIndentGuides": "always",
 
     "workbench.activityBar.compact": true,
@@ -236,4 +236,5 @@
         "typescript"
     ],
     "theme-prismatic-pink.boldDefaultMutableVariables": true,
+    "keyboard.dispatch": "keyCode",
 }

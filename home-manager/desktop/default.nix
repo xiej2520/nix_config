@@ -65,15 +65,16 @@ let
     jetbrains.idea
     ghidra
     github-desktop
+    imhex
     kdePackages.kompare
     kdePackages.kontrast
-    okteta
+    #okteta
     typst
     unstable.zed-editor.fhs
+    jdt-language-server # for zed
   ];
 
   gamePackages = with pkgs; [
-    lutris
     moonlight-qt
     protontricks
     rpcs3

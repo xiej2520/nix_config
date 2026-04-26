@@ -1,4 +1,9 @@
-return {
+local is_nixos = true;
+
+if is_nixos then return {
+  { "mason-org/mason-lspconfig.nvim", enabled = false },
+  { "mason-org/mason.nvim", enabled = false },
+} else return {
   "mason-org/mason.nvim",
   cmd = "Mason",
   keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -39,3 +44,4 @@ return {
     end
   end,
 }
+end

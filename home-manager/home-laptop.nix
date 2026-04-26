@@ -113,7 +113,13 @@ in
   home.file.".gitconfig".source = symlink /.gitconfig;
   home.file.".gitignore".source = symlink /.gitignore;
 
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    extraPackages = [
+      pkgs.gcc # for tree-sitter
+      pkgs.rust-analyzer # should really add LSPs in project-specific flake
+    ];
+  };
   # symlink configuration, use git subtree since submodules won't get copied
   home.file.".config/nvim".source = symlink /nvim_config/nvim;
 

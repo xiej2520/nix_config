@@ -104,6 +104,7 @@ let
     pulseaudio.enable = false;
 
     xserver.videoDrivers = [ "nvidia" ];
+    udisks2.enable = true;
     upower.enable = true;
   };
 
@@ -203,7 +204,7 @@ in
   environment.systemPackages =
     basePackages
     ++ (with pkgs; [
-      gparted
+      gparted # on niri: sudo -E gparted
       nvidia-vaapi-driver
       wl-clipboard-rs
     ]);

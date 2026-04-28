@@ -1,12 +1,10 @@
 # NixOS Config
 
-Submodules don't work with flakes, using subtree for
-[nvim-config](https://www.github.com/xiej2520/nvim-config).
-
 ```sh
-git subtree pull --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main --squash
-git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main
-git push https://github.com/xiej2520/nvim_config `git subtree split --prefix=home-manager/nvim_config main`:forcepush --force
+# generate /etc/nixos/{configuration.nix, hardware-configuration.nix}
+sudo nixos-generate-config
+# cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
+# make sure to use right host
 ```
 
 ## Usage
@@ -125,6 +123,17 @@ error booting grub /etf/Microsoft/... not found
 distrobox create -n ubuntu -i ubuntu:latest -H ~/ubuntu
 distrobox create -n ubuntu -i ubuntu:latest -H ~/ubuntu --additional-packages "systemd libpam-systemd pipewire-audio-client-libraries"
 distrobox enter ubuntu
+```
+
+### nvim subtree
+
+Submodules don't work with flakes, using subtree for
+[nvim-config](https://www.github.com/xiej2520/nvim-config).
+
+```sh
+git subtree pull --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main --squash
+git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main
+git push https://github.com/xiej2520/nvim_config `git subtree split --prefix=home-manager/nvim_config main`:forcepush --force
 ```
 
 ## References

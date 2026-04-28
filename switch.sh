@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# generate /etc/nixos/{configuration.nix, hardware-configuration.nix}
+# cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
+# make sure to use right host
+
 if [ -z "$HOST" ]; then
   read -p "HOST is not set. Please enter the desired system name (press Enter to use $(hostname)): " input_host
   HOST="${input_host:-$(hostname)}"

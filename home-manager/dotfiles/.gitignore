@@ -1,6 +1,7 @@
 .vscode
 .direnv
 .envrc
+scratch
 
 .idea
 .share

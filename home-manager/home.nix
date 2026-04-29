@@ -121,6 +121,7 @@ in
     enable = true;
     extraPackages = [
       pkgs.gcc # for tree-sitter
+      pkgs.tree-sitter
     ];
   };
   # symlink configuration, use git subtree since submodules won't get copied

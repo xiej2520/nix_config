@@ -108,6 +108,14 @@ let
     upower.enable = true;
   };
 
+  services.syncthing = {
+    enable = true;
+    dataDir = "/home/data/Syncthing";
+    openDefaultPorts = true;
+    configDir = "/home/xiej/.config/syncthing";
+    user = "xiej";
+  };
+
   networking = {
     hostName = "WORKING-LAPTOP";
     networkmanager.enable = true;

@@ -18,7 +18,7 @@ let
     wine
     wl-clipboard-rs
   ];
-  
+
   # included with plasma6.nix
   kdeBaseDesktopPackages = with pkgs; [
     kdePackages.ark
@@ -57,6 +57,7 @@ let
   devPackages = with pkgs; [
     git-filter-repo
     sourcegit
+    unstable.zed-editor.fhs
   ];
 
   # less used, heavy
@@ -70,7 +71,6 @@ let
     kdePackages.kontrast
     #okteta
     typst
-    unstable.zed-editor.fhs
     jdt-language-server # for zed
   ];
 

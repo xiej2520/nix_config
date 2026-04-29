@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   cliPackages = with pkgs; [
-    awscli2
+    #awscli2
     bat
     binsider
     bottom

@@ -118,6 +118,7 @@ in
     extraPackages = [
       pkgs.gcc # for tree-sitter
       pkgs.rust-analyzer # should really add LSPs in project-specific flake
+      pkgs.tree-sitter
     ];
   };
   # symlink configuration, use git subtree since submodules won't get copied

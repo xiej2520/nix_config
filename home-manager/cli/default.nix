@@ -11,6 +11,7 @@ let
 
     erdtree
     fd
+    fzf
 
     gh
     git

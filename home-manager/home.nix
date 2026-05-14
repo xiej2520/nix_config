@@ -97,12 +97,13 @@ in
   programs.fish = {
     enable = true;
     plugins = [
-      { name = "z"; src = pkgs.fishPlugins.z.src; }
-      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
-      { name = "tide"; src = pkgs.fishPlugins.tide.src; }
-      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
+      #{ name = "z"; src = pkgs.fishPlugins.z.src; }
+      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; } # doesn't work?
+      { name = "tide"; src = pkgs.fishPlugins.tide.src; } # tide configure
+      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; } # paired symbol matching
     ];
   };
+  programs.fzf.enableFishIntegration = true; # https://andrew-quinn.me/fzf/
 
   programs.alacritty.enable = true;
   home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;

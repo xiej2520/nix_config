@@ -68,10 +68,14 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
+  
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 
   programs.virt-manager.enable = true;
@@ -96,8 +100,13 @@
         "adbusers" # android studio
         "kvm"
         "networkmanager"
+        "podman"
         "wheel"
       ];
+
+      # podman
+      subUidRanges = [ { startUid = 100000; count = 65536; } ];
+      subGidRanges = [ { startGid = 100000; count = 65536; } ];
     };
   };
 

@@ -105,7 +105,7 @@ let
     oxipng
     x265
 
-    #unstable.ollama-rocm
+    unstable.ollama-rocm
   ];
 in
 {

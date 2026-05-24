@@ -43,6 +43,8 @@
     ];
     trustedInterfaces = [
       "virbr0" # virt-manager
+      "podman0"
+      "cni-podman0"
     ];
   };
 

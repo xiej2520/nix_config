@@ -69,6 +69,8 @@ nix run nixpkgs#{package}
 
 # collect garbage
 sudo nix-collect-garbage --delete-older-than 30d
+# optimize nix store
+sudo nix-store --optimise
 # /boot/kernels full of old generations: collect garbage then nh os switch .
 ```
 
@@ -140,3 +142,12 @@ git push https://github.com/xiej2520/nvim_config `git subtree split --prefix=hom
 
 - [https://github.com/Misterio77/nix-starter-configs](https://github.com/Misterio77/nix-starter-configs)
 - [https://github.com/ALEZ-DEV/dotfiles](https://github.com/ALEZ-DEV/dotfiles)
+
+## GC Log
+```bash
+# 2026-05-30 gc
+note: hard linking is currently saving 0.0 KiB
+3948 store paths deleted, 23.0 GiB freed
+# 2026-05-31 optimize
+69.6 GiB freed by hard-linking 4319626 files
+```

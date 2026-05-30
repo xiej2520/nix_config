@@ -97,6 +97,9 @@ in
       distrobox
       devenv
       gparted
+
+      llama-cpp
+      llama-swap
     ]);
 
   fonts = {

@@ -53,7 +53,7 @@ in
 
     # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
     # https://nix-community.github.io/home-manager/release-notes.xhtml
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 
   programs.home-manager.enable = true;

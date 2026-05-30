@@ -125,6 +125,7 @@ in
       pkgs.gcc # for tree-sitter
       pkgs.tree-sitter
     ];
+    sideloadInitLua = true;
   };
   # symlink configuration, use git subtree since submodules won't get copied
   home.file.".config/nvim".source = symlink /nvim_config/nvim;

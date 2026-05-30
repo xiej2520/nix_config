@@ -24,7 +24,7 @@ let
     nh
     nil
     nixd
-    nixfmt-rfc-style
+    nixfmt
 
     ripgrep
     unrar

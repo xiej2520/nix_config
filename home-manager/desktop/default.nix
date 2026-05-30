@@ -32,7 +32,7 @@ let
   desktopPlusPackages = with pkgs; [
     google-chrome
     inkscape
-    isoimagewriter
+    kdePackages.isoimagewriter
     kdePackages.filelight
     kdePackages.kdenlive
     mpv

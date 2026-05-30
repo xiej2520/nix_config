@@ -21,8 +21,6 @@ let
 
   ### Programs (with configuration options)
   programs = {
-    adb.enable = true;
-
     firefox.enable = true;
     
     fish.enable = true;

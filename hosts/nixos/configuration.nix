@@ -97,7 +97,7 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [
-        "adbusers" # android studio
+        # "adbusers" # android studio
         "kvm"
         "networkmanager"
         "podman"
@@ -117,7 +117,8 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "25.11"; # Did you read the comment?
+  # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
+  # https://nixos.org/manual/nixos/stable/release-notes
+  system.stateVersion = "26.05"; # Did you read the comment?
 }
 

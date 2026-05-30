@@ -244,6 +244,7 @@ in
     };
   };
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
+  # https://nixos.org/manual/nixos/stable/release-notes
   system.stateVersion = "25.11"; # Did you read the comment?
 }

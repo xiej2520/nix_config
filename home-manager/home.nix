@@ -58,8 +58,9 @@ in
     username = "xiej";
     homeDirectory = "/home/xiej";
 
-    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "25.11";
+    # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
+    # https://nix-community.github.io/home-manager/release-notes.xhtml
+    stateVersion = "26.05";
   };
 
   programs.home-manager.enable = true;

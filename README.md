@@ -1,34 +1,28 @@
 # NixOS Config
 
-```sh
-# generate /etc/nixos/{configuration.nix, hardware-configuration.nix}
-sudo nixos-generate-config
-# cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
-# make sure to use right host
-```
-
 ## Usage
 
-1. Change config
-2. `git add` any new files
-3. `nh`
-
-   ```shell
-   nh os switch .
-   nh home switch .
-   ```
-
-4. Check that programs are working
+- `jj` or `git add` any new files
+- `nh`
+```sh
+nh os switch .
+nh home switch .
+```
 
 ### Setup
 
-1. Install nix, enable flakes
-2. Run
+```sh
+# 1. Install nix, enable flakes
+export NIX_CONFIG="experimental-features = nix-command flakes"
 
-   ```shell
-   nix-shell -p home-manager
-   HOST=<HOSTNAME> USER=<USERNAME> ./switch.sh
-   ```
+# 2. Generate host config `/etc/nixos/{configuration.nix, hardware-configuration.nix}`
+sudo nixos-generate-config
+cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
+
+# 3. Switch to config
+nix-shell -p home-manager
+HOST=<HOSTNAME> USER=<USERNAME> ./switch.sh
+```
 
 ## Organization
 
@@ -51,6 +45,7 @@ sudo nixos-generate-config
 sudo nixos-rebuild switch --flake .#{hostname}
 # apply home configuration
 home-manager switch --flake .#username@hostname
+
 # old configurations
 home-manager generations
 # switch to old generation
@@ -93,6 +88,31 @@ nh clean
 error booting grub /etf/Microsoft/... not found
 ```
 - make sure fast boot disabled, windows isn't in hibernate
+
+## Custom Components
+
+### Packages
+Add a derivation inside `pkgs` under `pkgs/{package name}/default.nix`, and call it with
+`pkgs.callPackage` in `pkgs/default.nix`.
+
+[Nixpkgs Reference Manual](https://nixos.org/manual/nixpkgs/stable/)
+
+### Overlays
+See `overlays/default.nix`. Use overlays to patch across the entire nixpkgs, e.g. set compile options
+for a library, but requires compiling everything depending on it.
+
+[Nix Overlays](https://wiki.nixos.org/wiki/Overlays)
+
+#### Overrides
+Prefer overrides when possible for making a change to a single package.
+
+[Nix Overriding](https://nixos.org/manual/nixpkgs/stable/#chap-overrides)
+
+### Modules
+Custom modules with options/configurations go under `modules/nixos` or `modules/home-manager`.
+Add to `modules/nixos/default.nix` or `modules/home-manager/default.nix`.
+
+[NixOS Modules](https://wiki.nixos.org/wiki/NixOS_modules)
 
 ### WSL
 

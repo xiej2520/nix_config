@@ -29,6 +29,8 @@ let
     ripgrep
     unrar
     wget
+    
+    yt-dlp
   ];
 in
 {

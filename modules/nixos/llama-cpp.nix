@@ -17,14 +17,14 @@
           blasSupport = true;
         }).overrideAttrs
           (oldAttrs: rec {
-            version = "9437";
+            version = "9878";
             src = pkgs.fetchFromGitHub {
               owner = "ggml-org";
               repo = "llama.cpp";
               tag = "b${version}";
-              hash = "sha256-A+ERmx2QXKfSPFUmJHcMbo1TkddFxP6F/vnEnT134Tc=";
+              hash = "sha256-tUYrg0CGK5YQY3sEyPiKwqU486NJXOMrKn7Wy9sSqyE=";
             };
-            npmDepsHash = "sha256-Iyg8FpcTKf2UYHuK7mA3cTAqVaLcQPcS0YCa5Qf01Gc=";
+            npmDepsHash = "sha256-X1DZgmhS/zHTqDT5zq0kywwntthcJ9vRXeqyO3zz6UU=";
             # Enable native CPU optimizations for massively better CPU performance
             # This enables AVX, AVX2, AVX-512, FMA, etc. for your specific CPU
             # NOTE: This is intentionally opposite of nixpkgs (which uses -DGGML_NATIVE=off
@@ -47,8 +47,8 @@
         mkdir -p $out/bin
         tar -xzf ${
           pkgs.fetchurl {
-            url = "https://github.com/mostlygeek/llama-swap/releases/download/v219/llama-swap_219_linux_amd64.tar.gz";
-            hash = "sha256-6Ot54bA+ptuRLU3Mk3AxMUPmuaSzhQyRJ96PdLGC1E4=";
+            url = "https://github.com/mostlygeek/llama-swap/releases/download/v235/llama-swap_235_linux_amd64.tar.gz";
+            hash = "sha256-5dv0CH7Q9B6DIYcT8gzIr9UF2F+eSfdQ/vw4STx0T7M=";
           }
         } -C $out/bin
         chmod +x $out/bin/llama-swap

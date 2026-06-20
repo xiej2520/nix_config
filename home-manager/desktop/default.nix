@@ -65,7 +65,7 @@ let
     android-studio
     jetbrains.idea
     ghidra
-    github-desktop
+    #github-desktop
     imhex
     kdePackages.kompare
     kdePackages.kontrast

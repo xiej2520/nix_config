@@ -13,7 +13,7 @@
     #nixos-wsl.url = "github:nix-community/nixos-wsl";
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/cachix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -42,6 +42,15 @@
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
+    nixConfig = {
+      extra-substituters = [
+        "https://noctalia.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      ];
+    };
+
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});

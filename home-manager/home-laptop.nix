@@ -22,7 +22,6 @@ in
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./iosevka.nix
-    ./noctalia.nix
   ];
 
   nixpkgs = {
@@ -141,7 +140,8 @@ in
   };
 
 	xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
-  xdg.configFile."noctalia/settings.json".source = symlink /noctalia_settings.json;
+  # gui-configured settings in ~/.local/state/noctalia/settings.toml
+  xdg.configFile."noctalia/settings.toml".source = symlink /noctalia_settings.toml;
 
   programs.fuzzel.enable = true;
 

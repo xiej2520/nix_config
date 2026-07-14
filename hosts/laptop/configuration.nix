@@ -148,6 +148,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ../common/niri.nix
+    ../common/noctalia.nix
     #../common/cosmic.nix
   ];
 
@@ -218,7 +219,7 @@ in
     ]);
   environment.variables.EDITOR = "nvim";
 
-  xdg.portal.wlr.enable = true;
+  # xdg.portal.wlr.enable = true;
 
   virtualisation.podman = {
     enable = true;
@@ -231,9 +232,8 @@ in
 
   users.users = {
     xiej = {
-      initialPassword = "correcthorsebatterystaple";
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [ ];
+      # openssh.authorizedKeys.keys = [ ];
       extraGroups = [
         "kvm"
         "networkmanager"

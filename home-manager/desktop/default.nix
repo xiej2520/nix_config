@@ -4,6 +4,7 @@ let
     unstable.discord
     gimp
     handbrake
+    kdePackages.kolourpaint
 
     kdePackages.kclock
     #kdePackages.kimageformats # tga doesn't work?

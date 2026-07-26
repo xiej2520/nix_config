@@ -2,7 +2,7 @@
 # nix develop
 {
   description = "A nix flake with some dev toolchains";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   outputs =
     { self, nixpkgs }:
     let
@@ -81,7 +81,6 @@
                   ])
                   ++ (with pkgs; [
                     nodejs
-                    node2nix
                   ])
                   ++ (with pkgs; [ typst ])
                   ++ (with pkgs; [
@@ -97,3 +96,4 @@
       );
     };
 }
+

@@ -3,7 +3,7 @@ let
   nixpkgs = import <nixpkgs> { };
 in
 with nixpkgs;
-stdenv.mkDerivation {
+mkShell {
   name = "dev environment";
   buildInputs = [
     autoconf
@@ -57,7 +57,6 @@ stdenv.mkDerivation {
   ]
   ++ [
     nodejs
-    node2nix
   ]
   ++ [
     typst

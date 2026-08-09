@@ -1,9 +1,7 @@
 { pkgs, ... }:
 let
   cliPackages = with pkgs; [
-    #awscli2
     bat
-    binsider
     bottom
     curl
     csvlens
@@ -19,7 +17,6 @@ let
     imagemagick
     iperf
     unstable.jujutsu
-    msedit
 
     nh
     nil
@@ -30,9 +27,21 @@ let
     unrar
     wget
     
+    zellij
+  ];
+  
+  cliPackagesExtra = with pkgs; [
+    #awscli2
+    binsider
+    chafa
+    fq
+    jq
+    msedit
+
     yt-dlp
   ];
 in
 {
   cliPackages = cliPackages;
+  cliPackagesExtra = cliPackagesExtra;
 }

@@ -38,7 +38,6 @@ let
     kdePackages.kdenlive
     mpv
     obs-studio
-    vidcutter
 
     qimgv
     vipsdisp

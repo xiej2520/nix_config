@@ -10,3 +10,5 @@ map("n", "<S-Tab>", "<<")
 -- stay in visual mode
 map("v", "<Tab>", ">gv", { noremap=true })
 map("v", "<S-Tab>", "<gv", { noremap=true })
+-- Shift-Tab unindents in insert mode
+map("i", "<S-Tab>", "<C-d>", { noremap = true })

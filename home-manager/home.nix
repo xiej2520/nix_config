@@ -67,6 +67,7 @@ in
 
   home.packages =
     cli.cliPackages
+    ++ cli.cliPackagesExtra
     ++ desktop.desktopPackages
     ++ desktop.desktopPlusPackages
     ++ desktop.kdeConfigPackages

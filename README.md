@@ -66,7 +66,9 @@ nix run nixpkgs#{package}
 sudo nix-collect-garbage --delete-older-than 30d
 # optimize nix store
 sudo nix-store --optimise
-# /boot/kernels full of old generations: collect garbage then nh os switch .
+# /boot/kernels full of old generations: delete old generations, then collect garbage, nh os switch .
+# sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+# sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5
 ```
 
 ### nh commands

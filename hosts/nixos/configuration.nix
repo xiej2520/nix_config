@@ -84,6 +84,8 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
+  programs.ssh.startAgent = true;
+
   users.users = {
     xiej = {
       initialPassword = "correcthorsebatterystaple";
@@ -93,7 +95,7 @@
         # "adbusers" # android studio
         "kvm"
         "networkmanager"
-        "podman"
+        # "podman" # equivalent to root
         "wheel"
       ];
 

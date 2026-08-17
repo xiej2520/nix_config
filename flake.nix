@@ -17,12 +17,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko/v1.13.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    disko,
     #nixos-wsl,
     ...
   } @ inputs: let
@@ -68,6 +73,13 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/laptop/configuration.nix
+        ];
+      };
+      relay = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          disko.nixosModules.disko
+          ./hosts/relay/configuration.nix
         ];
       };
       # untested right now!

@@ -1,0 +1,19 @@
+@import "./theme-forgejo-auto.css";
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+@font-face {
+    font-family: "Iosevka";
+    src: url("https://cdn.jsdelivr.net/fontsource/fonts/iosevka@5.3.0/latin-400-normal.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --fonts-override: "Lexend Deca";
+    --fonts-monospace: "Iosevka";
+
+    --color-body: #1E1E22;
+    --color-box-body: #121218;
+    --color-code-bg: #1E1E22;
+    --color-nav-bg: #1C1C20;
+}

@@ -18,6 +18,8 @@ in
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
+
+    ./forgejo
   ];
 
   boot = {
@@ -92,6 +94,8 @@ in
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
     22
+    80
+    443
     25565 # minecraft server
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];

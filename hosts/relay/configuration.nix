@@ -23,6 +23,7 @@ in
 
     ./forgejo
     ./nginx
+    ./memos
   ];
 
   _module.args = {
@@ -115,6 +116,15 @@ in
     25565 # minecraft server
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];
+
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   users = {
     mutableUsers = false;

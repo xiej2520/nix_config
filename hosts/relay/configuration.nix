@@ -24,6 +24,7 @@ in
     ./forgejo
     ./nginx
     ./memos
+    ./dufs
   ];
 
   _module.args = {

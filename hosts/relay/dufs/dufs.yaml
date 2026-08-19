@@ -1,0 +1,32 @@
+serve-path: /data
+bind: 0.0.0.0
+port: 5000
+
+# runtime setup
+# 1. Create a private /etc/dufs and copy this file:
+#      sudo install -d -m 0700 -o root -g root /etc/dufs
+#      sudo install -m 0600 -o root -g root hosts/relay/dufs/dufs.yaml /etc/dufs/dufs.yaml
+# 2. Generate a password hash and enter the password at the prompt:
+#      nix run nixpkgs#openssl -- passwd -6
+# 3. Edit ONLY the runtime copy:
+#      sudoedit /etc/dufs/dufs.yaml
+#    Replace <HASH> with the full hash. The empty password prevents dufs from starting.
+# 4. Restart dufs
+#   sudo systemctl restart podman-dufs.service
+#   sudo systemctl status podman-dufs.service
+
+auth:
+  #- 'xiej:<HASH>@/:rw'
+  - 'xiej:@/:rw'
+
+allow-all: false
+
+allow-upload: true
+allow-delete: true
+allow-search: true
+allow-symlink: false
+allow-archive: true
+allow-hash: true
+
+enable-cors: false
+render-index: false

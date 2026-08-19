@@ -71,6 +71,7 @@ in
     git
     jdk25_headless # minecraft server
     jujutsu
+    systemctl-tui
     vim # not vim-full
     wget
     zellij

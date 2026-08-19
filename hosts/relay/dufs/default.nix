@@ -22,6 +22,8 @@
         "/data"
         "--config"
         "/config/dufs.yaml"
+        "--assets"
+        "/assets"
       ];
     };
   };

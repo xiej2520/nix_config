@@ -19,7 +19,7 @@ fi
 echo "Using USER: '$USER'"
 
 echo "Rebuilding and activating nixos"
-sudo HOST=$HOST nixos-rebuild switch --flake .#$HOST --show-trace # --impure
+sudo HOST=$HOST nixos-rebuild switch --flake .#$HOST # --show-trace # --impure
 
 if ! command -v home-manager >/dev/null 2>&1
 then

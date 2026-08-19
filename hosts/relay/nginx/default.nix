@@ -19,7 +19,8 @@ in
       enableACME = true;
 
       # add something at /var/www/${domainName}/index.html
-      root = "/var/www/${domainName}";
+      # root = "/var/www/${domainName}";
+      root = ./site;
 
       # proxy to bluemap
       locations."/map/" = {

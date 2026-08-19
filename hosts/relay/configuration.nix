@@ -13,6 +13,8 @@ let
 ";
   locale = "en_US.UTF-8";
   timezone = "America/Chicago";
+
+  domainName = "xiej.dev";
 in
 {
   imports = [
@@ -20,7 +22,12 @@ in
     ./disk-config.nix
 
     ./forgejo
+    ./nginx
   ];
+
+  _module.args = {
+    inherit  domainName;
+  };
 
   boot = {
     loader = {
@@ -96,6 +103,7 @@ in
     22
     80
     443
+    8100 # bluemap
     25565 # minecraft server
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];

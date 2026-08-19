@@ -1,46 +1,9 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, domainName, ... }:
 let
   cfg = config.services.forgejo;
   srv = cfg.settings.server;
-
-  domainName = "xiej.dev";
 in
 {
-  services.nginx = {
-    enable = true;
-
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-
-    virtualHosts.${domainName} = {
-      forceSSL = true;
-      enableACME = true;
-
-      # add something at /var/www/${domainName}/index.html
-      root = "/var/www/${domainName}";
-    };
-
-    # Forgejo
-    virtualHosts."git.${domainName}" = {
-      forceSSL = true;
-      enableACME = true;
-
-      extraConfig = ''
-        client_max_body_size 512M;
-      '';
-
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3000";
-      };
-    };
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "jackyxie2520@outlook.com";
-  };
-
-
   services.forgejo = {
     enable = true;
     database.type = "postgres";

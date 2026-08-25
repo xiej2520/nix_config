@@ -65,7 +65,7 @@ let
       lsof
       ripgrep
       tree
-      vim
+      vim-full
       wget
     ]
   );

@@ -12,22 +12,22 @@ local function hi(group, opts)
   vim.api.nvim_set_hl(0, group, opts)
 end
 
-vim.g.terminal_color_0 = "#FFFFFF"
-vim.g.terminal_color_1 = "#FF0046"
-vim.g.terminal_color_2 = "#2DAE58"
-vim.g.terminal_color_3 = "#CF9C00"
-vim.g.terminal_color_4 = "#09A1ED"
-vim.g.terminal_color_5 = "#C010EF"
+vim.g.terminal_color_0 = "#636D83"
+vim.g.terminal_color_1 = "#F24646"
+vim.g.terminal_color_2 = "#3FC56B"
+vim.g.terminal_color_3 = "#E3C24A"
+vim.g.terminal_color_4 = "#5CA2ED"
+vim.g.terminal_color_5 = "#D177F5"
 vim.g.terminal_color_6 = "#13BBB7"
-vim.g.terminal_color_7 = "#22222A"
-vim.g.terminal_color_8 = "#666666"
-vim.g.terminal_color_9 = "#FF2E87"
-vim.g.terminal_color_10 = "#25DA6A"
+vim.g.terminal_color_7 = "#CFD7E6"
+vim.g.terminal_color_8 = "#828DA0"
+vim.g.terminal_color_9 = "#FF1277"
+vim.g.terminal_color_10 = "#3FC56B"
 vim.g.terminal_color_11 = "#FFC104"
-vim.g.terminal_color_12 = "#41B9FF"
+vim.g.terminal_color_12 = "#10B1FE"
 vim.g.terminal_color_13 = "#C75AF3"
-vim.g.terminal_color_14 = "#16DAD6"
-vim.g.terminal_color_15 = "#FFFFFF"
+vim.g.terminal_color_14 = "#15C9C5"
+vim.g.terminal_color_15 = "#C0C4D0"
 
 hi("Normal", { fg = "#C0C4D0", bg = "#1E1E22" })
 hi("NormalNC", { fg = "#C0C4D0", bg = "#1C1C20" })
@@ -35,11 +35,11 @@ hi("NormalFloat", { fg = "#C0C4D0", bg = "#1C1C20" })
 hi("FloatBorder", { fg = "#3D434F", bg = "#1C1C20" })
 hi("FloatTitle", { fg = "#F85EB4", bg = "#1C1C20", bold = true })
 hi("Cursor", { fg = "#1E1E22", bg = "#FF1277" })
-hi("CursorLine", { bg = "#252529" })
+hi("CursorLine", { bg = "#2C2C30" })
 hi("CursorLineNr", { fg = "#FF1277", bold = true })
 hi("LineNr", { fg = "#636D83" })
 hi("SignColumn", { fg = "#636D83", bg = "#1E1E22" })
-hi("ColorColumn", { bg = "#3D434F" })
+hi("ColorColumn", { bg = "#2C2C30" })
 hi("VertSplit", { fg = "#3D434F" })
 hi("WinSeparator", { fg = "#3D434F" })
 hi("EndOfBuffer", { fg = "#636D83" })
@@ -58,11 +58,11 @@ hi("PmenuSbar", { bg = "#121218" })
 hi("PmenuThumb", { bg = "#828DA0" })
 hi("PmenuMatch", { fg = "#F85EB4", bg = "#1C1C20" })
 hi("PmenuMatchSel", { fg = "#F85EB4", bg = "#2C2C30", bold = true })
-hi("Search", { fg = "#1E1E22", bg = "#9CA320" })
+hi("Search", { fg = "#C0C4D0", bg = "#47481D" })
 hi("IncSearch", { fg = "#1E1E22", bg = "#FF1277" })
 hi("CurSearch", { fg = "#1E1E22", bg = "#FF1277" })
-hi("Visual", { bg = "#512535" })
-hi("VisualNOS", { bg = "#3b2030" })
+hi("Visual", { bg = "#56213B" })
+hi("VisualNOS", { bg = "#3A1F2E" })
 hi("MatchParen", { fg = "#FF1277", bold = true })
 hi("ModeMsg", { fg = "#3FC56B", bold = true })
 hi("MsgArea", { fg = "#C0C4D0" })
@@ -70,10 +70,10 @@ hi("MoreMsg", { fg = "#09A1ED" })
 hi("Question", { fg = "#09A1ED" })
 hi("ErrorMsg", { fg = "#FF1277" })
 hi("WarningMsg", { fg = "#E17615" })
-hi("DiffAdd", { bg = "#273629" })
-hi("DiffChange", { bg = "#213B47" })
-hi("DiffDelete", { bg = "#3B1F2C" })
-hi("DiffText", { bg = "#213B47" })
+hi("DiffAdd", { bg = "#21342A" })
+hi("DiffChange", { bg = "#1A2C37" })
+hi("DiffDelete", { bg = "#3A1C2D" })
+hi("DiffText", { bg = "#1A2C37" })
 hi("Added", { fg = "#31A155" })
 hi("Changed", { fg = "#018ACC" })
 hi("Removed", { fg = "#FF1277" })
@@ -106,7 +106,7 @@ hi("NonText", { fg = "#636D83" })
 hi("Whitespace", { fg = "#51576C" })
 hi("SpecialKey", { fg = "#636D83" })
 hi("Conceal", { fg = "#828DA0" })
-hi("QuickFixLine", { bg = "#252529" })
+hi("QuickFixLine", { bg = "#2C2C30" })
 hi("qfLineNr", { fg = "#636D83" })
 hi("Comment", { fg = "#EEBBFF" })
 hi("Constant", { fg = "#FF8D5C" })

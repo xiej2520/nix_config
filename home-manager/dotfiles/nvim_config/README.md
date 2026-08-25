@@ -2,17 +2,28 @@
 
 ## LazyVim nvim config
 
-Using *lua*
+Using *lua*.
 
 ### Installation
 
 [neovim Install.md](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
-Linux: Run `install.sh`
-
-Windows: [install nvim](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi),
-copy `nvim` to `C:/Users/<user>/AppData/Local/nvim`. Make sure C compiler is
-available (`cl.exe`) to compile extensions.
+- NixOS: 
+   ```nix
+   programs.neovim = {
+      enable = true;
+      extraPackages = [
+         pkgs.gcc # for tree-sitter
+         pkgs.tree-sitter
+         # ...
+      ];
+      sideloadInitLua = true;
+   };
+   ```
+- Linux: Run `install.sh`
+- Windows: [install nvim](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi),
+   copy `nvim` to `C:/Users/<user>/AppData/Local/nvim`. Make sure C compiler is
+   available (`cl.exe`) to compile extensions.
 
 ```Powershell
 Copy-Item -Path nvim -Destination ~\AppData\Local -Recurse
@@ -20,18 +31,24 @@ Copy-Item -Path nvim -Destination ~\AppData\Local -Recurse
 
 Overview
 
-* Uses LazyVim and lazy.nvim package
-* onedark theme
-* mason + treesitter
-* rust.lua plugins for rust
+- Uses LazyVim and lazy.nvim package
+- mason + treesitter
+- rust.lua plugins for rust
+
+## .vimrc init.vim
+
+`cp init.vim ~/.vimrc` for vim configuration
+
+To make nvim fallback to `.vimrc`: `cp init.vim ~/.config/nvim/init.vim`.
+
 
 ## nvim + coc config
 
-In `nvim-old` folder
+In `basic` folder
 
-1. Move `init.vim` and `coc-settings.json` into the nvim config folder
-   * `C:/Users/<user>/AppData/Local/nvim`
-   * `/home/<user>/.config/nvim`
+1. Move `.vimrc`, `init.vim`, and `coc-settings.json` into the nvim config folder
+   - `C:/Users/<user>/AppData/Local/nvim`
+   - `/home/<user>/.config/nvim`
 2. Install vim-plug
    * Windows:
 
@@ -60,8 +77,3 @@ In `nvim-old` folder
 
 `:CocInstall coc-clangd coc-java coc-python coc-tsserver coc-json coc-html coc-css
 coc-markdownlint coc-markdown-preview-enhanced coc-webview`
-
-## init.vim
-
-Fallback: `cp init.vim ~/.config/nvim/init.vim`
-Also can `cp init.vim ~/.vimrc` to use as vim configuration.

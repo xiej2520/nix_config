@@ -14,6 +14,15 @@ let
 
   # symlink = name: config.lib.file.mkOutOfStoreSymlink name;
   symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix/nix_config/home-manager/dotfiles + name;
+  
+  # set "dev.containers.dockerPath": "podman-remote-vscode" in vscode settings.json,
+  # and systemctl --user enable --now podman.socket
+  podmanRemote = pkgs.writeShellScriptBin "podman-remote-vscode" ''
+    exec podman \
+      --remote \
+      --url "unix://$XDG_RUNTIME_DIR/podman/podman.sock" \
+      "$@"
+  '';
 in
 {
   # You can import other home-manager modules here
@@ -78,6 +87,7 @@ in
     ++ desktop.minecraftPackages
     ++ desktop.miscPackages
     ++ (with pkgs; [
+      podmanRemote
       vscodium-fhs
     ]);
 

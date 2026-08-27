@@ -4,6 +4,8 @@
         "editorWhitespace.foreground": "#0060ff",
     },
     "workbench.colorTheme": "Prismatic Pink",
+    "terminal.integrated.minimumContrastRatio": 1,
+
     "workbench.preferredDarkColorTheme": "Prismatic Pink",
     "workbench.preferredHighContrastColorTheme": "Prismatic Pink High Contrast",
     "workbench.iconTheme": "material-icon-theme",
@@ -11,7 +13,7 @@
 
     "workbench.editor.empty.hint": "hidden",
     "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.pinnedTabSizing": "compact",
+    "workbench.editor.pinnedTabSizing": "normal",
     "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.startupEditor": "terminal",
     "workbench.tree.renderIndentGuides": "always",
@@ -64,9 +66,15 @@
 
     "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.suggest.enabled": false,
+    // this breaks nvim shift in terminal
+    "terminal.integrated.enableKittyKeyboardProtocol": false,
+    // breaks some fish keybinds
+    "terminal.integrated.shellIntegration.enabled": false,
 
     "zenMode.hideLineNumbers": false,
 
+    //"dev.containers.dockerPath": "podman",
+    "dev.containers.dockerPath": "podman-remote-vscode",
 
     "[markdown]": {
         "editor.insertSpaces": true,

@@ -2,6 +2,7 @@
 .direnv
 .envrc
 scratch
+result
 
 .idea
 .share

@@ -59,4 +59,7 @@ bindings = [
   #{ key = "K", mods = "Control", chars = "\u0003"},
   #{ key = 'V', mods = 'Control', action = 'Paste' },
   #{ key = 'V', mods = 'Control|Shift', chars = "\u0016" },
+  { key = "C", mods = "Alt", action = "Copy" },
+  { key = "V", mods = "Alt", action = "Paste" },
 ]
+

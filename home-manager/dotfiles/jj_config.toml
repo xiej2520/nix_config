@@ -1,0 +1,21 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "xiej2520"
+email = "xiej2520@gmail.com"
+
+[ui]
+editor = "nvim"
+
+[revset-aliases."closest_pushable(to)"]
+definition = 'heads(::to & mutable() & ~empty() & description(regex:".*"))'
+doc = "Closest mutable, nonempty, described commits <= to"
+
+[revsets]
+bookmark-advance-to = "closest_pushable(@)"
+
+
+#[signing]
+#behavior = "own"
+#backend = "ssh"
+#key = "~/.ssh/ssh.pub"

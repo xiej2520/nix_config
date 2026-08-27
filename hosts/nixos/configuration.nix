@@ -88,9 +88,8 @@
 
   users.users = {
     xiej = {
-      initialPassword = "correcthorsebatterystaple";
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [ ];
+      # openssh.authorizedKeys.keys = [ ];
       extraGroups = [
         # "adbusers" # android studio
         "kvm"

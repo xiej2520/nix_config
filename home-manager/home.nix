@@ -110,7 +110,7 @@ in
     enable = true;
     plugins = [
       #{ name = "z"; src = pkgs.fishPlugins.z.src; }
-      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; } # doesn't work?
+      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
       { name = "tide"; src = pkgs.fishPlugins.tide.src; } # tide configure
       { name = "pisces"; src = pkgs.fishPlugins.pisces.src; } # paired symbol matching
     ];

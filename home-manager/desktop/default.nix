@@ -63,10 +63,11 @@ let
   # less used, heavy
   devPlusPackages = with pkgs; [
     android-studio
-    jetbrains.idea
+    emacs
     ghidra
     #github-desktop
     imhex
+    jetbrains.idea
     kdePackages.kompare
     kdePackages.kontrast
     #okteta
@@ -105,7 +106,7 @@ let
     oxipng
     x265
 
-    unstable.ollama-rocm
+    # unstable.ollama-rocm
   ];
 in
 {

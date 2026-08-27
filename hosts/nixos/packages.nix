@@ -98,8 +98,8 @@ in
       devenv
       gparted
 
-      llama-cpp
-      llama-swap
+      llama-cpp-custom
+      llama-swap-custom
     ]);
 
   fonts = {

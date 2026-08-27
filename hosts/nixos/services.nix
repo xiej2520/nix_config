@@ -19,8 +19,6 @@ in
     settings = {
       # opinionated: forbid root login through ssh.
       PermitRootLogin = "no";
-      # opinionated: use keys only.
-      # remove if you want to ssh using passwords
       PasswordAuthentication = false;
     };
   };
@@ -79,7 +77,7 @@ in
 
   services.flatpak.enable = true;
 
-  services.onedrive.enable = true;
+  # services.onedrive.enable = true;
 
   # enable cups to print documents
   services.printing.enable = true;

@@ -55,8 +55,7 @@
 
       ${pkgs.goaccess}/bin/goaccess \
         /var/log/nginx/access.log \
-        /var/log/nginx/access.log-*.gz \
-        /var/log/nginx/access.log-*.log \
+        /var/log/nginx/access.log.* \
         --log-format=COMBINED \
         --output=/var/lib/goaccess/cumulative.html
     '';

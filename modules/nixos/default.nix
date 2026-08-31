@@ -4,4 +4,7 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   llama-cpp = import ./llama-cpp.nix;
+  cosmic = import ./cosmic.nix;
+  niri = import ./niri.nix;
+  noctalia = import ./noctalia.nix;
 }

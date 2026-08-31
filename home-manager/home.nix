@@ -13,8 +13,8 @@ let
   desktop = import ./desktop { inherit pkgs; };
 
   # symlink = name: config.lib.file.mkOutOfStoreSymlink name;
-  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix/nix_config/home-manager/dotfiles + name;
-  
+  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/nix_config/home-manager/dotfiles + name;
+
   # set "dev.containers.dockerPath": "podman-remote-vscode" in vscode settings.json,
   # and systemctl --user enable --now podman.socket
   podmanRemote = pkgs.writeShellScriptBin "podman-remote-vscode" ''
@@ -97,6 +97,19 @@ in
     package = pkgs.vscode.fhs;
   };
 
+  programs.zed-editor = {
+    enable = true;
+    package = pkgs.unstable.zed-editor;
+    # launch zed . from a nix develop to use project-specific language servers
+    extraPackages = with pkgs; [
+      nil
+      nixd
+      nixfmt
+      rust-analyzer
+      jdt-language-server
+    ];
+  };
+
   programs.bash = {
     enable = true;
     historyControl = [ "ignoredups" ];
@@ -105,7 +118,7 @@ in
       export PYTHONSTARTUP=~/.config/startup.py
     '';
   };
-  
+
   programs.fish = {
     enable = true;
     plugins = [
@@ -119,7 +132,7 @@ in
 
   programs.alacritty.enable = true;
   home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;
-  
+
   home.file.".config/startup.py".source = symlink /startup.py;
 
   #programs.git = {

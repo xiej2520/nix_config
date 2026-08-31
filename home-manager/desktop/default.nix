@@ -57,7 +57,7 @@ let
   devPackages = with pkgs; [
     git-filter-repo
     sourcegit
-    unstable.zed-editor.fhs
+    # unstable.zed-editor
   ];
 
   # less used, heavy
@@ -72,7 +72,7 @@ let
     kdePackages.kontrast
     #okteta
     typst
-    jdt-language-server # for zed
+    # jdt-language-server # for zed
   ];
 
   gamePackages = with pkgs; [

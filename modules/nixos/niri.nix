@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
-
+{ pkgs, ... }:
 {
-  imports = [ ];
-
   environment.systemPackages = with pkgs; [
     xwayland
     xwayland-satellite

@@ -1,4 +1,4 @@
-{ config, pkgs, outputs, ... }:
+{ pkgs, outputs, ... }:
 let
   basePackages = (with pkgs; [
     bat
@@ -22,7 +22,7 @@ let
   ### Programs (with configuration options)
   programs = {
     firefox.enable = true;
-    
+
     fish.enable = true;
     neovim = {
       enable = true;

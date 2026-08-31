@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   ### Bootloader.
   # nixos-rebuild switch --install-bootloader

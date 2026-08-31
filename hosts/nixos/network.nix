@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   ### Networking
   networking.hostName = "WORKING-DESKTOP";

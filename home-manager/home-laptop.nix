@@ -1,6 +1,5 @@
 # home-manager configuration file, replaces ~/.config/nixpkgs/home.nix
 {
-  outputs,
   config,
   pkgs,
   ...
@@ -9,8 +8,8 @@ let
   cli = import ./cli { inherit pkgs; };
   desktop = import ./desktop { inherit pkgs; };
 
-  #symlink = name: config.lib.file.mkOutOfStoreSymlink name;
-  symlink = name: config.lib.file.mkOutOfStoreSymlink /home/xiej/Documents/nix_config/home-manager/dotfiles + name;
+  dotfiles = /home/xiej/Documents/nix_config/home-manager/dotfiles;
+  symlink = name: config.lib.file.mkOutOfStoreSymlink (dotfiles + name);
 in
 {
   imports = [
@@ -19,43 +18,14 @@ in
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-    ./iosevka.nix
+    ./common.nix
   ];
 
-  nixpkgs = {
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    config = {
-      allowUnfree = true;
-    };
+  _module.args = {
+    inherit dotfiles;
   };
 
-  home = {
-    username = "xiej";
-    homeDirectory = "/home/xiej";
-
-    # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
-    # https://nix-community.github.io/home-manager/release-notes.xhtml
-    stateVersion = "26.05";
-  };
-
-  programs.home-manager.enable = true;
+  home.stateVersion = "26.05";
 
   home.packages =
     cli.cliPackages
@@ -75,62 +45,6 @@ in
 
       xwayland-satellite
     ]);
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-  };
-
-  programs.bash = {
-    enable = true;
-    historyControl = [ "ignoredups" ];
-    initExtra = ''
-      export PS1="''${PS1//\\u/\$SHLVL:\\u}"
-      export PYTHONSTARTUP=~/.config/startup.py
-    '';
-  };
-
-  programs.fish = {
-    enable = true;
-    plugins = [
-      #{ name = "z"; src = pkgs.fishPlugins.z.src; }
-      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
-      { name = "tide"; src = pkgs.fishPlugins.tide.src; }
-      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
-    ];
-  };
-  programs.fzf.enableFishIntegration = true; # https://andrew-quinn.me/fzf/
-
-  programs.alacritty.enable = true;
-  home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;
-
-  home.file.".config/startup.py".source = symlink /startup.py;
-
-  #programs.git = {
-  #  enable = true;
-  #  userEmail = "jackyxie2520@outlook.com";
-  #  userName = "xiej2520";
-  #};
-  home.file.".gitconfig".source = symlink /.gitconfig;
-  home.file.".gitignore".source = symlink /.gitignore;
-
-  programs.neovim = {
-    enable = true;
-    extraPackages = [
-      pkgs.gcc # for tree-sitter
-      pkgs.rust-analyzer # should really add LSPs in project-specific flake
-      pkgs.tree-sitter
-    ];
-    sideloadInitLua = true;
-  };
-  # symlink configuration, use git subtree since submodules won't get copied
-  home.file.".config/nvim".source = symlink /nvim_config/nvim;
-
-  programs.direnv = {
-    enable = true;
-    enableBashIntegration = true;
-    nix-direnv.enable = true;
-  };
 
   programs.java = {
     enable = true;
@@ -154,18 +68,6 @@ in
       program_options = {
         # replace with your favorite file manager
         file_manager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
-      };
-    };
-  };
-
-  fonts = {
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        emoji = [ "twitter-color-emoji" ];
-        #monospace = [ "iA-Writer" ];
-        monospace = [ "IosevkaLegible" ];
-        sansSerif = [ "Lexend Deca" ];
       };
     };
   };

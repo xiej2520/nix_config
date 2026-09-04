@@ -132,6 +132,7 @@ in
     mutableUsers = false;
     users.${username} = {
       isNormalUser = true;
+      linger = true;
       extraGroups = [
         "networkmanager"
         "wheel"

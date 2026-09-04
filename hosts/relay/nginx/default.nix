@@ -20,7 +20,8 @@ in
 
       # add something at /var/www/${domainName}/index.html
       # root = "/var/www/${domainName}";
-      root = ./site;
+      #root = ./site;
+      root = "/home/xiej/site/";
 
       # proxy to bluemap
       locations."/map/" = {

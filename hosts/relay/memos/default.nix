@@ -13,15 +13,23 @@ in
     containers.memos = {
       image = "neosmemo/memos:0.30.0";
 
+      # run PID 1 as user, not root
+      podman.user = "xiej";
+      user = "10001:10001";
+
+      # host user appears as 10001:10001 in container
+      extraOptions = [
+        "--userns=keep-id:uid=10001,gid=10001"
+      ];
+
       ports = [
         "127.0.0.1:5230:5230"
       ];
 
       volumes = [
-        "/var/lib/memos:/var/opt/memos:U"
+        "/var/lib/memos:/var/opt/memos"
 
-        # Source is a file in your Nix config.
-        # Destination must be directly under /etc/secrets.
+        # source in nix config, dest must be directly under /etc/secrets.
         "${./memos-instance-setting-general.json}:/etc/secrets/memos-instance-setting-general.json:ro"
       ];
 
@@ -60,7 +68,8 @@ in
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/memos 0750 root root -"
+    # allow user to write to /var/lib/memos, run rootless container under user
+    "d /var/lib/memos 0750 xiej users -"
   ];
 
 }

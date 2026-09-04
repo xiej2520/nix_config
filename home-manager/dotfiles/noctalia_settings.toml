@@ -1,3 +1,5 @@
+# ~/.local/state/noctalia/settings.toml
+# ~/.config/noctalia/settings.toml
 config_version = 13
 
 [bar.default]
@@ -182,8 +184,8 @@ enabled = true
 [shell]
 corner_radius_scale = 0.0
 font_family = "Lexend Deca"
+panel_anchor_bar = "default"
 popup_shadows = false
-settings_show_advanced = false
 
     [shell.animation]
     enabled = false
@@ -199,6 +201,7 @@ settings_show_advanced = false
     clipboard_placement = "attached"
     launcher_placement = "attached"
     open_near_click_clipboard = true
+    open_near_click_control_center = true
     shadow = false
 
     [shell.screen_corners]

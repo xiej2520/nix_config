@@ -46,6 +46,19 @@ in
       xwayland-satellite
     ]);
 
+  programs.zed-editor = {
+    enable = true;
+    package = pkgs.unstable.zed-editor;
+    # launch zed . from a nix develop to use project-specific language servers
+    extraPackages = with pkgs; [
+      nil
+      nixd
+      nixfmt
+      rust-analyzer
+      jdt-language-server
+    ];
+  };
+
   programs.java = {
     enable = true;
     package = pkgs.jdk25;

@@ -114,7 +114,6 @@ in
     22
     80
     443
-    8100 # bluemap
     25565 # minecraft server
   ];
   # networking.firewall.allowedUDPPorts = [ ... ];

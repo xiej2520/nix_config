@@ -19,9 +19,8 @@ in
       enableACME = true;
 
       # add something at /var/www/${domainName}/index.html
-      # root = "/var/www/${domainName}";
       #root = ./site;
-      root = "/home/xiej/site/";
+      root = "/var/www/${domainName}";
 
       # proxy to bluemap
       locations."/map/" = {
@@ -31,6 +30,10 @@ in
       };
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/www/${domainName} 0755 xiej users -"
+  ];
 
   security.acme = {
     acceptTerms = true;

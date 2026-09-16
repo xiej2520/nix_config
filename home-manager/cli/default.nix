@@ -2,6 +2,7 @@
 let
   cliPackages = with pkgs; [
     bat
+    below
     bottom
     curl
     csvlens

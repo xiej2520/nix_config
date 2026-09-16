@@ -80,9 +80,6 @@ in
 
   programs.java = {
     enable = true;
-    #package = pkgs.jdk23.overrideAttrs (old: {
-    #  enableJavaFX = true;
-    #});
     package = pkgs.jdk25.overrideAttrs (old: {
       enableJavaFX = true;
       # https://github.com/NixOS/nixpkgs/issues/412283#issuecomment-3325887652

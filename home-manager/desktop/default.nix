@@ -64,14 +64,14 @@ let
   devPlusPackages = with pkgs; [
     android-studio
     emacs
-    ghidra
+    #ghidra
     #github-desktop
     imhex
     jetbrains.idea
     kdePackages.kompare
     kdePackages.kontrast
     #okteta
-    typst
+    unstable.typst
     # jdt-language-server # for zed
   ];
 
@@ -79,6 +79,7 @@ let
     moonlight-qt
     protontricks
     rpcs3
+    #unstable.eden
     #ryubing
   ];
 

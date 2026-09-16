@@ -39,3 +39,10 @@ note: hard linking is currently saving -4.0 KiB
 
 total 7.02 GiB -> 5.33 GiB
 
+## 2026-08-30 gc older than 3
+deleting unused links...
+note: hard linking is currently saving 110.8 GiB
+27772 store paths deleted, 79.7 GiB freed
+## 2026-08-30 optimize
+27.2 GiB freed by hard-linking 1188564 files
+

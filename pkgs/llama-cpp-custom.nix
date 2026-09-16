@@ -17,8 +17,8 @@
   src = fetchFromGitHub {
     owner = "ggml-org";
     repo = "llama.cpp";
-    tag = "v0.3.0";
-    hash = "sha256-46b+5YWwF5k1vBBzsjSCrn6k8dkPuBYy2bqWhgFqCbQ=";
+    tag = "v0.4.1";
+    hash = "sha256-vVq7+eUN6NXZuqm7Jwlr4iFDV1PjNzQ6nK9AR2zvZYM=";
   };
   npmDepsHash = "sha256-2Q7XhaLAArmviOLdQsNbYTfdyDE5pW9lR26cRHEVl9k=";
   # Enable native CPU optimizations for massively better CPU performance

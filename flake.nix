@@ -8,6 +8,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     #nixos-wsl.url = "github:nix-community/nixos-wsl";
@@ -37,6 +39,7 @@
     nixpkgs,
     home-manager,
     disko,
+    nixos-hardware,
     #nixos-wsl,
     ...
   } @ inputs: let
@@ -86,6 +89,13 @@
           ./hosts/relay/configuration.nix
         ];
       };
+      FW13PRO = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
+        modules = [
+          ./hosts/fw13pro/configuration.nix
+          nixos-hardware.nixosModules.framework-intel-core-ultra-series3
+        ];
+      };
       # untested right now!
       #WSL = nixpkgs.lib.nixosSystem {
       #  specialArgs = {inherit inputs outputs;};
@@ -113,6 +123,13 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home-laptop.nix
+        ];
+      };
+      "xiej@FW13PRO" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home-manager/home-fw13pro.nix
         ];
       };
       #"xiej@WSL" = home-manager.lib.homeManagerConfiguration {

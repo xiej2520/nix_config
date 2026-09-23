@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export NIX_CONFIG="experimental-features = nix-command flakes"
+
 # generate /etc/nixos/{configuration.nix, hardware-configuration.nix}
 # cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
 # make sure to use right host

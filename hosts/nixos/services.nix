@@ -29,6 +29,7 @@ in
 
   # enable the kde plasma desktop environment.
   services.desktopManager.plasma6.enable = true;
+  #displayManager.plasma-login-manager.enable = true;
   services.displayManager.sddm = {
     enable = lib.mkDefault true;
     theme = "breeze";

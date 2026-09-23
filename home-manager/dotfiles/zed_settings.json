@@ -61,6 +61,7 @@
     "button": true,
   },
   "project_panel": {
+    "folder_indicator": "icon",
     "auto_fold_dirs": false,
     "auto_reveal_entries": false,
     "bold_folder_labels": true,
@@ -70,7 +71,6 @@
     //"dock": "left",
     "entry_spacing": "standard",
     "file_icons": true,
-    "folder_icons": true,
     "git_status": true,
     "git_status_indicator": true,
     "hide_gitignore": false,

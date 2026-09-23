@@ -1,17 +1,20 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    xwayland
     xwayland-satellite
   ];
 
   programs = {
-    niri.enable = true;
+    niri = {
+      enable = true;
+      useNautilus = false;
+    };
     xwayland.enable = true;
   };
 
-  services.displayManager.cosmic-greeter.enable = true;
-  #services.displayManager.plasma-login-manager = {
-  #  enable = true;
-  #};
+  xdg.portal = {
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    config.niri.default = lib.mkForce [ "kde" ];
+    config.niri."org.freedesktop.impl.portal.FileChooser" =  lib.mkForce [ "kde" ];
+  };
 }

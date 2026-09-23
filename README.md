@@ -12,6 +12,9 @@ nh home switch .
 ### Setup
 
 ```sh
+# 0 Connect to internet, ethernet or wifi
+nmtui
+
 # 1. Install nix, enable flakes
 export NIX_CONFIG="experimental-features = nix-command flakes"
 

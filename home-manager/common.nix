@@ -74,6 +74,7 @@ in
     plugins = [
       #{ name = "z"; src = pkgs.fishPlugins.z.src; }
       { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
+      # tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='One line' --prompt_spacing=Compact --icons='Few icons' --transient=No
       { name = "tide"; src = pkgs.fishPlugins.tide.src; }
       { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
     ];
@@ -92,6 +93,7 @@ in
   #};
   home.file.".gitconfig".source = symlink /.gitconfig;
   home.file.".gitignore".source = symlink /.gitignore;
+  home.file.".config/jj/config.toml".source = symlink /jj_config.toml;
 
   programs.neovim = {
     enable = true;

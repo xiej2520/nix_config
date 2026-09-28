@@ -1,13 +1,13 @@
 # GC and Optimization Log
 
 ```bash
+# /boot/kernels full of old generations: delete old generations, then collect garbage, nh os switch .
+sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5
 # collect garbage
-sudo nix-collect-garbage --delete-older-than 30d
+sudo nix-collect-garbage --delete-older-than 3d
 # optimize nix store
 sudo nix-store --optimise
-# /boot/kernels full of old generations: delete old generations, then collect garbage, nh os switch .
-# sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
-# sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5
 ```
 
 ## 2026-05-30 gc
@@ -53,3 +53,12 @@ note: hard linking is currently saving 128.1 GiB
 ## 2026-10-04 optimize
 43.5 GiB freed by hard-linking 2030308 files
 
+## 2026-10-05 FW13Pro
+```sh
+sudo nix-collect-garbage --delete-older-than 3d
+deleting unused links...
+note: hard linking is currently saving -4.0 KiB
+9817 store paths deleted, 30.7 GiB freed
+sudo nix-store --optimise
+8.4 GiB freed by hard-linking 903202 files
+```

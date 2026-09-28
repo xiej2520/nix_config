@@ -1,12 +1,8 @@
 {
-  inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }:
-
 let
   boot = {
     loader = {
@@ -37,6 +33,8 @@ let
       };
     };
   };
+  # nix run nixpkgs#brightnessctl
+  # noctalia msg brightness-set 0.000005
 
   basePackages = (
     with pkgs;
@@ -58,10 +56,17 @@ let
 
   programs = {
     firefox.enable = true;
+    dconf.enable = true;
     neovim = {
       enable = true;
       defaultEditor = true;
     };
+
+    #steam = {
+    #  enable = true;
+    #  remotePlay.openFirewall = true;
+    #  localNetworkGameTransfers.openFirewall = true;
+    #};
 
     xwayland.enable = true;
     virt-manager.enable = true;
@@ -106,7 +111,6 @@ let
     configDir = "/home/xiej/.config/syncthing";
     user = "xiej";
   };
-
 
   networking = {
     hostName = "FW13PRO";
@@ -176,6 +180,12 @@ in
       wl-clipboard-rs
     ]);
   environment.variables.EDITOR = "nvim";
+
+  # github.com/NixOS/nixpkgs/issues/409986
+  environment.etc."xdg/menus/applications.menu".source =
+    pkgs.runCommand "applications.menu" { } ''
+        cp ${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu $out
+    '';
 
   # xdg.portal.wlr.enable = true;
   swapDevices = [

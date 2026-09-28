@@ -12,6 +12,7 @@ let
     onedrivegui
     qdirstat
 
+    mpv
     spotify
     transmission_4-qt
     vlc
@@ -36,7 +37,6 @@ let
     kdePackages.isoimagewriter
     kdePackages.filelight
     kdePackages.kdenlive
-    mpv
     obs-studio
 
     qimgv
@@ -98,7 +98,7 @@ let
     (pkgs.cubiomes-viewer.overrideAttrs (old: {
       patches = (old.patches or []) ++ [ ../../overlays/cubiomes-viewer-patch/0001-fix-mapview-drag-on-linux-by-lowering-threshold-for-.patch ];
     }))
-    mcaselector
+    unstable.mcaselector
     prismlauncher
   ];
 

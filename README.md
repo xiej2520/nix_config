@@ -94,6 +94,12 @@ error booting grub /etf/Microsoft/... not found
 ```
 - make sure fast boot disabled, windows isn't in hibernate
 
+```sh
+# this is supposed to be symlink controlled by fonts.fontconfig.enable = true,
+# if home switch fails, delete it
+rm ~/.config/fontconfig/conf.d/10-hm-fonts.conf 
+```
+
 ## Custom Components
 
 ### Packages

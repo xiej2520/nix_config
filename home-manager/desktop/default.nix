@@ -78,7 +78,7 @@ let
   gamePackages = with pkgs; [
     moonlight-qt
     protontricks
-    rpcs3
+    rpcs3 # uncached on hydra because unfree
     #unstable.eden
     #ryubing
   ];

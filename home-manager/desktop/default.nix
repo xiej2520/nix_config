@@ -76,6 +76,7 @@ let
   ];
 
   gamePackages = with pkgs; [
+    ckan
     moonlight-qt
     protontricks
     rpcs3 # uncached on hydra because unfree

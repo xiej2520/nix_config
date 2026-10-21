@@ -28,7 +28,7 @@ input {
     // All commented-out settings here are examples, not defaults.
     touchpad {
         // off
-        tap
+        tap // allow tap to click
         dwt // disable when typing
         click-method "clickfinger" // two-finger right click, not just tap
         // dwtp
@@ -590,11 +590,16 @@ binds {
     Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia msg settings-toggle"; }
 
     // Noctalia Audio & Brightness
-    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
-    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up 1"; }
+    Shift+XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up 5"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down 1"; }
+    Shift+XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down 5"; }
     XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
-    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
-    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
+
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up 1"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down 1"; }
+    // fn + Mod + F7, lowest brightness on China Star Optoelectronics Technology Co., Ltd MND508ZB1-1
+    Mod+XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-set 0.000005"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

@@ -35,6 +35,7 @@ let
   };
   # nix run nixpkgs#brightnessctl
   # noctalia msg brightness-set 0.000005
+  # sudo modprobe -r hid_multitouch && sudo modprobe hid_multitouch # to reload touchscreen and touchpad
 
   basePackages = (
     with pkgs;

@@ -62,3 +62,23 @@ note: hard linking is currently saving -4.0 KiB
 sudo nix-store --optimise
 8.4 GiB freed by hard-linking 903202 files
 ```
+
+## 2026-10-23 clean all gc roots
+```sh
+nh clean all --optimise
+# profile-145 to 187, a year's worth? Disk 1.2TB -> 741.3GiB
+> Performing garbage collection on the nix store
+188360 store paths deleted, 431.3 GiB freed
+> Optimising the nix store
+19.2 GiB freed by hard-linking 739931 files
+```
+
+## 2026-11-01 clean all gc roots
+```sh
+nh clean all --optimise
+> Performing garbage collection on the nix store
+15351 store paths deleted, 422.1 GiB freed
+> Optimising the nix store
+17.8 GiB freed by hard-linking 704532 files
+```
+

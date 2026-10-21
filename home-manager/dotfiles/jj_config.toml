@@ -15,7 +15,7 @@ doc = "Closest mutable, nonempty, described commits <= to"
 bookmark-advance-to = "closest_pushable(@)"
 
 
-#[signing]
-#behavior = "own"
-#backend = "ssh"
-#key = "~/.ssh/ssh.pub"
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/ssh.pub"

@@ -1,23 +1,29 @@
 { pkgs, outputs, ... }:
 let
-  basePackages = (with pkgs; [
-    bat
-    bottom
-    curl
-    difftastic
-    erdtree
-    fd
-    git
-    lsof
-    ripgrep
-    tree
-    vim-full
-    wget
-  ]);
+  basePackages = (
+    with pkgs;
+    [
+      bat
+      bottom
+      curl
+      difftastic
+      erdtree
+      fd
+      git
+      lsof
+      ripgrep
+      tree
+      vim-full
+      wget
+    ]
+  );
 
-  kdePackages = (with pkgs.kdePackages; [
-    sddm-kcm
-  ]);
+  kdePackages = (
+    with pkgs.kdePackages;
+    [
+      sddm-kcm
+    ]
+  );
 
   ### Programs (with configuration options)
   programs = {
@@ -41,17 +47,16 @@ let
   # unused, use dev environment normally
   #devPackages = with pkgs; [ cargo rustc cmake gcc gdb gnumake ];
   # minimal python3 install for scripting
-  pythonPackages = [(
-    pkgs.python3.withPackages (
+  pythonPackages = [
+    (pkgs.python3.withPackages (
       python-pkgs: with python-pkgs; [
         matplotlib
         numpy
         pandas
         requests
-        venvShellHook
       ]
-    )
-  )];
+    ))
+  ];
 in
 {
   nixpkgs = {
@@ -93,7 +98,6 @@ in
     ++ kdePackages
     ++ pythonPackages
     ++ (with pkgs; [
-      bluez
       distrobox
       devenv
       gparted

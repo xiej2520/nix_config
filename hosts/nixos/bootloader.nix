@@ -9,6 +9,7 @@
   boot.loader = {
     systemd-boot.enable = false;
     grub = {
+      configurationLimit = 5;
       enable = true;
       device = "nodev";
       efiSupport = true;

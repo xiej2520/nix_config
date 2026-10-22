@@ -151,6 +151,8 @@ class Uploader {
     this.uploaded = 0;
     this.uploadOffset = 0;
     this.lastUptime = 0;
+    this.state = "idle";
+    this.resumeOnStart = false;
     this.pathParts = pathParts.filter(part => part.length > 0);
     this.name = [...this.pathParts, file.name].join("/");
     this.idx = UPLOAD_STATE.nextId++;
@@ -184,6 +186,7 @@ class Uploader {
         if (uploader) uploader.retry();
       }
     });
+    this.state = "queued";
     UPLOAD_STATE.queue.push(this);
     runUploadQueue();
   }
@@ -220,7 +223,17 @@ class Uploader {
     }
   }
 
-  async retry() {
+  retry() {
+    if (this.state !== "failed") return;
+    this.state = "queued";
+    this.resumeOnStart = true;
+    failUploaders.delete(this.idx);
+    this.$uploadStatus.textContent = '-';
+    UPLOAD_STATE.queue.push(this);
+    runUploadQueue();
+  }
+
+  async prepareResume() {
     const { url } = this;
     let res = await fetch(url, {
       method: "HEAD",
@@ -231,11 +244,11 @@ class Uploader {
       uploadOffset = parseInt(value) || 0;
     }
     this.uploadOffset = uploadOffset;
-    try {
-      await ensureUploadDirectories(this.pathParts);
-      this.ajax();
-    } catch (err) {
-      this.fail(err.message);
+    if (res.status !== 200 && res.status !== 404) {
+      throw new Error(`Cannot resume upload (${res.status} ${res.statusText})`);
+    }
+    if (!Number.isSafeInteger(uploadOffset) || uploadOffset < 0 || uploadOffset > this.file.size) {
+      throw new Error("Cannot resume upload: invalid remote file size");
     }
   }
 
@@ -254,6 +267,8 @@ class Uploader {
   }
 
   complete() {
+    if (this.state !== "running") return;
+    this.state = "complete";
     const $uploadStatusNew = this.$uploadStatus.cloneNode(true);
     $uploadStatusNew.innerHTML = `✓`;
     this.$uploadStatus.parentNode.replaceChild($uploadStatusNew, this.$uploadStatus);
@@ -264,6 +279,8 @@ class Uploader {
   }
 
   fail(reason = "") {
+    if (this.state !== "running") return;
+    this.state = "failed";
     this.$uploadStatus.innerHTML = `<span style="width: 20px;" title="${reason}">✗</span><span class="retry-btn" id="retry${this.idx}" title="Retry">↻</span>`;
     failUploaders.set(this.idx, this);
     UPLOAD_STATE.running--;
@@ -302,6 +319,7 @@ async function runUploadQueue() {
   if (UPLOAD_STATE.queue.length == 0) return;
   UPLOAD_STATE.running++;
   let uploader = UPLOAD_STATE.queue.shift();
+  uploader.state = "running";
   if (!UPLOAD_STATE.authenticated) {
     UPLOAD_STATE.authenticated = true;
     try {
@@ -311,6 +329,10 @@ async function runUploadQueue() {
     }
   }
   try {
+    if (uploader.resumeOnStart) {
+      await uploader.prepareResume();
+      uploader.resumeOnStart = false;
+    }
     await ensureUploadDirectories(uploader.pathParts);
     uploader.ajax();
   } catch (err) {

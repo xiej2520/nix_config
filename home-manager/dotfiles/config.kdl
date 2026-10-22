@@ -243,7 +243,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-at-startup "noctalia" // alternatively, use systemd.enable to start it
+//spawn-at-startup "noctalia" // alternatively, use systemd.enable to start it
 spawn-at-startup "alacritty"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

@@ -38,6 +38,7 @@ in
     ++ (with pkgs; [
       hid-tools # touchpad
       obs-studio
+      thunderbird
       unstable.typst
 
       xwayland-satellite
@@ -74,6 +75,9 @@ in
     QT_QPA_PLATFORMTHEME = "kde";
     QT_QPA_PLATFORMTHEME_QT6 = "kde";
   };
+
+  services.easyeffects.enable = true;
+  services.kdeconnect.enable = true;
 
   services.udiskie = {
     enable = true;

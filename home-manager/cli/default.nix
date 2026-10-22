@@ -12,7 +12,6 @@ let
     fd
     fzf
 
-    gh
     git
     ffmpeg-full
     imagemagick
@@ -26,6 +25,7 @@ let
 
     ripgrep
     unrar
+    unzip
     wget
     
     zellij
@@ -36,6 +36,7 @@ let
     binsider
     chafa
     fq
+    gh
     jq
     msedit
 

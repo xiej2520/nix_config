@@ -28,18 +28,18 @@ input {
     // All commented-out settings here are examples, not defaults.
     touchpad {
         // off
-        tap
+        tap // allow tap to click
         dwt // disable when typing
         click-method "clickfinger" // two-finger right click, not just tap
         // dwtp
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
+        accel-speed 0.0
+        accel-profile "adaptive" // flat to disable pointer acceleration
+        scroll-method "two-finger"
         // disabled-on-external-mouse
-        scroll-factor 0.4
+        scroll-factor 0.5
     }
 
     mouse {
@@ -243,7 +243,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-at-startup "noctalia" // alternatively, use systemd.enable to start it
+//spawn-at-startup "noctalia" // alternatively, use systemd.enable to start it
 spawn-at-startup "alacritty"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -578,6 +578,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open alacritty terminal" { spawn "alacritty"; }
     Mod+E hotkey-overlay-title="Run an Application: dolphin" { spawn "dolphin"; }
+    Ctrl+Shift+Escape hotkey-overlay-title="Run an Application: system monitor" { spawn "plasma-systemmonitor"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You make IPC calls to Noctalia as explained in the keybinds section.
@@ -589,11 +590,16 @@ binds {
     Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia msg settings-toggle"; }
 
     // Noctalia Audio & Brightness
-    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
-    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up 1"; }
+    Shift+XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up 5"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down 1"; }
+    Shift+XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down 5"; }
     XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
-    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
-    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
+
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up 1"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down 1"; }
+    // fn + Mod + F7, lowest brightness on China Star Optoelectronics Technology Co., Ltd MND508ZB1-1
+    Mod+XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-set 0.000005"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

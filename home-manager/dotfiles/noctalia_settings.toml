@@ -235,6 +235,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 enabled = true
 
 [shell]
+launch_apps_as_systemd_services = true
 corner_radius_scale = 0.0
 font_family = "Lexend Deca"
 panel_anchor_bar = "default"

@@ -1,12 +1,8 @@
 {
-  inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }:
-
 let
   boot = {
     loader = {
@@ -37,6 +33,9 @@ let
       };
     };
   };
+  # nix run nixpkgs#brightnessctl
+  # noctalia msg brightness-set 0.000005
+  # sudo modprobe -r hid_multitouch && sudo modprobe hid_multitouch # to reload touchscreen and touchpad
 
   basePackages = (
     with pkgs;
@@ -58,10 +57,17 @@ let
 
   programs = {
     firefox.enable = true;
+    dconf.enable = true;
     neovim = {
       enable = true;
       defaultEditor = true;
     };
+
+    #steam = {
+    #  enable = true;
+    #  remotePlay.openFirewall = true;
+    #  localNetworkGameTransfers.openFirewall = true;
+    #};
 
     xwayland.enable = true;
     virt-manager.enable = true;
@@ -107,7 +113,6 @@ let
     user = "xiej";
   };
 
-
   networking = {
     hostName = "FW13PRO";
     networkmanager.enable = true;
@@ -148,6 +153,10 @@ in
     # STOP OOM
     cores = 16;
     max-jobs = 4;
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
   };
 
   nixpkgs = {
@@ -176,6 +185,12 @@ in
       wl-clipboard-rs
     ]);
   environment.variables.EDITOR = "nvim";
+
+  # github.com/NixOS/nixpkgs/issues/409986
+  environment.etc."xdg/menus/applications.menu".source =
+    pkgs.runCommand "applications.menu" { } ''
+        cp ${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu $out
+    '';
 
   # xdg.portal.wlr.enable = true;
   swapDevices = [

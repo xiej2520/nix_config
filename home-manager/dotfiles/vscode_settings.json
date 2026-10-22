@@ -18,6 +18,10 @@
     "workbench.startupEditor": "terminal",
     "workbench.tree.renderIndentGuides": "always",
 
+    "workbench.view.showQuietly": {
+        "workbench.panel.output": true, // stop nvim from opening output
+    },
+
     "workbench.activityBar.compact": true,
     "workbench.activityBar.location": "top",
     "activitusbar.activeColour": "#FF1270",
@@ -93,16 +97,25 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 2
     },
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
     "[python]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4
+    },
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
     },
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter-notebook",
     },
     "java.import.gradle.version": "8.14",
     "java.import.gradle.wrapper.enabled": false,

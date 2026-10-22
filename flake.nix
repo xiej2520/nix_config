@@ -16,7 +16,7 @@
 
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs"; # avoid rebuild because input differs from cachix
     };
 
     disko = {

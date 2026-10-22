@@ -10,6 +10,9 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    vlc = prev.vlc.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [ prev.dav1d ];
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

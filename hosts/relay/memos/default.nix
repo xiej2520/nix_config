@@ -11,7 +11,7 @@ in
     backend = "podman";
 
     containers.memos = {
-      image = "neosmemo/memos:0.30.0";
+      image = "neosmemo/memos:0.31.0";
 
       # run PID 1 as user, not root
       podman.user = "xiej";

@@ -57,12 +57,14 @@ in
   programs.vscode = {
     enable = true;
     #package = pkgs.unstable.vscode.fhs;
-    package = lib.mkDefault (pkgs.vscode.override {
-      # fix for Chromium wp_color_manager_v1 bug for Plasma Wayland shifting colors #1E1E22 -> #232327
-      # https://old.reddit.com/r/kde/comments/1ujflin/wrong_colors_in_electron_apps_on_wayland/
-      # https://issues.chromium.org/issues/511734558
-      commandLineArgs = "--disable-features=WaylandWpColorManagerV1";
-    }).fhs;
+    package =
+      lib.mkDefault
+        (pkgs.vscode.override {
+          # fix for Chromium wp_color_manager_v1 bug for Plasma Wayland shifting colors #1E1E22 -> #232327
+          # https://old.reddit.com/r/kde/comments/1ujflin/wrong_colors_in_electron_apps_on_wayland/
+          # https://issues.chromium.org/issues/511734558
+          commandLineArgs = "--disable-features=WaylandWpColorManagerV1";
+        }).fhs;
   };
 
   programs.bash = {
@@ -78,10 +80,19 @@ in
     enable = true;
     plugins = [
       #{ name = "z"; src = pkgs.fishPlugins.z.src; }
-      { name = "fzf"; src = pkgs.fishPlugins.fzf.src; }
+      {
+        name = "fzf";
+        src = pkgs.fishPlugins.fzf.src;
+      }
       # tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='One line' --prompt_spacing=Compact --icons='Few icons' --transient=No
-      { name = "tide"; src = pkgs.fishPlugins.tide.src; }
-      { name = "pisces"; src = pkgs.fishPlugins.pisces.src; }
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+      {
+        name = "pisces";
+        src = pkgs.fishPlugins.pisces.src;
+      }
     ];
   };
   programs.fzf.enableFishIntegration = true; # https://andrew-quinn.me/fzf/
@@ -104,7 +115,7 @@ in
     enable = true;
     extraPackages = [
       pkgs.gcc # for tree-sitter
-      pkgs.rust-analyzer # should really add LSPs in project-specific flake
+      pkgs.rust-analyzer # fallback, LSPs in project shells take precedence
       pkgs.tree-sitter
     ];
     sideloadInitLua = true;

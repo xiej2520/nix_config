@@ -40,6 +40,9 @@ return {
   {
     "mrcjkb/rustaceanvim",
     ft = { "rust" },
+    cond = function()
+      return vim.fn.executable("rust-analyzer") == 1
+    end,
     opts = {
       server = {
         on_attach = function(_, bufnr)
@@ -60,11 +63,11 @@ return {
                 enable = true,
               },
             },
-            -- Add clippy lints for Rust if using rust-analyzer
-            checkOnSave = diagnostics == "rust-analyzer",
-            -- Enable diagnostics if using rust-analyzer
+            -- Run cargo check on save.
+            checkOnSave = true,
+            -- Enable rust-analyzer's native diagnostics.
             diagnostics = {
-              enable = diagnostics == "rust-analyzer",
+              enable = true,
             },
             procMacro = {
               enable = true,

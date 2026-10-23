@@ -32,8 +32,16 @@ Copy-Item -Path nvim -Destination ~\AppData\Local -Recurse
 Overview
 
 - Uses LazyVim and lazy.nvim package
-- mason + treesitter
+- Tree-sitter for syntax highlighting, Mason is disabled in NixOS configuration
 - rust.lua plugins for rust
+
+### Language servers
+
+Provide toolchain and LSP in project dev shells, then launch `nvim` from
+`nix develop` or use `direnv`. Servers from `lua/plugins/lsp.lua` are used when
+available on PATH.
+
+Rust uses `rustaceanvim` for extra functionality.
 
 ## .vimrc init.vim
 

@@ -5,7 +5,7 @@
     backend = "podman";
 
     containers.dufs = {
-      image = "sigoden/dufs:v0.46.0";
+      image = "sigoden/dufs:v0.47.0";
 
       ports = [
         "127.0.0.1:5000:5000"

@@ -1,0 +1,22 @@
+{
+  "instanceSettings": [
+    {
+      "name": "instance/settings/ACCESS",
+      "accessSetting": {
+        "accessMode": "INSTANCE_ACCESS_MODE_PRIVATE"
+      }
+    },
+    {
+      "name": "instance/settings/GENERAL",
+      "generalSetting": {
+        "additionalScript": "",
+        "additionalStyle": "",
+        "disallowUserRegistration": true,
+        "disallowPasswordAuth": false,
+        "disallowChangeUsername": false,
+        "disallowChangeNickname": false,
+        "weekStartDayOffset": 1
+      }
+    }
+  ]
+}

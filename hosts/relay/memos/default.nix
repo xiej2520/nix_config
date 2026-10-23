@@ -11,7 +11,7 @@ in
     backend = "podman";
 
     containers.memos = {
-      image = "neosmemo/memos:0.31.0";
+      image = "neosmemo/memos:26.11.0";
 
       # run PID 1 as user, not root
       podman.user = "xiej";
@@ -29,20 +29,14 @@ in
       volumes = [
         "/var/lib/memos:/var/opt/memos"
 
-        # source in nix config, dest must be directly under /etc/secrets.
-        "${./memos-instance-setting-general.json}:/etc/secrets/memos-instance-setting-general.json:ro"
+        # source in nix config, dest memos reads every *.json in /etc/memos/config
+        "${./memos-config.json}:/etc/memos/config/instance.json:ro"
       ];
 
       environment = {
         MEMOS_PORT = "5230";
         MEMOS_DRIVER = "sqlite";
         MEMOS_DATA = "/var/opt/memos";
-
-        # Intentionally omitted:
-        # MEMOS_INSTANCE_URL
-        #
-        # Leaving it unset makes the instance private,
-        # so unauthenticated users are sent to the sign-in page.
       };
     };
   };

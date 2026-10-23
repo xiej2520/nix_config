@@ -245,6 +245,7 @@ layout {
 
 //spawn-at-startup "noctalia" // alternatively, use systemd.enable to start it
 spawn-at-startup "alacritty"
+spawn-at-startup "yakuake"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -318,6 +319,13 @@ window-rule {
 /- window-rule {
     geometry-corner-radius 160
     clip-to-geometry true
+}
+
+// allow yakuake to behave as a dropdown menu 
+window-rule {
+    match app-id=r#"^org\.kde\.yakuake$"#
+    open-floating true
+    default-floating-position x=0 y=0 relative-to="top"
 }
 
 binds {
@@ -585,9 +593,13 @@ binds {
     // NixOS: The only difference is that you can call noctalia-shell instead of qs -c noctalia-shell
 
     // Core Noctalia binds
-    Mod+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    //Mod+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+D hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+S hotkey-overlay-title="Control Center" { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+Space hotkey-overlay-title="Yakuake" {
+        spawn-sh "dbus-send --session --type=method_call --dest=org.kde.yakuake /yakuake/window org.kde.yakuake.toggleWindowState";
+    }
 
     // Noctalia Audio & Brightness
     XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up 1"; }

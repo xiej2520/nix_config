@@ -25,6 +25,8 @@ cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
 # 3. Switch to config
 nix-shell -p home-manager
 HOST=<HOSTNAME> USER=<USERNAME> ./switch.sh
+
+./switch.sh --home-only
 ```
 
 ## Organization

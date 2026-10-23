@@ -1,6 +1,6 @@
 # ~/.local/state/noctalia/settings.toml # local gui config
 # ~/.config/noctalia/settings.toml # synced config
-# noctalia config export > noctalia-config.toml
+# noctalia config export > noctalia.toml
 config_version = 14
 
 [bar.default]
@@ -127,6 +127,7 @@ widget_order = [
         stat2 = "swap_pct"
 
 [dock]
+active_monitor_only = true
 auto_hide = true
 background_opacity = 0.0
 concave_edge_corners = false
@@ -235,9 +236,9 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 enabled = true
 
 [shell]
-launch_apps_as_systemd_services = true
 corner_radius_scale = 0.0
 font_family = "Lexend Deca"
+launch_apps_as_systemd_services = true
 panel_anchor_bar = "default"
 popup_shadows = false
 
@@ -248,8 +249,10 @@ popup_shadows = false
     [shell.launcher]
     categories = false
     compact = true
+    default_view = "all"
     show_app_actions = true
     sort_by_usage = false
+    track_usage = false
 
     [shell.panel]
     clipboard_placement = "attached"
@@ -276,13 +279,13 @@ source = "custom"
 wallpaper_scheme = "m3-content"
 
 [wallpaper.default]
-path = "/home/xiej/Pictures/art002e009288orig-1.webp"
+path = "/home/xiej/Pictures/Wallpapers/Moraine Lake At Night.jpg"
 
 [wallpaper.last]
-path = "/home/xiej/Pictures/art002e009288orig-1.webp"
+path = "/home/xiej/Pictures/Wallpapers/Moraine Lake At Night.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/home/xiej/Pictures/art002e009288orig-1.webp"
+path = "/home/xiej/Pictures/Wallpapers/Moraine Lake At Night.jpg"
 
 [widget.clock]
 format = "{: %H:%M:%S %a %Y-%m-%d }"

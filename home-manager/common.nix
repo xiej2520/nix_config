@@ -141,6 +141,14 @@ in
     };
   };
 
+  # check ~/.config/mimeapps.list
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     "inode/directory" = "org.kde.dolphin.desktop";
+  #   };
+  # };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }

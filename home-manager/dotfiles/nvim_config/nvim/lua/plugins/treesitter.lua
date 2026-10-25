@@ -1,25 +1,20 @@
+-- parsers in addition to LazyVim defaults
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "bash",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "luadoc",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "yaml",
+        "cmake",
+        "cpp",
+        "fish",
+        "go",
+        "haskell",
+        "java",
+        "kotlin",
+        "nix",
+        "typst",
       },
     },
   },
 }
+

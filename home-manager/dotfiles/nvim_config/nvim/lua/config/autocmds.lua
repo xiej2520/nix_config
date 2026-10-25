@@ -12,17 +12,9 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = augroup("wrap_move"),
-  -- these files have wrap and spellcheck turned on
-  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
-  callback = function()
-    local map = vim.keymap.set
-  end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
-  -- disable spellcheck
+  group = augroup("no_spell"),
+  -- disable lazyvim_wrap_spell's spellcheck, keep wrap
   pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.spell = false

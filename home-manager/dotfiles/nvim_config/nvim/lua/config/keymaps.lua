@@ -12,3 +12,7 @@ map("v", "<Tab>", ">gv", { noremap=true })
 map("v", "<S-Tab>", "<gv", { noremap=true })
 -- Shift-Tab unindents in insert mode
 map("i", "<S-Tab>", "<C-d>", { noremap = true })
+
+-- Buffer switching, needs a terminal that sends Ctrl-Tab
+map("n", "<C-Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<C-S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })

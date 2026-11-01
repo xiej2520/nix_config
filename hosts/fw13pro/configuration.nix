@@ -118,6 +118,19 @@ let
     networkmanager.enable = true;
     firewall = {
       enable = true;
+      allowedTCPPortRanges = [
+        # kdeconnect
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
       trustedInterfaces = [
         "virbr0" # virt-manager
       ];
@@ -187,10 +200,9 @@ in
   environment.variables.EDITOR = "nvim";
 
   # github.com/NixOS/nixpkgs/issues/409986
-  environment.etc."xdg/menus/applications.menu".source =
-    pkgs.runCommand "applications.menu" { } ''
-        cp ${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu $out
-    '';
+  environment.etc."xdg/menus/applications.menu".source = pkgs.runCommand "applications.menu" { } ''
+    cp ${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu $out
+  '';
 
   # xdg.portal.wlr.enable = true;
   swapDevices = [

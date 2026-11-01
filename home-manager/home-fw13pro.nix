@@ -61,12 +61,23 @@ in
     ];
   };
 
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [
+      epkgs.nix-mode
+      epkgs.nixfmt
+      epkgs.vterm
+      epkgs.treesit-grammars.with-all-grammars
+    ];
+  };
+
   programs.java = {
     enable = true;
     package = pkgs.jdk25;
   };
 
-	xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
+  xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
   # gui-configured settings in ~/.local/state/noctalia/settings.toml
   xdg.configFile."noctalia/settings.toml".source = symlink /noctalia_settings.toml;
 

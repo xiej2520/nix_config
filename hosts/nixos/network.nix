@@ -28,14 +28,20 @@
     ];
     allowedTCPPortRanges = [
       # kdeconnect
-      { from = 1714; to = 1764; }
+      {
+        from = 1714;
+        to = 1764;
+      }
     ];
     allowedUDPPortRanges = [
       #{ from = 4000; to = 4007; }
       #{ from = 8000; to = 8010; }
       # sunshine
       #{ from = 47998; to = 48000; }
-      { from = 1714; to = 1764; }
+      {
+        from = 1714;
+        to = 1764;
+      }
     ];
     allowedUDPPorts = [
       #48002
@@ -50,4 +56,3 @@
   };
 
 }
-

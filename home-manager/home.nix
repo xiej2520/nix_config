@@ -80,17 +80,10 @@ in
 
   programs.java = {
     enable = true;
-    package = pkgs.jdk25.overrideAttrs (old: {
-      enableJavaFX = true;
+    package = pkgs.zulu25.override {
       # https://github.com/NixOS/nixpkgs/issues/412283#issuecomment-3325887652
-      buildInputs = old.buildInputs ++ [ pkgs.makeWrapper ];
-      postFixup = ''
-        wrapProgram $out/bin/java \
-          --add-flags "--upgrade-module-path ${pkgs.openjfx25}/lib"
-        wrapProgram $out/bin/javac \
-          --add-flags "--upgrade-module-path ${pkgs.openjfx25}/lib"
-      '';
-    });
+      enableJavaFX = true;
+    };
   };
 
   services.kdeconnect.enable = true;

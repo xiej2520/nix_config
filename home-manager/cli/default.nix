@@ -10,7 +10,6 @@ let
 
     erdtree
     fd
-    fzf
 
     git
     ffmpeg-full

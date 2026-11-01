@@ -15,12 +15,16 @@ background = '#101014'
 foreground = '#D0D0D0'
 dim_foreground = "#A0A0A0"
 
+[colors.selection]
+text = 'CellForeground'
+background = '#4C1630'
+
 [colors.cursor]
 text = '#0E1415'
 cursor = '#E0E0E0'
 
 [colors.normal]
-black = '#0B1012'
+black = '#686870'
 red = '#E05555'
 green = '#60D455'
 yellow = '#F0CC60'
@@ -34,13 +38,13 @@ black = '#777777'
 red = '#FF5050'
 green = '#70F648'
 yellow = '#F4DD28'
-blue = '#417DFF'
+blue = '#50A0FF'
 magenta = '#D85CF8'
 cyan = '#2EEBEB'
 white = '#FFFFFF'
 
 [colors.dim]
-black = '#0F0F10'
+black = '#444444'
 red = '#A04040'
 green = '#509040'
 yellow = '#B4A050'
@@ -59,7 +63,10 @@ bindings = [
   #{ key = "K", mods = "Control", chars = "\u0003"},
   #{ key = 'V', mods = 'Control', action = 'Paste' },
   #{ key = 'V', mods = 'Control|Shift', chars = "\u0016" },
-  { key = "C", mods = "Alt", action = "Copy" },
+  #{ key = "C", mods = "Alt", action = "Copy" }, # conflicts with Alt+C fzf
   { key = "V", mods = "Alt", action = "Paste" },
 ]
+
+[selection]
+save_to_clipboard = true
 

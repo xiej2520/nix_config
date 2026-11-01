@@ -80,10 +80,6 @@ in
     enable = true;
     plugins = [
       #{ name = "z"; src = pkgs.fishPlugins.z.src; }
-      {
-        name = "fzf";
-        src = pkgs.fishPlugins.fzf.src;
-      }
       # tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No --lean_prompt_height='One line' --prompt_spacing=Compact --icons='Few icons' --transient=No
       {
         name = "tide";
@@ -95,7 +91,7 @@ in
       }
     ];
   };
-  programs.fzf.enableFishIntegration = true; # https://andrew-quinn.me/fzf/
+  programs.fzf.enable = true; # https://andrew-quinn.me/fzf/
 
   programs.alacritty.enable = true;
   home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;

@@ -27,10 +27,10 @@ let
     unrar
     unzip
     wget
-    
+
     zellij
   ];
-  
+
   cliPackagesExtra = with pkgs; [
     #awscli2
     binsider
@@ -44,6 +44,5 @@ let
   ];
 in
 {
-  cliPackages = cliPackages;
-  cliPackagesExtra = cliPackagesExtra;
+  inherit cliPackages cliPackagesExtra;
 }

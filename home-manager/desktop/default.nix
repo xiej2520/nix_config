@@ -97,7 +97,9 @@ let
 
   minecraftPackages = with pkgs; [
     (pkgs.cubiomes-viewer.overrideAttrs (old: {
-      patches = (old.patches or []) ++ [ ../../overlays/cubiomes-viewer-patch/0001-fix-mapview-drag-on-linux-by-lowering-threshold-for-.patch ];
+      patches = (old.patches or [ ]) ++ [
+        ../../overlays/cubiomes-viewer-patch/0001-fix-mapview-drag-on-linux-by-lowering-threshold-for-.patch
+      ];
     }))
     unstable.mcaselector
     prismlauncher
@@ -112,14 +114,16 @@ let
   ];
 in
 {
-  desktopPackages = desktopPackages;
-  kdeBaseDesktopPackages = kdeBaseDesktopPackages;
-  desktopPlusPackages = desktopPlusPackages;
-  kdeConfigPackages = kdeConfigPackages;
-  devPackages = devPackages;
-  devPlusPackages = devPlusPackages;
-  gamePackages = gamePackages;
-  fontPackages = fontPackages;
-  minecraftPackages = minecraftPackages;
-  miscPackages = miscPackages;
+  inherit
+    desktopPackages
+    kdeBaseDesktopPackages
+    desktopPlusPackages
+    kdeConfigPackages
+    devPackages
+    devPlusPackages
+    gamePackages
+    fontPackages
+    minecraftPackages
+    miscPackages
+    ;
 }

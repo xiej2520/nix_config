@@ -81,4 +81,13 @@ nh clean all --optimise
 > Optimising the nix store
 17.8 GiB freed by hard-linking 704532 files
 ```
+## 2026-11-01 FW13Pro
+```sh
+sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +3
+nh clean all --optimise
+> Performing garbage collection on the nix store
+51292 store paths deleted, 71.4 GiB freed
+> Optimising the nix store
+11.3 GiB freed by hard-linking 774221 files
+```
 

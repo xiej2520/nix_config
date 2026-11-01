@@ -6,8 +6,11 @@
 let
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      systemd-boot.editor = false;
+      systemd-boot = {
+        enable = true;
+        editor = false;
+        configurationLimit = 5;
+      };
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernel.sysctl."kernel.sysrq" = 1; # Alt+SysRq+h
@@ -166,10 +169,6 @@ in
     # STOP OOM
     cores = 16;
     max-jobs = 4;
-    extra-substituters = [ "https://noctalia.cachix.org" ];
-    extra-trusted-public-keys = [
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-    ];
   };
 
   nixpkgs = {
@@ -203,6 +202,8 @@ in
   environment.etc."xdg/menus/applications.menu".source = pkgs.runCommand "applications.menu" { } ''
     cp ${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu $out
   '';
+
+  security.rtkit.enable = true;
 
   # xdg.portal.wlr.enable = true;
   swapDevices = [

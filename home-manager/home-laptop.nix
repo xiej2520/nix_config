@@ -67,7 +67,7 @@ in
     #};
   };
 
-	xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
+  xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
   # gui-configured settings in ~/.local/state/noctalia/settings.toml
   xdg.configFile."noctalia/settings.toml".source = symlink /noctalia_settings.toml;
 

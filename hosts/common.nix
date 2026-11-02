@@ -37,9 +37,12 @@
       };
       channel.enable = false;
 
-      # Opinionated: make flake registry and nix path match flake inputs
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+      # Opinionated: make flake registry and nix path match flake inputs (also includes all flake inputs)
+      #registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      #nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+      # Add nixpkgs-unstable to registry, allowing nixpkgs-unstable#foo.
+      # Use github:nixos/nixpkgs/nixos-unstable#foo to get latest, instead of last switch.
+      registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
     };
 
   time.timeZone = "America/Chicago";
@@ -60,4 +63,3 @@
     LC_TIME = "en_US.UTF-8";
   };
 }
-

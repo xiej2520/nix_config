@@ -9,8 +9,7 @@
 let
   hostname = "relay";
   username = "xiej";
-  sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFhB/tgSMKMu1xaTPUr/RqhsQE81z3hJ7SOggatN259M jackyxie2520@outlook.com
-";
+  sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFhB/tgSMKMu1xaTPUr/RqhsQE81z3hJ7SOggatN259M jackyxie2520@outlook.com";
   locale = "en_US.UTF-8";
   timezone = "America/Chicago";
 
@@ -28,7 +27,7 @@ in
   ];
 
   _module.args = {
-    inherit  domainName;
+    inherit domainName;
   };
 
   boot = {
@@ -63,10 +62,6 @@ in
         flake-registry = "";
       };
       channel.enable = false;
-
-      # Opinionated: make flake registry and nix path match flake inputs
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
   environment.systemPackages = with pkgs; [

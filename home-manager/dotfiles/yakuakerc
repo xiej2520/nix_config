@@ -1,0 +1,33 @@
+[Animation]
+Frames=0
+
+[Appearance]
+BackgroundColor=12,12,20
+
+[Behavior]
+OpenAfterStart=true
+
+[Desktop Entry]
+DefaultProfile=Profile 1.profile
+
+[Dialogs]
+FirstRun=false
+
+[Shortcuts]
+grow-terminal-bottom=Ctrl+Alt+Shift+Down
+grow-terminal-left=Ctrl+Alt+Shift+Left
+grow-terminal-right=Ctrl+Alt+Shift+Right
+grow-terminal-top=Ctrl+Alt+Shift+Up
+new-session=Ctrl+Shift+T; Alt+T
+next-session=Ctrl+Tab
+next-terminal=Ctrl+Alt+Right
+previous-session=Ctrl+Shift+Tab
+previous-terminal=Ctrl+Alt+Left
+rename-session=Ctrl+Alt+S; Alt+R
+view-full-screen=Ctrl+Shift+F11; F11
+
+[Window]
+DynamicTabTitles=true
+Height=88
+KeepOpen=false
+Position=51

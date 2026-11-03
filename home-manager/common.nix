@@ -94,7 +94,10 @@ in
   programs.fzf.enable = true; # https://andrew-quinn.me/fzf/
 
   programs.alacritty.enable = true;
-  home.file.".config/alacritty/alacritty.toml".source = symlink /alacritty.toml;
+  xdg.configFile."alacritty".source = symlink /alacritty;
+
+  xdg.configFile."yakuakerc".source = symlink /yakuakerc;
+  xdg.dataFile."konsole".source = symlink /konsole;
 
   home.file.".config/startup.py".source = symlink /startup.py;
 

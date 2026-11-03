@@ -1,0 +1,46 @@
+# Prismatic Pink Black Contrast
+
+[colors.primary]
+background = '#000000'
+foreground = '#D6DAE0'
+dim_foreground = '#747679'
+
+[colors.selection]
+text = 'CellForeground'
+# #FF2884 at 25% opacity over background
+background = '#400A21'
+
+[colors.cursor]
+text = '#000000'
+cursor = '#FF1277'
+
+[colors.normal]
+black = '#7A7A8A'
+red = '#F35858'
+green = '#38CB5E'
+yellow = '#F9D959'
+blue = '#29BBFF'
+magenta = '#C75AF3'
+cyan = '#15C9C5'
+white = '#E8EBF2'
+
+[colors.bright]
+black = '#828DA0'
+red = '#FF1277'
+green = '#3FC56B'
+yellow = '#FFC104'
+blue = '#10B1FE'
+magenta = '#C010EF'
+cyan = '#16DAD6'
+white = '#FFFFFF'
+
+[colors.dim]
+black = '#3D3D45'
+red = '#7A2C2C'
+green = '#1C662F'
+yellow = '#7D6D2D'
+blue = '#155E80'
+magenta = '#642D7A'
+cyan = '#0B6563'
+white = '#747679'
+

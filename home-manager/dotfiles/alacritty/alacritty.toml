@@ -1,4 +1,6 @@
 [general]
+# import = ["themes/prismatic-pink-dark.toml"]
+# import = ["themes/prismatic-pink-black-contrast.toml"]
 
 [window]
 dimensions = { columns = 128, lines = 50 } # 50 is max lines for 1080p
@@ -24,7 +26,7 @@ text = '#0E1415'
 cursor = '#E0E0E0'
 
 [colors.normal]
-black = '#686870'
+black = '#606064'
 red = '#E05555'
 green = '#60D455'
 yellow = '#F0CC60'

@@ -15,7 +15,10 @@ let
     mpv
     spotify
     transmission_4-qt
-    vlc
+    # add dav1d for AV1 playback
+    (vlc.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [ dav1d ];
+    }))
 
     wine
     wl-clipboard-rs

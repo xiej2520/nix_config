@@ -1,5 +1,5 @@
 # This file defines overlays to globally modify derivations in nixpkgs
-{inputs, ...}: {
+{ inputs, ... }: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs final;
 
@@ -10,9 +10,6 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    vlc = prev.vlc.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [ prev.dav1d ];
-    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

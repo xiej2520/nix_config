@@ -108,6 +108,14 @@ let
     upower.enable = true;
   };
 
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ]; # all keyboards
+      settings.main.rightcontrol = "sysrq"; # print in Linux
+    };
+  };
+
   services.syncthing = {
     enable = true;
     dataDir = "/home/xiej/Syncthing";
@@ -201,6 +209,15 @@ in
   # github.com/NixOS/nixpkgs/issues/409986
   environment.etc."xdg/menus/applications.menu".source = pkgs.runCommand "applications.menu" { } ''
     cp ${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu $out
+  '';
+
+  # Make libinput recognize keyd as an internal keyboard and work with palm rejection.
+  # https://wiki.nixos.org/wiki/Keyd, https://github.com/rvaiya/keyd/issues/723
+  environment.etc."libinput/local-overrides.quirks".text = ''
+    [Serial Keyboards]
+    MatchUdevType=keyboard
+    MatchName=keyd virtual keyboard
+    AttrKeyboardIntegration=internal
   '';
 
   security.rtkit.enable = true;

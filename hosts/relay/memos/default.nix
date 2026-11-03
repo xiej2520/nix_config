@@ -1,12 +1,5 @@
-{ lib, pkgs, config, domainName, ... }:
-let
-  cfg = config.services.forgejo;
-  srv = cfg.settings.server;
-in
+{ domainName, ... }:
 {
-  imports = [
-  ];
-
   virtualisation.oci-containers = {
     backend = "podman";
 

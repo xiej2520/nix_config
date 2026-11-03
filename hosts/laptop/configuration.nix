@@ -17,6 +17,7 @@ let
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
+        configurationLimit = 5;
       };
       efi.canTouchEfiVariables = true;
       #efi.efiSysMountPoint = "/boot";

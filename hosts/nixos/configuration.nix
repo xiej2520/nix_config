@@ -23,6 +23,17 @@
     ./hardware-configuration.nix
   ];
 
+  # Don't block boot if a disk is missing or Windows left NTFS dirty.appstream
+  # hardware-configuration.nix gets regenerated, keep here.
+  fileSystems."/mnt/Data".options = [
+    "nofail"
+    "x-systemd.automount"
+  ];
+  fileSystems."/mnt/Windows".options = [
+    "nofail"
+    "x-systemd.automount"
+  ];
+
   nix.settings = {
     # STOP OOM
     cores = 32;
@@ -58,8 +69,18 @@
       ];
 
       # podman
-      subUidRanges = [ { startUid = 100000; count = 65536; } ];
-      subGidRanges = [ { startGid = 100000; count = 65536; } ];
+      subUidRanges = [
+        {
+          startUid = 100000;
+          count = 65536;
+        }
+      ];
+      subGidRanges = [
+        {
+          startGid = 100000;
+          count = 65536;
+        }
+      ];
     };
   };
 
@@ -74,4 +95,3 @@
   # https://nixos.org/manual/nixos/stable/release-notes
   system.stateVersion = "26.05"; # Did you read the comment?
 }
-

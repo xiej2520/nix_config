@@ -50,7 +50,6 @@
     trustedInterfaces = [
       "virbr0" # virt-manager
       "podman0"
-      "cni-podman0"
       # "wlp10s0" # wifi hotspot
     ];
   };

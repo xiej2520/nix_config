@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 os_only=false
 user_only=false
@@ -31,13 +32,13 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 # cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
 # make sure to use right host
 
-if [ -z "$HOST" ]; then
+if [ -z "${HOST:-}" ]; then
   read -r -p "HOST is not set. Please enter the desired system name (press Enter to use $(hostname)): " input_host
   HOST="${input_host:-$(hostname)}"
 fi
 echo "Using HOST: '$HOST'"
 
-if [ -z "$USER" ]; then
+if [ -z "${USER:-}" ]; then
   read -r -p "USER is not set. Please enter the username (press Enter to use the $(whoami)): " input_user
   USER="${input_user:-$(whoami)}"
 fi
@@ -45,8 +46,8 @@ echo "Using USER: '$USER'"
 
 if [ "$user_only" = false ]; then
   echo "Rebuilding and activating nixos"
-  sudo HOST="$HOST" nixos-rebuild switch --flake ".#$HOST"
-  system_status=$?
+  system_status=0
+  sudo HOST="$HOST" nixos-rebuild switch --flake ".#$HOST" || system_status=$?
   if [ "$system_status" -ne 0 ]; then
     echo "NixOS switch failed (exit $system_status)." >&2
     if ! read -r -p "Continue with Home Manager anyway? [y/N] " continue_user; then

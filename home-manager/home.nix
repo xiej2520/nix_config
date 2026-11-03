@@ -16,7 +16,7 @@ let
   # symlink = name: config.lib.file.mkOutOfStoreSymlink (dotfiles + name);
 
   # set "dev.containers.dockerPath": "podman-remote-vscode" in vscode settings.json,
-  # and systemctl --user enable --now podman.socket
+  # (podman.socket is enabled by default via virtualisation.podman)
   podmanRemote = pkgs.writeShellScriptBin "podman-remote-vscode" ''
     exec podman \
       --remote \

@@ -74,6 +74,11 @@
     "terminal.integrated.enableKittyKeyboardProtocol": false,
     // breaks some fish keybinds
     "terminal.integrated.shellIntegration.enabled": false,
+    // vscode.fhs runs in a bwrap user namespace, so rootless podman can't join its pause process.
+    // Route podman through the user socket instead (podman.socket).
+    "terminal.integrated.env.linux": {
+        "CONTAINER_HOST": "unix://${env:XDG_RUNTIME_DIR}/podman/podman.sock"
+    },
 
     "zenMode.hideLineNumbers": false,
 

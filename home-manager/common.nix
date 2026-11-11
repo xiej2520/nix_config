@@ -59,7 +59,8 @@ in
     #package = pkgs.unstable.vscode.fhs;
     package =
       lib.mkDefault
-        (pkgs.vscode.override {
+        # use unstable, 26.05's vscode 1.144 build fails (stale @vscode/ripgrep path)
+        (pkgs.unstable.vscode.override {
           # fix for Chromium wp_color_manager_v1 bug for Plasma Wayland shifting colors #1E1E22 -> #232327
           # https://old.reddit.com/r/kde/comments/1ujflin/wrong_colors_in_electron_apps_on_wayland/
           # https://issues.chromium.org/issues/511734558

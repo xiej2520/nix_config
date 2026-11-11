@@ -20,6 +20,9 @@ TerminalRows=40
 AutoCopySelectedText=true
 OpenLinksByDirectClickEnabled=true
 
+[Keyboard]
+KeyBindings=Custom
+
 [Scrolling]
 HistorySize=10000
 

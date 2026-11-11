@@ -1,5 +1,8 @@
 {
     "chat.disableAIFeatures": true,
+    "workbench.experimental.modernUI": false,
+    "workbench.modernUIFrostedGlass": false,
+    "window.density.layout": "compact",
     "workbench.colorCustomizations": {
         "editorWhitespace.foreground": "#0060ff",
     },
@@ -70,8 +73,6 @@
 
     "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.suggest.enabled": false,
-    // this breaks nvim shift in terminal
-    "terminal.integrated.enableKittyKeyboardProtocol": false,
     // breaks some fish keybinds
     "terminal.integrated.shellIntegration.enabled": false,
     // vscode.fhs runs in a bwrap user namespace, so rootless podman can't join its pause process.

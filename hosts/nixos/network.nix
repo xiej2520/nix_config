@@ -44,6 +44,7 @@
       }
     ];
     allowedUDPPorts = [
+      4242 # lan-mouse
       #48002
       #48010
     ];

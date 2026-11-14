@@ -9,6 +9,7 @@ let
     kdePackages.kclock
     #kdePackages.kimageformats # tga doesn't work?
 
+    lan-mouse
     onedrivegui
     qdirstat
 

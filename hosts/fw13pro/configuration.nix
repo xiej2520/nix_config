@@ -142,6 +142,7 @@ let
           to = 1764;
         }
       ];
+      allowedUDPPorts = [ 4242 ];
       trustedInterfaces = [
         "virbr0" # virt-manager
       ];

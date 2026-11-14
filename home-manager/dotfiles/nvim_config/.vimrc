@@ -64,7 +64,7 @@ augroup END
 :set confirm
 :set laststatus=1
 :set showcmd
-:set wrap ":set nowrap
+:set nowrap "set wrap
 
 :set mouse=a
 if !has('nvim') && !has('gui_running')

@@ -62,7 +62,7 @@ in
     ++ desktop.miscPackages
     ++ (with pkgs; [
       podmanRemote
-      vscodium-fhs
+      #vscodium-fhs
     ]);
 
   programs.zed-editor = {

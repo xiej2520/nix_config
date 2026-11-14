@@ -93,6 +93,7 @@ let
       settings = {
         PermitRootLogin = "no";
         PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
       };
     };
     power-profiles-daemon.enable = true;

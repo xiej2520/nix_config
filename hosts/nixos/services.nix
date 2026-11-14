@@ -19,6 +19,7 @@ in
       # opinionated: forbid root login through ssh.
       PermitRootLogin = "no";
       PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
     };
   };
 

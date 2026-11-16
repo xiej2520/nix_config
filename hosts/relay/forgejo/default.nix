@@ -16,6 +16,7 @@ in
 
         # You need to specify this to remove the port from URLs in the web UI.
         ROOT_URL = "https://${srv.DOMAIN}/";
+        HTTP_ADDR = "127.0.0.1";
         HTTP_PORT = 3000;
 
         SSH_PORT = 22;

@@ -24,6 +24,7 @@ in
     ./nginx
     ./memos
     ./dufs
+    ./minecraft
   ];
 
   _module.args = {
@@ -144,6 +145,8 @@ in
       isNormalUser = true;
       linger = true;
       extraGroups = [
+        "dufs"
+        "minecraft"
         "networkmanager"
         "wheel"
       ];

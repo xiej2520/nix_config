@@ -10,6 +10,11 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    cubiomes-viewer = prev.cubiomes-viewer.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [
+        ./cubiomes-viewer-patch/0001-fix-mapview-drag-on-linux-by-lowering-threshold-for-.patch
+      ];
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

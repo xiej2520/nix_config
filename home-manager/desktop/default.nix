@@ -100,11 +100,7 @@ let
   ];
 
   minecraftPackages = with pkgs; [
-    (pkgs.cubiomes-viewer.overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++ [
-        ../../overlays/cubiomes-viewer-patch/0001-fix-mapview-drag-on-linux-by-lowering-threshold-for-.patch
-      ];
-    }))
+    cubiomes-viewer
     unstable.mcaselector
     prismlauncher
   ];

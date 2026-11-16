@@ -21,8 +21,10 @@ trap - EXIT
 
 # Verify the backup files are readable
 ls -lh "$BACKUP"
-echo "database.dump: $(pg_restore --list "$BACKUP/database.dump" | wc -l) entries"
-echo "files.tar: $(tar -tf "$BACKUP/files.tar" | wc -l) entries"
+entries=$(pg_restore --list "$BACKUP/database.dump" | wc -l)
+echo "database.dump: $entries entries"
+entries=$(tar -tf "$BACKUP/files.tar" | wc -l)
+echo "files.tar: $entries entries"
 
 # Restore backup:
 #   sudo systemctl stop forgejo.service

@@ -4,9 +4,7 @@
   ...
 }:
 let
-  wallpaperPackage = pkgs.runCommand "background-image" { } ''
-    cp ${./wallpaper.png} $out
-  '';
+  wallpaperPackage = ./wallpaper.png;
 in
 {
   ### services (programs in background):

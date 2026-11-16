@@ -80,6 +80,21 @@
     "terminal.integrated.env.linux": {
         "CONTAINER_HOST": "unix://${env:XDG_RUNTIME_DIR}/podman/podman.sock"
     },
+    // run shell through systemd outside vscode-fhs's bubblewrap
+    "terminal.integrated.profiles.linux": {
+        "fish (host)": {
+            "path": "/run/current-system/sw/bin/systemd-run",
+            "args": [
+            "--user",
+            "--pty",
+            "--same-dir",
+            "--wait",
+            "--collect",
+            "/run/current-system/sw/bin/fish",
+            "--login"
+            ]
+        }
+    },
 
     "zenMode.hideLineNumbers": false,
 

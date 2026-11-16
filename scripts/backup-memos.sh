@@ -18,14 +18,20 @@ trap - EXIT
 
 # Verify the backup files are readable
 ls -lh "$BACKUP"
-echo "files.tar: $(tar -tf "$BACKUP/files.tar" | wc -l) entries"
+entries=$(tar -tf "$BACKUP/files.tar" | wc -l)
+echo "files.tar: $entries entries"
 
 # Check the database copy is readable
 CHECK=$(mktemp -d)
 trap 'rm -rf "$CHECK"' EXIT
 tar -xf "$BACKUP/files.tar" -C "$CHECK" --wildcards 'memos/*.db*'
 for db in "$CHECK"/memos/*.db; do
-  echo "$(basename "$db"): $(nix shell nixpkgs#sqlite -c sqlite3 "$db" 'PRAGMA integrity_check;')"
+  result=$(nix shell nixpkgs#sqlite -c sqlite3 "$db" 'PRAGMA integrity_check;')
+  if [[ "$result" != "ok" ]]; then
+    printf '%s: integrity check failed: %s\n' "$(basename "$db")" "$result" >&2
+    exit 1
+  fi
+  echo "$(basename "$db"): $result"
 done
 
 # Restore backup (if rolling back, deploy old image tag first):

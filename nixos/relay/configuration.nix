@@ -48,22 +48,20 @@ in
   boot.kernel.sysctl = {
     "vm.swappiness" = 60; # no swap 0 to 200 instant swap,  default 60
   };
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 16 * 1024;
-  }];
-
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
+  swapDevices = [
     {
-      settings = {
-        experimental-features = "nix-command flakes";
-        flake-registry = "";
-      };
-      channel.enable = false;
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
+
+  nix = {
+    settings = {
+      experimental-features = "nix-command flakes";
+      flake-registry = "";
     };
+    channel.enable = false;
+  };
 
   environment.systemPackages = with pkgs; [
     curl

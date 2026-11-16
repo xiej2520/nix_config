@@ -1,16 +1,27 @@
 { domainName, ... }:
 {
+  users.groups.memos = { };
+  users.users.memos = {
+    isSystemUser = true;
+    uid = 991;
+    group = "memos";
+    home = "/var/lib/memos-container";
+    createHome = true;
+    homeMode = "0700";
+    autoSubUidGidRange = true;
+    linger = true;
+  };
+
   virtualisation.oci-containers = {
     backend = "podman";
 
     containers.memos = {
-      image = "neosmemo/memos:26.11.0";
+      image = "neosmemo/memos:26.11.1";
 
-      # run PID 1 as user, not root
-      podman.user = "xiej";
+      podman.user = "memos";
       user = "10001:10001";
 
-      # host user appears as 10001:10001 in container
+      # Dedicated host user `memos` appears as 10001:10001 in the container.
       extraOptions = [
         "--userns=keep-id:uid=10001,gid=10001"
       ];
@@ -55,8 +66,7 @@
   };
 
   systemd.tmpfiles.rules = [
-    # allow user to write to /var/lib/memos, run rootless container under user
-    "d /var/lib/memos 0750 xiej users -"
+    "d /var/lib/memos 0750 memos memos -"
   ];
 
 }

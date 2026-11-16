@@ -29,7 +29,7 @@ fi
 export NIX_CONFIG="experimental-features = nix-command flakes"
 
 # generate /etc/nixos/{configuration.nix, hardware-configuration.nix}
-# cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
+# cp ~/etc/nixos/hardware-configuration ./nixos/<HOST>/hardware-configuration
 # make sure to use right host
 
 if [ -z "${HOST:-}" ]; then

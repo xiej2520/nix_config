@@ -65,26 +65,26 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           # > Our main nixos configuration file <
-          ./hosts/nixos/configuration.nix
+          ./nixos/desktop/configuration.nix
         ];
       };
       WORKING-LAPTOP = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
         modules = [
-          ./hosts/laptop/configuration.nix
+          ./nixos/laptop/configuration.nix
         ];
       };
       relay = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
         modules = [
           disko.nixosModules.disko
-          ./hosts/relay/configuration.nix
+          ./nixos/relay/configuration.nix
         ];
       };
       FW13PRO = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
         modules = [
-          ./hosts/fw13pro/configuration.nix
+          ./nixos/fw13pro/configuration.nix
           nixos-hardware.nixosModules.framework-intel-core-ultra-series3
         ];
       };
@@ -107,21 +107,21 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
-          ./home-manager/home.nix
+          ./home/hosts/desktop.nix
         ];
       };
       "xiej@WORKING-LAPTOP" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home-laptop.nix
+          ./home/hosts/laptop.nix
         ];
       };
       "xiej@FW13PRO" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home-fw13pro.nix
+          ./home/hosts/fw13pro.nix
         ];
       };
       #"xiej@WSL" = home-manager.lib.homeManagerConfiguration {
@@ -129,7 +129,7 @@
       #  extraSpecialArgs = {inherit inputs outputs;};
       #  modules = [
       #    # > Our main home-manager configuration file <
-      #    ./home-manager/home.nix
+      #    ./home/hosts/desktop.nix
       #  ];
       #};
     };

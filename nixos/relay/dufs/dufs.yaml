@@ -5,7 +5,7 @@ port: 5000
 # runtime setup
 # 1. Create a private /etc/dufs and copy this file:
 #      sudo install -d -m 0750 -o root -g dufs /etc/dufs
-#      sudo install -m 0640 -o root -g dufs hosts/relay/dufs/dufs.yaml /etc/dufs/dufs.yaml
+#      sudo install -m 0640 -o root -g dufs nixos/relay/dufs/dufs.yaml /etc/dufs/dufs.yaml
 # 2. Generate a password hash and enter the password at the prompt:
 #      nix run nixpkgs#openssl -- passwd -6
 # 3. Edit ONLY the runtime copy:

@@ -9,10 +9,10 @@
   ...
 }:
 let
-  cli = import ./cli { inherit pkgs; };
-  desktop = import ./desktop { inherit pkgs; };
+  cli = import ../cli { inherit pkgs; };
+  desktop = import ../desktop { inherit pkgs; };
 
-  dotfiles = /home/xiej/nix_config/home-manager/dotfiles;
+  dotfiles = /home/xiej/nix_config/home/dotfiles;
   # symlink = name: config.lib.file.mkOutOfStoreSymlink (dotfiles + name);
 
   # set "dev.containers.dockerPath": "podman-remote-vscode" in vscode settings.json,
@@ -34,7 +34,7 @@ in
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    ./common.nix
+    ../common.nix
   ];
   _module.args = {
     inherit dotfiles;

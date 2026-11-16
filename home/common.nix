@@ -11,7 +11,7 @@ let
   # lib.mkForce value    # force this value
   # lib.mkBefore value   # prepend to a list
   # lib.mkAfter value    # append to a list
-  #symlink = lib.mkDefault (name: config.lib.file.mkOutOfStoreSymlink /home/xiej/nix_config/home-manager/dotfiles + name);
+  #symlink = lib.mkDefault (name: config.lib.file.mkOutOfStoreSymlink /home/xiej/nix_config/home/dotfiles + name);
   symlink = path: config.lib.file.mkOutOfStoreSymlink (dotfiles + path);
 in
 {

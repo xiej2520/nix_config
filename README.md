@@ -20,19 +20,33 @@ export NIX_CONFIG="experimental-features = nix-command flakes"
 
 # 2. Generate host config `/etc/nixos/{configuration.nix, hardware-configuration.nix}`
 sudo nixos-generate-config
-cp ~/etc/nixos/hardware-configuration ./hosts/<HOST>/hardware-configuration
+cp ~/etc/nixos/hardware-configuration ./nixos/<HOST>/hardware-configuration
 
 # 3. Switch to config
 nix-shell -p home-manager
 HOST=<HOSTNAME> USER=<USERNAME> ./switch.sh
 
-./switch.sh --home-only
+./switch.sh --user-only
 ```
 
 ## Organization
 
-- `.#xiej@WORKING-DESKTOP`
-- `.#xiej@WORKING-LAPTOP`
+| Machine | NixOS (`.#<host>`) | Home Manager (`.#xiej@<host>`) |
+| --- | --- | --- |
+| WORKING-DESKTOP | `nixos/desktop/` | `home/hosts/desktop.nix` |
+| WORKING-LAPTOP | `nixos/laptop/` | `home/hosts/laptop.nix` |
+| FW13PRO | `nixos/fw13pro/` | `home/hosts/fw13pro.nix` |
+| relay | `nixos/relay/` (setup: `nixos/relay/setup.md`) | none |
+
+```text
+nixos/       system configs, common.nix
+home/        home-manager: common.nix, cli/, desktop/ package lists, dotfiles/, hosts/
+modules/     reusable nixos/home-manager modules
+overlays/    nixpkgs overlays and patches
+pkgs/        custom packages
+dev/         dev shells, FHS envs
+scripts/     relay backup scripts (forgejo, memos), misc clang setup
+```
 
 ## Notes
 
@@ -160,15 +174,14 @@ distrobox create -n ubuntu -i ubuntu:latest -H ~/ubuntu --additional-packages "s
 distrobox enter ubuntu
 ```
 
-### nvim subtree
+### nvim subtree (deprecated)
 
-Submodules don't work with flakes, using subtree for
-[nvim-config](https://www.github.com/xiej2520/nvim-config).
+Submodules don't work with flakes, subtree instead.
 
 ```sh
-git subtree pull --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main --squash
-git subtree push --prefix home-manager/nvim-config https://github.com/xiej2520/nvim_config main
-git push https://github.com/xiej2520/nvim_config `git subtree split --prefix=home-manager/nvim_config main`:forcepush --force
+git subtree pull --prefix home/dotfiles/nvim_config https://github.com/xiej2520/nvim_config main --squash
+git subtree push --prefix home/dotfiles/nvim_config https://github.com/xiej2520/nvim_config main
+git push https://github.com/xiej2520/nvim_config `git subtree split --prefix=home/dotfiles/nvim_config main`:forcepush --force
 ```
 
 ## References

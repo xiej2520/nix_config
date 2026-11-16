@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cli = import ./cli { inherit pkgs; };
-  desktop = import ./desktop { inherit pkgs; };
+  cli = import ../cli { inherit pkgs; };
+  desktop = import ../desktop { inherit pkgs; };
 
-  dotfiles = /home/xiej/Documents/nix_config/home-manager/dotfiles;
+  dotfiles = /home/xiej/nix_config/home/dotfiles;
   symlink = name: config.lib.file.mkOutOfStoreSymlink (dotfiles + name);
 in
 {
@@ -18,7 +18,7 @@ in
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
-    ./common.nix
+    ../common.nix
   ];
 
   _module.args = {
@@ -29,22 +29,24 @@ in
 
   home.packages =
     cli.cliPackages
+    ++ cli.cliPackagesExtra
     ++ desktop.desktopPackages
-    ++ desktop.kdeBaseDesktopPackages
+    ++ desktop.kdeConfigPackages
     ++ desktop.devPackages
     ++ desktop.fontPackages
     ++ desktop.minecraftPackages
     ++ (with pkgs; [
-      kdePackages.dolphin-plugins
-      # enabling this bricks kde on ubuntu? kdePackages.kdeplasma-addons
-      kdePackages.plasma-nm
-      #kdePackages.yakuake
-      #klassy
-
+      hid-tools # touchpad
       obs-studio
+      thunderbird
+      unstable.typst
 
       xwayland-satellite
     ]);
+  # additional kde configuration:
+  #   dolphin settings
+  #   theme: Kisweet Dark, Klassy Window Decorations (accent, titlebar buttons), icons (Tela dark)
+  #   keybinds: krunner
 
   programs.zed-editor = {
     enable = true;
@@ -59,19 +61,34 @@ in
     ];
   };
 
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [
+      epkgs.nix-mode
+      epkgs.nixfmt
+      epkgs.vterm
+      epkgs.treesit-grammars.with-all-grammars
+    ];
+  };
+
   programs.java = {
     enable = true;
     package = pkgs.jdk25;
-    #package = pkgs.jdk25.override {
-    #  enableJavaFX = true;
-    #};
   };
 
   xdg.configFile."niri/config.kdl".source = symlink /config.kdl;
   # gui-configured settings in ~/.local/state/noctalia/settings.toml
   xdg.configFile."noctalia/settings.toml".source = symlink /noctalia_settings.toml;
 
-  programs.fuzzel.enable = true;
+  # use KDE configured themes for Qt apps in Niri (eg file picker)
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "kde";
+    QT_QPA_PLATFORMTHEME_QT6 = "kde";
+  };
+
+  services.easyeffects.enable = true;
+  services.kdeconnect.enable = true;
 
   services.udiskie = {
     enable = true;

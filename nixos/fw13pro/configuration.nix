@@ -224,6 +224,9 @@ in
 
   security.rtkit.enable = true;
 
+  # reduce grace period for stopping system services
+  systemd.settings.Manager.DefaultTimeoutStopSec = "30s";
+
   # xdg.portal.wlr.enable = true;
   swapDevices = [
     {

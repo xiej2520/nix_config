@@ -151,4 +151,6 @@ in
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+  # reduce grace period for stopping user units
+  systemd.user.settings.Manager.DefaultTimeoutStopSec = "15s";
 }

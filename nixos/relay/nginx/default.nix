@@ -1,4 +1,7 @@
-{ domainName, ... }:
+{ domainName, inputs, pkgs, ... }:
+let
+  pkgsSmall = inputs.nixpkgs-2605-small.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports = [
     ./goaccess.nix
@@ -6,6 +9,7 @@
 
   services.nginx = {
     enable = true;
+    package = pkgsSmall.nginx;
 
     recommendedProxySettings = true;
     recommendedTlsSettings = true;

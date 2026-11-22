@@ -15,6 +15,18 @@
         ./cubiomes-viewer-patch/0001-fix-mapview-drag-on-linux-by-lowering-threshold-for-.patch
       ];
     });
+
+    klassy = prev.klassy.overrideAttrs (old: {
+      version = "6.7.3";
+      src = old.src.override {
+        tag = "v6.7.3";
+        hash = "sha256-Uk4uB1dzm4aA6pHeYTgvFBf5CVbAsxoWYJYGkCzxGfY=";
+      };
+      # Make the Klassy Plasma styles follow the system color scheme like Breeze
+      postInstall = (old.postInstall or "") + ''
+        rm $out/share/plasma/desktoptheme/klassy-{dark,light}/colors
+      '';
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

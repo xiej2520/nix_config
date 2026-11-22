@@ -10,6 +10,7 @@ let
         enable = true;
         editor = false;
         configurationLimit = 5;
+        consoleMode = "auto";
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
